@@ -409,6 +409,18 @@ const GROWTH_OPPORTUNITIES = [
       { name: "SC Ventures Innovation Partnership", est: "$500K", status: "Exploratory", detail: "Joint innovation programme" },
       { name: "Client Portal & Self-Service", est: "$500K", status: "Concept", detail: "Digital client experience" },
     ]},
+  { id: 8, pursuit: "Strategic Customer Success", nnacv: "$1M", probability: "High", stage: "Active", theme: "ffg", year: "2026",
+    products: ["Customer Success", "Adoption Services", "Value Realisation", "Executive Health Review"],
+    sponsor: "Tanuj Kapilashrami / Melinda McKinley",
+    executiveIds: ["tk", "mk", "wy", "bon"],
+    competes: "N/A — strategic investment", partner: "Infosys (MSP)",
+    description: "Dedicated senior customer success engagement to drive adoption, protect $4M at-risk CACV, and build the quantified value narrative for the 2028 renewal. Directly supports revenue-per-FTE measurement and post-FFG productivity sustainability.",
+    items: [
+      { name: "Senior CSE (2 days/week onsite)", est: "$400K", status: "Requested", detail: "Dedicated resource to drive adoption across stalled product areas" },
+      { name: "Platform Architect engagement", est: "$300K", status: "Requested", detail: "3-month sprint for ITOM, HAM, SAM, SecOps, IRM acceleration" },
+      { name: "Telemetry-based value assessment", est: "$200K", status: "Not Started", detail: "Quantify $value delivered to support revenue-per-FTE narrative and renewal positioning" },
+      { name: "Executive Health Review", est: "$100K", status: "Not Started", detail: "Annual domain review with CEG leadership and bank executives" },
+    ]},
 ];
 
 // ─── Theme & Styles ──────────────────────────────────────────────────────────
@@ -555,7 +567,7 @@ function DashboardView() {
       <div style={{ display: "flex", gap: 12, marginBottom: 20, flexWrap: "wrap" }}>
         <MetricCard label="Current CACV" value="$13.1M" sub="+31.7% YoY" />
         <MetricCard label="CACV Target (Nov 2027)" value="$21-23M" sub="Conservative growth target" accent={colors.blue} />
-        <MetricCard label="Total NNACV Potential" value="$8-10M" sub="Conservative estimate" accent={colors.green} />
+        <MetricCard label="Total NNACV Potential" value="$9-11M" sub="Conservative estimate" accent={colors.green} />
       </div>
       
       {/* WATERFALL CHART - FOURTH */}
@@ -595,7 +607,7 @@ function DashboardView() {
           
           {/* Expansion (positive) */}
           <div style={{ flex: 1, display: "flex", flexDirection: "column", alignItems: "center" }}>
-            <div style={{ fontSize: 14, fontWeight: 700, color: colors.blue, marginBottom: 8 }}>+$8-10M</div>
+            <div style={{ fontSize: 14, fontWeight: 700, color: colors.blue, marginBottom: 8 }}>+$9-11M</div>
             <div style={{ width: "100%", height: 130, display: "flex", flexDirection: "column", justifyContent: "flex-end" }}>
               <div style={{ width: "100%", height: 100, background: `linear-gradient(180deg, ${colors.blue}, #3577cc)`, borderRadius: "6px 6px 0 0", position: "relative", border: `2px solid ${colors.blue}` }}>
                 <div style={{ position: "absolute", top: "50%", left: "50%", transform: "translate(-50%, -50%)", fontSize: 11, fontWeight: 600, color: colors.white, textAlign: "center" }}>Expansion<br/>(Conservative)</div>
@@ -729,7 +741,7 @@ function APACReviewView() {
   };
   
   const customerPriorities = [
-    { priority: "Sustain Productivity Gains", value: "$2-2.5M (2026)", description: "Lock in run-rate savings delivered via OneSC and platform consolidation. Expand unified service management into Legal, Finance, CRES, and Supply Chain. Directly drives revenue-per-FTE (CEO 2026 KPI). Address eNPS decline through improved employee experience.", theme: "ffg" },
+    { priority: "Sustain Productivity Gains", value: "$3-3.5M (2026)", description: "Lock in run-rate savings delivered via OneSC and platform consolidation. Expand unified service management into Legal, Finance, CRES, and Supply Chain. Directly drives revenue-per-FTE (CEO 2026 KPI). Address eNPS decline through improved employee experience.", theme: "ffg" },
     { priority: "Govern AI & Risk at Scale", value: "$1.5-2M (2027)", description: "Enterprise GenAI governance (Bill Winters personal objective). AI Control Tower for 200+ use cases. DORA compliance and technology resilience. Integrated risk management for the bank's 6,000+ risk function employees.", theme: "techRes" },
     { priority: "Grow Revenue per FTE", value: "$3.5-5.5M (2027)", description: "Enable the $447B affluent growth machine: RM productivity, client onboarding, CSM. FSO for CIB cross-border workflows. Add value for the bank's planned $1.5B investment in wealth management (50% people, 25% digital platforms).", theme: "clientExp" },
   ];
@@ -743,7 +755,7 @@ function APACReviewView() {
       whyItMatters: "FFG concludes in 2026 but cost discipline remains a 20% weighted 2026 scorecard measure. Without platform consolidation, run-rate savings will erode. Revenue-per-FTE (NEW CEO KPI) requires the same productivity engine. eNPS decline (-3.9pts) demands better employee experience.",
       howWeHelp: "EmployeeWorks (HRSD + WSD + NowAssist) extends HR Hub’s 104K hours saved. Legal Service Delivery, CRES Digital Vision, and Supply Chain digitalisation multiply productivity gains. Directly contributes to revenue-per-FTE KPI.",
       whoBuys: "Tanuj Kapilashrami (Chief Strategy & Talent), Shelley Boland (CRES), Pete Burrill (Interim GCFO), Warren Young (FFG)",
-      nnacv: "$2-2.5M",
+      nnacv: "$3-3.5M",
       nnacvYear: "2026",
     },
     {
@@ -771,7 +783,7 @@ function APACReviewView() {
   ];
   
   const measuresOfSuccess = [
-    "NNACV: $8-10M over 2 years — Sustain $2-2.5M in 2026; Govern $1.5-2M + Grow $3.5-5.5M in 2027",
+    "NNACV: $9-11M over 2 years — Sustain $3-3.5M in 2026; Govern $1.5-2M + Grow $3.5-5.5M in 2027",
     "Adoption: Critical apps (ITOM, HAM, SAM, SecOps) reach >70% utilisation",
     "Protect $4M at-risk CACV through adoption acceleration",
     "Platinum programme inclusion: At least one ServiceNow initiative classified as Platinum-tier",
@@ -1882,7 +1894,7 @@ function GrowthView() {
         </div>
         <div style={{ background: colors.greenGlow, border: `1px solid ${colors.green}40`, borderRadius: 10, padding: "12px 20px", textAlign: "center" }}>
           <div style={{ fontSize: 10, color: colors.green, textTransform: "uppercase", letterSpacing: "0.1em" }}>Total NNACV Potential</div>
-          <div style={{ fontSize: 28, fontWeight: 800, color: colors.green }}>$8-10M</div>
+          <div style={{ fontSize: 28, fontWeight: 800, color: colors.green }}>$9-11M</div>
         </div>
       </div>
       
