@@ -162,12 +162,17 @@ const EXECUTIVES = [
   { id: "tk", name: "Tanuj Kapilashrami", title: "Chief Strategy & Talent Officer", tier: 1, division: "Strategy & Talent", status: "green", parentId: "bw", location: "London",
     commentary: "Our strongest executive sponsor and champion. Expanded role April 2024: strategy, transformation, HR, brand, supply chain, CRES. Co-authored 'The Skills-Powered Organisation'. Meets directly with Chris Bedi (ServiceNow CCO). Pioneered internal Talent Marketplace. The HR Hub success is her platform.",
     priorities: "OneSC employee experience, AI-led transformation, Fit for Growth, people strategy, CRES transformation",
-    lastEngagement: "Chris Bedi 1:1 — 12 June; HK MT — 29 July with Melissa", risk: "Low — strongest advocate",
+    lastEngagement: "Chris Bedi 1:1 with Melinda — 30 March 2026. Knowledge 2026 delegation (4 SCB execs attending)", risk: "Low — strongest advocate",
     opportunityIds: [1, 2, 4], strategicThemes: ["ffg"] },
   { id: "pb", name: "Pete Burrill", title: "Interim Group Chief Financial Officer", tier: 1, division: "Finance", status: "red", parentId: "bw", location: "London",
     commentary: "⚠️ NEVER MET — CRITICAL ENGAGEMENT. Appointed Interim GCFO on 10 Feb 2026, replacing Diego De Giorgi who stepped down. Permanent GCFO search underway — new appointee becomes mandatory early engagement. Pete’s immediate focus: delivering 2026 guidance (statutory RoTE >12%, costs broadly flat) and preparing the May 2026 medium-term financial framework. Key for TCO analysis, FFG ROI, post-FFG cost base sustainability, and 2028 renewal business case. Must arm with shelfware quantification and platform consolidation savings.",
     priorities: "2026 guidance delivery, statutory RoTE >12%, cost discipline (final FFG year), May medium-term framework, shareholder returns continuity",
     lastEngagement: "Never met — engagement required BEFORE May 2026 framework", risk: "CRITICAL — must engage before budgets are set for new framework",
+    opportunityIds: [], strategicThemes: ["ffg"] },
+  { id: "tp", name: "Tom Pfaff", title: "COO, GCFO Office", tier: 2, division: "Finance", status: "amber", parentId: "pb", location: "London",
+    commentary: "NEW BUYING CENTRE (March 2026). Identified as key stakeholder in the GCFO/COO office. Material expansion of account footprint beyond HR and CRES into Finance operations. First outreach and approach to be agreed.",
+    priorities: "Finance operations, cost management, operational efficiency",
+    lastEngagement: "New contact — first outreach planned", risk: "Medium — new buying centre, approach TBD",
     opportunityIds: [], strategicThemes: ["ffg"] },
   { id: "jh", name: "Judy Hsu", title: "CEO, Wealth & Retail Banking", tier: 1, division: "WRB", status: "amber", parentId: "bw", location: "Singapore",
     commentary: "ExCo member. CEO of $8.5B revenue business (FY2025 underlying). Record wealth performance: $447B affluent AUM, 275K NTB affluent clients, $52B net new money (14% AUM growth), #3 Asia wealth ranking. Wealth Solutions income +24% YoY. Strategic RM hiring programme underway. $1.5B affluent investment programme (50% people, 25% digital). CRM and CSM opportunity is NOW better evidenced than before — client onboarding speed, RM productivity, and servicing quality are the bottlenecks to scaling the affluent growth machine. ENGAGEMENT NEEDED.",
@@ -213,17 +218,17 @@ const EXECUTIVES = [
   { id: "mk", name: "Melinda McKinley", title: "COO, Strategy & Talent", tier: 2, division: "Strategy & Talent", status: "green", parentId: "tk", location: "Singapore",
     commentary: "Day-to-day operational champion for OneSC. Leads HR service delivery transformation. Strong advocate for platform consolidation. Direct access. HR Hub success story owner.",
     priorities: "OneSC platform delivery, HR transformation, employee experience",
-    lastEngagement: "John Aisen met Melinda 29 Jan; Chris Bedi follow-up pending", risk: "Low — operationally engaged",
+    lastEngagement: "Chris Bedi 1:1 — 30 March 2026. OneSC full platform go-live 6 April. Knowledge 2026 speaker (SES8101: AI Agents & Pre-Boarding at Scale, 7 May)", risk: "Low — operationally engaged",
     opportunityIds: [1], strategicThemes: ["ffg"] },
   { id: "sb", name: "Shelley Boland", title: "Head of Global CRES & Workplace Services", tier: 2, division: "Strategy & Talent", status: "green", parentId: "tk", location: "Singapore",
-    commentary: "CRES Digital Vision programme sponsor. $2.5M pipeline owner. Interested in Knowledge 2026 showcase. Workplace transformation champion. Strong ServiceNow advocate.",
+    commentary: "CRES Digital Vision programme sponsor. WSD signed and in delivery (41 digital experiences). Knowledge 2026 speaker confirmed (SES8102). Attended executive summit March 2026. CRES executive visit 30 April London. Strong ServiceNow advocate.",
     priorities: "CRES digital transformation, workplace experience, cost efficiency",
-    lastEngagement: "Melissa Ries (GVP Asia) met 26 Jan; follow-up 24 Feb", risk: "Low — strong sponsorship",
+    lastEngagement: "Executive summit March 2026. CRES executive visit 30 April London (Salisbury Sq + PIC site visit). Knowledge 2026 speaker (SES8102: Real Estate to Real Experience)", risk: "Low — strong sponsorship",
     opportunityIds: [4], strategicThemes: ["ffg"] },
   { id: "cp", name: "Cezary Piekarski", title: "Chief Security Officer", tier: 2, division: "Technology", status: "amber", parentId: "ne", location: "Singapore",
     commentary: "CISO. Works closely with Alvaro Garrido. SecOps opportunity. IRM/GRC potential. DORA and IBS 2025 compliance mandates. Generally supportive but relationship needs revival for Veza and Armis use cases.",
     priorities: "DORA compliance, security governance, threat intelligence",
-    lastEngagement: "Dec 2024 via Lou Fiorello (GVP & GM Security & Risk) — need to revive", risk: "Medium — supportive, action needed for Veza/Armis",
+    lastEngagement: "CISO call for Veza being scheduled (March 2026). Executive dinner with Lavy held.", risk: "Medium — supportive, action needed for Veza/Armis",
     opportunityIds: [3], strategicThemes: ["techRes"] },
   { id: "sc", name: "Sean Coppinger", title: "CIO, Group Functions", tier: 2, division: "Technology", status: "amber", parentId: "ne", location: "Singapore",
     commentary: "Reports to Noelle Eder. Technology resilience programme lead. IRM natural buyer. DORA timeline pressure creates urgency. Supportive but often torn between SAP and ServiceNow — not always strong to make decisions in our favour.",
@@ -274,7 +279,7 @@ const EXECUTIVES = [
   { id: "ls", name: "Lavy Stokhamer", title: "MD, Global Head of Cybersecurity & Anti-Crime Technology", tier: 3, division: "Technology", status: "amber", parentId: "cp", location: "Singapore",
     commentary: "Reports to Cezary Piekarski. Leads global Cybersecurity and Anti-Crime Technology across Cyber Defense, Fraud, AML, Screening and Digital Assets. Driving secure cross-border and affluent client growth through scalable data platforms, advanced analytics and AI-enabled risk management. Influential for both security platform opportunities and FSO financial crime use cases.",
     priorities: "Cybersecurity operations, fraud prevention, AML technology, anti-crime analytics, AI-enabled risk management",
-    lastEngagement: "Limited engagement — needs development", risk: "Medium — key for security and FSO financial crime",
+    lastEngagement: "Executive dinner held March 2026. CISO call (Cezary) being scheduled for Veza.", risk: "Medium — key for security and FSO financial crime",
     opportunityIds: [3, 5, 6], strategicThemes: ["techRes", "clientExp"] },
   // Tier 4 — Operational Leaders
   { id: "rg", name: "Rama Gatiganti", title: "Global Head, Service Delivery Platform", tier: 4, division: "Technology", status: "amber", parentId: "jw", location: "Singapore",
@@ -325,17 +330,17 @@ const ADOPTION_DATA = {
 };
 
 const GROWTH_OPPORTUNITIES = [
-  { id: 1, pursuit: "EmployeeWorks & AI Expansion", nnacv: "$1M", probability: "High", stage: "Active", theme: "ffg", year: "2026",
+  { id: 1, pursuit: "EmployeeWorks & AI Expansion", nnacv: "$3M", probability: "High", stage: "Active", theme: "ffg", year: "2026",
     products: ["EmployeeWorks", "NowAssist", "Agentic AI", "AI Control Tower"],
     sponsor: "Tanuj Kapilashrami / Melinda McKinley",
     executiveIds: ["tk", "mk", "dh", "wy", "bon", "mkor", "id", "sl"],
     competes: "ServiceBench (displace)", partner: "Infosys (MSP)",
-    description: "Scale OneSC with EmployeeWorks + Moveworks capabilities. Agentic AI for onboarding, NowAssist expansion, AI Control Tower governance. FY2025 intelligence: eNPS declined 3.9pts to 17.56 (board KPI) — position as recovery vehicle. HR Hub’s 104K hours saved directly contributes to new revenue-per-FTE CEO scorecard KPI. Reframe AI Control Tower from governance tool to enterprise GenAI foundation (Bill Winters’ personal 2026 objective).",
+    description: "OneSC full platform go-live 6 April. Agentic AI for Onboarding go-live 13 April. EmployeeWorks (Moveworks) $2.25M deal active — Bhavin Shah call with Melinda 10 April. AI Control Tower Phase 1 MVP ~end April with Infosys. Drives revenue-per-FTE (CEO KPI) and eNPS recovery.",
     items: [
-      { name: "EmployeeWorks Expansion", est: "$400K", status: "Active", detail: "Moveworks acquisition — action layer positioning" },
-      { name: "Agentic AI for Onboarding", est: "$200K", status: "Building", detail: "March 2025 go-live target. MVP presented." },
+      { name: "EmployeeWorks (Moveworks)", est: "$2.25M", status: "Active", detail: "Action layer on OneSC. Bhavin Shah call with Melinda 10 April. $2.25M pipeline." },
+      { name: "Agentic AI for Onboarding", est: "$200K", status: "Go-Live", detail: "Go-live confirmed 13 April 2026. MVP presented. Sponsor: Melinda McKinley." },
       { name: "NowAssist Expansion", est: "$250K", status: "Pipeline", detail: "Contracted June 2025. Expansion beyond HR to ITSM/ITOM." },
-      { name: "AI Control Tower", est: "$150K", status: "Active", detail: "David Hardoon stakeholder. Governance positioning." },
+      { name: "AI Control Tower", est: "$150K", status: "Implementing", detail: "Phase 1 MVP with Infosys. 500-unit entitlement. Go-live ~end April. Blockers: SAE visibility rules, versioning. David Hardoon monthly cadence." },
     ]},
   { id: 2, pursuit: "Legal Service Delivery & Contract Management", nnacv: "$500K", probability: "High", stage: "Active", theme: "ffg", year: "2026",
     products: ["Legal Service Delivery", "Contract Lifecycle Management", "Matter Management"],
@@ -347,14 +352,14 @@ const GROWTH_OPPORTUNITIES = [
       { name: "Legal Service Delivery", est: "$250K", status: "Requirements gathering", detail: "Legal ops transformation — matter management, request intake" },
       { name: "Contract Lifecycle Management", est: "$250K", status: "Opportunity", detail: "Contract authoring, approval workflows, obligation tracking" },
     ]},
-  { id: 3, pursuit: "Security Platform Expansion (Veza & Armis)", nnacv: "$1.5M", probability: "Medium", stage: "Developing", theme: "techRes", year: "2027",
+  { id: 3, pursuit: "Security Platform Expansion (Veza & Armis)", nnacv: "$1.6M", probability: "Medium", stage: "Developing", theme: "techRes", year: "2027",
     products: ["Veza", "Armis", "SecOps VR", "IRM", "AI Governance"],
     sponsor: "Alvaro Garrido / Cezary Piekarski",
     executiveIds: ["ag", "cp", "ne", "ls"],
     competes: "MetricStream (incumbent)", partner: "Infosys (MSP)",
     description: "Veza (identity security) and Armis (asset visibility) for DORA compliance. SecOps integration with Databricks. Software write-offs ($588M to $42M) signal custom-build depreciation complete — strengthens consolidation case.",
     items: [
-      { name: "Veza Identity Security", est: "$500K", status: "Evaluation", detail: "Identity threat detection, access governance — Alvaro Garrido evaluating" },
+      { name: "Veza Identity Security", est: "$600K", status: "Active", detail: "Executive dinner with Lavy held. CISO call (Cezary) being scheduled. Primary entry point for broader security platform." },
       { name: "Armis Asset Intelligence", est: "$500K", status: "Evaluation", detail: "Asset visibility, vulnerability management — security engineering priority" },
       { name: "SecOps Integration Completion", est: "$500K", status: "Developing", detail: "Databricks security stack integration — reduce downsell risk" },
     ]},
@@ -417,7 +422,7 @@ const GROWTH_OPPORTUNITIES = [
     description: "Dedicated senior customer success engagement to drive adoption, protect $4M at-risk CACV, and build the quantified value narrative for the 2028 renewal. Directly supports revenue-per-FTE measurement and post-FFG productivity sustainability.",
     items: [
       { name: "Senior CSE (2 days/week onsite)", est: "$400K", status: "Requested", detail: "Dedicated resource to drive adoption across stalled product areas" },
-      { name: "Platform Architect engagement", est: "$300K", status: "Requested", detail: "3-month sprint for ITOM, HAM, SAM, SecOps, IRM acceleration" },
+      { name: "Platform Architect / Integrated Success Plan", est: "$300K", status: "Pursuing", detail: "Roadmap to $1M+ ISP add-on via Impact programme. Structural answer to delivery skill gap constraining AICT and other programmes." },
       { name: "Telemetry-based value assessment", est: "$200K", status: "Not Started", detail: "Quantify $value delivered to support revenue-per-FTE narrative and renewal positioning" },
       { name: "Executive Health Review", est: "$100K", status: "Not Started", detail: "Annual domain review with CEG leadership and bank executives" },
     ]},
@@ -495,6 +500,7 @@ function Sidebar({ active, setActive }) {
         <div>CACV: <span style={{ color: colors.green, fontWeight: 700 }}>$13.1M</span></div>
         <div>Next Renewal: <span style={{ color: colors.amber, fontWeight: 600 }}>28 Dec 2028</span></div>
         <div style={{ marginTop: 4, opacity: 0.6 }}>ServiceNow · FY2026</div>
+        <div style={{ marginTop: 4, opacity: 0.6 }}>Last updated: 26 March 2026</div>
       </div>
     </div>
   );
@@ -567,7 +573,7 @@ function DashboardView() {
       <div style={{ display: "flex", gap: 12, marginBottom: 20, flexWrap: "wrap" }}>
         <MetricCard label="Current CACV" value="$13.1M" sub="+31.7% YoY" />
         <MetricCard label="CACV Target (Nov 2027)" value="$21-23M" sub="Conservative growth target" accent={colors.blue} />
-        <MetricCard label="Total NNACV Potential" value="$9-11M" sub="Conservative estimate" accent={colors.green} />
+        <MetricCard label="Total NNACV Potential" value="$12-14M" sub="Conservative estimate" accent={colors.green} />
       </div>
       
       {/* WATERFALL CHART - FOURTH */}
@@ -607,7 +613,7 @@ function DashboardView() {
           
           {/* Expansion (positive) */}
           <div style={{ flex: 1, display: "flex", flexDirection: "column", alignItems: "center" }}>
-            <div style={{ fontSize: 14, fontWeight: 700, color: colors.blue, marginBottom: 8 }}>+$9-11M</div>
+            <div style={{ fontSize: 14, fontWeight: 700, color: colors.blue, marginBottom: 8 }}>+$12-14M</div>
             <div style={{ width: "100%", height: 130, display: "flex", flexDirection: "column", justifyContent: "flex-end" }}>
               <div style={{ width: "100%", height: 100, background: `linear-gradient(180deg, ${colors.blue}, #3577cc)`, borderRadius: "6px 6px 0 0", position: "relative", border: `2px solid ${colors.blue}` }}>
                 <div style={{ position: "absolute", top: "50%", left: "50%", transform: "translate(-50%, -50%)", fontSize: 11, fontWeight: 600, color: colors.white, textAlign: "center" }}>Expansion<br/>(Conservative)</div>
@@ -741,7 +747,7 @@ function APACReviewView() {
   };
   
   const customerPriorities = [
-    { priority: "Sustain Productivity Gains", value: "$3-3.5M (2026)", description: "Lock in run-rate savings delivered via OneSC and platform consolidation. Expand unified service management into Legal, Finance, CRES, and Supply Chain. Directly drives revenue-per-FTE (CEO 2026 KPI). Address eNPS decline through improved employee experience.", theme: "ffg" },
+    { priority: "Sustain Productivity Gains", value: "$5.5M (2026)", description: "Lock in run-rate savings delivered via OneSC and platform consolidation. Expand unified service management into Legal, Finance, CRES, and Supply Chain. Directly drives revenue-per-FTE (CEO 2026 KPI). Address eNPS decline through improved employee experience.", theme: "ffg" },
     { priority: "Govern AI & Risk at Scale", value: "$1.5-2M (2027)", description: "Enterprise GenAI governance (Bill Winters personal objective). AI Control Tower for 200+ use cases. DORA compliance and technology resilience. Integrated risk management for the bank's 6,000+ risk function employees.", theme: "techRes" },
     { priority: "Grow Revenue per FTE", value: "$3.5-5.5M (2027)", description: "Enable the $447B affluent growth machine: RM productivity, client onboarding, CSM. FSO for CIB cross-border workflows. Add value for the bank's planned $1.5B investment in wealth management (50% people, 25% digital platforms).", theme: "clientExp" },
   ];
@@ -755,7 +761,7 @@ function APACReviewView() {
       whyItMatters: "FFG concludes in 2026 but cost discipline remains a 20% weighted 2026 scorecard measure. Without platform consolidation, run-rate savings will erode. Revenue-per-FTE (NEW CEO KPI) requires the same productivity engine. eNPS decline (-3.9pts) demands better employee experience.",
       howWeHelp: "EmployeeWorks (HRSD + WSD + NowAssist) extends HR Hub’s 104K hours saved. Legal Service Delivery, CRES Digital Vision, and Supply Chain digitalisation multiply productivity gains. Directly contributes to revenue-per-FTE KPI.",
       whoBuys: "Tanuj Kapilashrami (Chief Strategy & Talent), Shelley Boland (CRES), Pete Burrill (Interim GCFO), Warren Young (FFG)",
-      nnacv: "$3-3.5M",
+      nnacv: "$5.5M",
       nnacvYear: "2026",
     },
     {
@@ -783,7 +789,7 @@ function APACReviewView() {
   ];
   
   const measuresOfSuccess = [
-    "NNACV: $9-11M over 2 years — Sustain $3-3.5M in 2026; Govern $1.5-2M + Grow $3.5-5.5M in 2027",
+    "NNACV: $12-14M over 2 years — Sustain $5.5M in 2026; Govern $1.5-2M + Grow $3.5-5.5M in 2027",
     "Adoption: Critical apps (ITOM, HAM, SAM, SecOps) reach >70% utilisation",
     "Protect $4M at-risk CACV through adoption acceleration",
     "Platinum programme inclusion: At least one ServiceNow initiative classified as Platinum-tier",
@@ -1894,7 +1900,7 @@ function GrowthView() {
         </div>
         <div style={{ background: colors.greenGlow, border: `1px solid ${colors.green}40`, borderRadius: 10, padding: "12px 20px", textAlign: "center" }}>
           <div style={{ fontSize: 10, color: colors.green, textTransform: "uppercase", letterSpacing: "0.1em" }}>Total NNACV Potential</div>
-          <div style={{ fontSize: 28, fontWeight: 800, color: colors.green }}>$9-11M</div>
+          <div style={{ fontSize: 28, fontWeight: 800, color: colors.green }}>$12-14M</div>
         </div>
       </div>
       
@@ -2028,10 +2034,10 @@ const ACTIONS_DATA = [
   // Growth & Upsell Actions
   { id: 1, category: "Growth", action: "Secure meeting with Noelle Eder", criticality: "Critical", bankContact: "Noelle Eder (Group Head T&O)", snContact: "Chris Bedi / Arun Ragothaman", dueDate: "Q1 2026", status: "Not Started", notes: "Single most critical engagement gap — controls all technology strategy. Board confirmed strategic weight of her appointment.", marqueeOffer: "Access: Global Advisory Council" },
   { id: 2, category: "Growth", action: "Meet Guillermo Veiga for FSO positioning", criticality: "High", bankContact: "Guillermo Veiga (Group CIO)", snContact: "Arun Ragothaman / FSO Specialist", dueDate: "Mar 2026", status: "Not Started", notes: "Critical for FSO opportunity — must meet to land use cases. CIB cross-border at 61.5%, digital transactions at 72.1%.", marqueeOffer: "Advantage: AI Advantage Team" },
-  { id: 3, category: "Growth", action: "Revive Cezary Piekarski relationship for Veza/Armis", criticality: "High", bankContact: "Cezary Piekarski (CISO)", snContact: "Lou Fiorello / Security Team", dueDate: "Feb 2026", status: "Not Started", notes: "Last engagement Dec 2024 — need to revive for security platform expansion. DORA compliance creates urgency.", marqueeOffer: "Advantage: Industry Customer Advisory Board" },
-  { id: 4, category: "Growth", action: "Engage Lavy Stokhamer for SecOps and Financial Crime", criticality: "Medium", bankContact: "Lavy Stokhamer (Global Head Cyber & Anti-Crime)", snContact: "Arun Ragothaman / Security Team", dueDate: "Mar 2026", status: "Not Started", notes: "Reports to Cezary. Key for security and FSO financial crime use cases." },
-  { id: 5, category: "Growth", action: "Progress CRES Digital Vision requirements with Shelley", criticality: "High", bankContact: "Shelley Boland (Head CRES)", snContact: "Melissa Ries / Arun Ragothaman", dueDate: "Feb 2026", status: "In Progress", notes: "Requirements gathered for 7 experiences. Potential Platinum programme candidate. Drives eNPS recovery and revenue-per-FTE.", marqueeOffer: "Access: Complimentary Knowledge Passes" },
-  { id: 6, category: "Growth", action: "Agentic AI for Onboarding go-live", criticality: "High", bankContact: "Melinda McKinley / David Hardoon", snContact: "AI Team / Arun Ragothaman", dueDate: "Mar 2026", status: "In Progress", notes: "MVP presented. Directly supports GenAI governance mandate and revenue-per-FTE KPI.", marqueeOffer: "Advantage: AI Advantage Team" },
+  { id: 3, category: "Growth", action: "Revive Cezary Piekarski relationship for Veza/Armis", criticality: "High", bankContact: "Cezary Piekarski (CISO)", snContact: "Lou Fiorello / Security Team", dueDate: "Mar 2026", status: "In Progress", notes: "Last engagement Dec 2024 — need to revive for security platform expansion. DORA compliance creates urgency.", marqueeOffer: "Advantage: Industry Customer Advisory Board" },
+  { id: 4, category: "Growth", action: "Engage Lavy Stokhamer for SecOps and Financial Crime", criticality: "Medium", bankContact: "Lavy Stokhamer (Global Head Cyber & Anti-Crime)", snContact: "Arun Ragothaman / Security Team", dueDate: "Mar 2026", status: "In Progress", notes: "Reports to Cezary. Key for security and FSO financial crime use cases." },
+  { id: 5, category: "Growth", action: "Progress CRES Digital Vision requirements with Shelley", criticality: "High", bankContact: "Shelley Boland (Head CRES)", snContact: "Melissa Ries / Arun Ragothaman", dueDate: "Feb 2026", status: "In Progress", notes: "WSD signed and in delivery. CRES executive visit 30 April London (Salisbury Sq + PIC). Shelley attending Knowledge 2026. Potential Platinum programme candidate.", marqueeOffer: "Access: Complimentary Knowledge Passes" },
+  { id: 6, category: "Growth", action: "Agentic AI for Onboarding go-live", criticality: "High", bankContact: "Melinda McKinley / David Hardoon", snContact: "AI Team / Arun Ragothaman", dueDate: "13 Apr 2026", status: "In Progress", notes: "MVP presented. Directly supports GenAI governance mandate and revenue-per-FTE KPI.", marqueeOffer: "Advantage: AI Advantage Team" },
   { id: 7, category: "Growth", action: "Legal Service Delivery requirements gathering", criticality: "Medium", bankContact: "Legal Function / Tanuj Kapilashrami", snContact: "Arun Ragothaman", dueDate: "Q2 2026", status: "In Progress", notes: "New domain — strong executive sponsorship from Tanuj. Extends platform consolidation into FFG final-year savings." },
   { id: 8, category: "Growth", action: "Engage Pete Burrill (Interim GCFO) for value/TCO narrative", criticality: "Critical", bankContact: "Pete Burrill (Interim GCFO)", snContact: "Chris Bedi / Arun Ragothaman", dueDate: "Q1 2026", status: "Not Started", notes: "Must engage before May 2026 medium-term framework. Build value narrative on reported basis for 2028 renewal.", marqueeOffer: "Access: Dedicated Executive Sponsor" },
   // Post-FFG & Intelligence Actions
@@ -2122,7 +2128,7 @@ function ActionsView() {
             <div style={{ fontSize: 10, color: colors.textPrimary, lineHeight: 1.6 }}>
               <div style={{ marginBottom: 6 }}><strong style={{ color: colors.green }}>Deals:</strong> Close WSD deal</div>
               <div style={{ marginBottom: 6 }}><strong style={{ color: colors.green }}>Projects:</strong> Kick off CRES project</div>
-              <div style={{ marginBottom: 6 }}><strong style={{ color: colors.green }}>Go-Lives:</strong> Agentic AI for Onboarding, OneSC</div>
+              <div style={{ marginBottom: 6 }}><strong style={{ color: colors.green }}>Go-Lives:</strong> OneSC platform (6 Apr), Agentic AI (13 Apr), AICT MVP (~end Apr)</div>
               <div><strong style={{ color: colors.amber }}>Cadence:</strong> Strategic Review #1 (Infosys-Bank-ServiceNow)</div>
             </div>
           </div>
