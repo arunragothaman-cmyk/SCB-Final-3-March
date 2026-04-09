@@ -184,10 +184,10 @@ const EXECUTIVES = [
     priorities: "Enterprise risk management, DORA compliance, IBS 2025, regulatory technology, risk culture",
     lastEngagement: "Never met — evaluate engagement need", risk: "Medium — IRM opportunity at stake",
     opportunityIds: [5], strategicThemes: ["techRes"] },
-  { id: "rh", name: "Roberto Hoornweg", title: "CEO, Corporate & Investment Banking", tier: 1, division: "CIB", status: "grey", parentId: "bw", location: "Dubai",
-    commentary: "Appointed CEO of CIB in December 2025 (previously Co-Head with Sunil Kaushal). Over 30 years banking experience — joined SCB 2017 as Global Head of Financial Markets. Retains oversight of Americas, Europe, Africa and Middle East markets. Member of Group Management Team. MIT economics graduate. Prior experience at Brevan Howard, UBS Investment Bank, Morgan Stanley. Evaluating if engagement is needed at this stage.",
+  { id: "rh", name: "Roberto Hoornweg", title: "CEO, Corporate & Investment Banking", tier: 1, division: "CIB", status: "amber", parentId: "bw", location: "Dubai",
+    commentary: "Appointed CEO of CIB in December 2025 (previously Co-Head with Sunil Kaushal). Over 30 years banking experience — joined SCB 2017 as Global Head of Financial Markets. Retains oversight of Americas, Europe, Africa and Middle East markets. Member of Group Management Team. MIT economics graduate. Prior experience at Brevan Howard, UBS Investment Bank, Morgan Stanley. NOW CRITICAL: CIB engagement opened March 2026 via Geoff Kot. First entry into $11.7B CIB division. Workshop planned mid-April. Bypasses T&O chain entirely.",
     priorities: "Cross-border strategy, CIB growth, financial markets, EMEA regional oversight",
-    lastEngagement: "Never met — evaluate engagement need", risk: "Low — evaluating relevance",
+    lastEngagement: "CIB engagement opened March 2026. Geoff Kot (direct report) leading. Workshop mid-April.", risk: "Low — evaluating relevance",
     opportunityIds: [6, 7], strategicThemes: ["clientExp"] },
   { id: "bh", name: "Benjamin Hung", title: "President, International", tier: 1, division: "Group", status: "grey", parentId: "bw", location: "Hong Kong",
     commentary: "Appointed President, International in April 2024. Chairman of Standard Chartered Bank (Hong Kong), (China) and (Singapore). Joined SCB in 1992 — first Chinese executive elevated to global management. Previously CEO Asia, Regional CEO Greater China & North Asia, CEO Retail Banking and Wealth Management. Member of Group Management Team. Visiting lecturer at Princeton. Co-Chair of B20 Finance & Infrastructure Taskforce. Evaluating if engagement is needed at this stage.",
@@ -210,15 +210,15 @@ const EXECUTIVES = [
     priorities: "Engineering autonomy, custom platform development, internal builds",
     lastEngagement: "Avoids meetings — engagement via leadership required", risk: "CRITICAL — active resistance",
     opportunityIds: [], strategicThemes: [] },
-  { id: "ag", name: "Alvaro Garrido", title: "CIO, Information Security & Data", tier: 2, division: "Technology", status: "amber", parentId: "ne", location: "Singapore",
-    commentary: "Security champion. 250 security engineers reporting to him. Evaluating Veza, Armis, and other security platforms. SecOps engagement opportunity. DORA compliance driver. Supporter but we need to increase engagement with him.",
+  { id: "ag", name: "Alvaro Garrido", title: "COO T&O and CIO Information Security", tier: 2, division: "Technology", status: "amber", parentId: "ne", location: "Singapore",
+    commentary: "Security champion — EXPANDED ROLE: now COO T&O and CIO Information Security (dual hat). 6,678 employees. Evaluating Veza, Armis, and other security platforms. SecOps engagement opportunity. DORA compliance driver. Supporter but we need to increase engagement with him.",
     priorities: "Zero trust architecture, DORA compliance, security operations modernisation",
     lastEngagement: "Q3 2025 via Constance Chang — need to increase engagement", risk: "Medium — supporter, needs more engagement",
     opportunityIds: [3], strategicThemes: ["techRes"] },
   { id: "mk", name: "Melinda McKinley", title: "COO, Strategy & Talent", tier: 2, division: "Strategy & Talent", status: "green", parentId: "tk", location: "Singapore",
     commentary: "Day-to-day operational champion for OneSC. Leads HR service delivery transformation. Strong advocate for platform consolidation. Direct access. HR Hub success story owner.",
     priorities: "OneSC platform delivery, HR transformation, employee experience",
-    lastEngagement: "Chris Bedi 1:1 — 30 March 2026. OneSC full platform go-live 6 April. Knowledge 2026 speaker (SES8101: AI Agents & Pre-Boarding at Scale, 7 May)", risk: "Low — operationally engaged",
+    lastEngagement: "Chris Bedi 1:1 — 30 March 2026. OneSC LIVE (went live 6 April) ✅. Knowledge 2026 speaker (SES8101: AI Agents & Pre-Boarding at Scale, 7 May)", risk: "Low — operationally engaged",
     opportunityIds: [1], strategicThemes: ["ffg"] },
   { id: "sb", name: "Shelley Boland", title: "Head of Global CRES & Workplace Services", tier: 2, division: "Strategy & Talent", status: "green", parentId: "tk", location: "Singapore",
     commentary: "CRES Digital Vision programme sponsor. WSD signed and in delivery (41 digital experiences). Knowledge 2026 speaker confirmed (SES8102). Attended executive summit March 2026. CRES executive visit 30 April London. Strong ServiceNow advocate.",
@@ -230,13 +230,13 @@ const EXECUTIVES = [
     priorities: "DORA compliance, security governance, threat intelligence",
     lastEngagement: "CISO call for Veza being scheduled (March 2026). Executive dinner with Lavy held.", risk: "Medium — supportive, action needed for Veza/Armis",
     opportunityIds: [3], strategicThemes: ["techRes"] },
-  { id: "sc", name: "Sean Coppinger", title: "CIO, Group Functions", tier: 2, division: "Technology", status: "amber", parentId: "ne", location: "Singapore",
-    commentary: "Reports to Noelle Eder. Technology resilience programme lead. IRM natural buyer. DORA timeline pressure creates urgency. Supportive but often torn between SAP and ServiceNow — not always strong to make decisions in our favour.",
-    priorities: "Technology resilience, operational risk, DORA compliance, Functions technology",
-    lastEngagement: "Nov 2025 via Arun Ragothaman (Client Director)", risk: "Medium — supportive but wavering on SAP vs ServiceNow",
+  { id: "bb", name: "Balachandher Balakrishnan", title: "CIO, Finance & Treasury Technology", tier: 2, division: "Technology", status: "amber", parentId: "gv", location: "Singapore",
+    commentary: "Replaces Sean Coppinger (departed). Reports to Guillermo Veiga. 3,129 employees. CIO for Finance & Treasury Technology. Relevant to GCFO/Tom Pfaff buying centre and technology resilience. New contact — engagement approach TBD.",
+    priorities: "Finance technology, treasury systems, DORA compliance, technology resilience",
+    lastEngagement: "New contact — not yet engaged", risk: "Medium — new relationship to build",
     opportunityIds: [5], strategicThemes: ["techRes"] },
   { id: "cdo", name: "TBH — Chief Data Officer", title: "Chief Data Officer (To Be Hired)", tier: 2, division: "Technology", status: "grey", parentId: "ne", location: "TBD",
-    commentary: "Position vacant — previous CDO departed. Critical hire for data strategy and AI governance. David Hardoon (Chief AI Officer) will report to this role once filled. Watch for appointment announcement.",
+    commentary: "Shebani Baweja appointed as Interim CDO. Previously vacant. Key for data strategy and AI governance.",
     priorities: "Data strategy, AI governance, data platform modernisation",
     lastEngagement: "N/A — position vacant", risk: "Medium — leadership gap",
     opportunityIds: [], strategicThemes: [] },
@@ -255,17 +255,59 @@ const EXECUTIVES = [
     priorities: "Transformation delivery, value measurement, change management",
     lastEngagement: "Limited engagement", risk: "Medium — key for value measurement",
     opportunityIds: [1, 2, 4], strategicThemes: ["ffg"] },
+  // Tier 2 — CIB Stakeholders (NEW — March 2026)
+  { id: "gk", name: "Geoff Kot", title: "Global Head, CIB Business Platforms & Partnerships; Head of AI, Marketing & Trading", tier: 2, division: "CIB", status: "amber", parentId: "rh", location: "Europe",
+    commentary: "KEY NEW CONTACT (March 2026). Decision-maker for CIB business platforms. Reports to Roberto Hoornweg, NOT through T&O chain. Stated philosophy: 'process and people, not just tech' — aligns with ServiceNow positioning. Also newly appointed Head of AI for Marketing & Trading. Three workstreams agreed at 20 March workshop: (1) client lifecycle, (2) AI governance in CIB, (3) Kyriba autonomous treasury innovation. Workshop planned 16-17 April.",
+    priorities: "CIB business platforms, client lifecycle modernisation, AI for marketing & trading, intra-day swap liquidity, process optimisation",
+    lastEngagement: "20 March 2026 — workshop at ServiceNow Santa Clara. Three workstreams agreed. In-person follow-up mid-April.", risk: "Medium — new relationship, high potential",
+    opportunityIds: [6], strategicThemes: ["clientExp"] },
+  { id: "cc", name: "Craig Corte", title: "Global Head Digital Channels, Platforms & Partnerships", tier: 3, division: "CIB", status: "amber", parentId: "gk", location: "TBC",
+    commentary: "Business owner for Tracks 1 and 2 of the CIB engagement. Responsible for digital channels and partnerships within CIB. Planning call for week of 7 April. Pre-reading on current client journey process requested.",
+    priorities: "Digital channels, client platforms, partnerships, client lifecycle",
+    lastEngagement: "Named as track owner 1 April 2026. Planning call week of 7 April.", risk: "Medium — new contact, working-level",
+    opportunityIds: [6], strategicThemes: ["clientExp"] },
+  { id: "jk", name: "Jennifer Ketelaar", title: "MD, US Transaction Banking Sales, TMT", tier: 3, division: "CIB", status: "amber", parentId: "rh", location: "San Francisco",
+    commentary: "Coordinator and planning lead for CIB engagement. Originated from Lunar New Year event connection. Disclosed she was given opportunity to replatform entire CIB client lifecycle — starting with Pega. Asked 'What would an implementation pattern look like?' — indicating scope may be broader. Key intelligence source.",
+    priorities: "Transaction banking, TMT sector coverage, client lifecycle, CIB sales",
+    lastEngagement: "1 April 2026 — confirmed team assignments and workshop dates", risk: "Low — engaged and responsive",
+    opportunityIds: [6], strategicThemes: ["clientExp"] },
+  { id: "ak", name: "Ankur Kanwar", title: "Global Head Payments Treasury Solutions", tier: 3, division: "CIB", status: "grey", parentId: "rh", location: "TBC",
+    commentary: "Track 3 owner: longer-term innovation — intra-day liquidity swaps, wallets, tokenised deposits (Quantum initiative). Relevant to Kyriba autonomous treasury partnership.",
+    priorities: "Payments, treasury solutions, digital assets innovation",
+    lastEngagement: "Added to thread 1 April 2026", risk: "Low — evaluating",
+    opportunityIds: [6], strategicThemes: ["clientExp"] },
+  { id: "mw", name: "Mark Willis", title: "Global Head Digital Assets & APIs", tier: 3, division: "CIB", status: "grey", parentId: "rh", location: "TBC",
+    commentary: "Track 3 co-owner with Ankur Kanwar. Digital assets, tokenised deposits, wallet infrastructure. Available for 16-17 April workshop option which would cover all three tracks.",
+    priorities: "Digital assets, APIs, tokenisation, wallet infrastructure",
+    lastEngagement: "Added to thread 1 April 2026", risk: "Low — evaluating",
+    opportunityIds: [6], strategicThemes: ["clientExp"] },
+  // Tier 2/3 — New from Org Chart (April 2026)
+  { id: "rn", name: "Rosalind Ng", title: "COO, WRB and Global Head Operations", tier: 3, division: "Technology", status: "grey", parentId: "ne", location: "Singapore",
+    commentary: "Reports to Noelle Eder. 7,424 employees. COO for WRB and Global Head of Operations. Relevant to WRB client experience, FSO, and operational efficiency pursuits.",
+    priorities: "WRB operations, client experience, operational efficiency",
+    lastEngagement: "Not yet engaged", risk: "Low — evaluating relevance",
+    opportunityIds: [6, 7], strategicThemes: ["clientExp"] },
+  { id: "je", name: "John Emerson", title: "Global Head Operations, Transactions", tier: 3, division: "Technology", status: "grey", parentId: "ne", location: "Singapore",
+    commentary: "Reports to Noelle Eder. 11,914 employees — one of the largest teams under T&O. Directly relevant to FSO Trade Finance, KYC/AML, and transaction operations.",
+    priorities: "Transaction operations, trade finance, KYC/AML processing",
+    lastEngagement: "Not yet engaged", risk: "Low — evaluating relevance",
+    opportunityIds: [6], strategicThemes: ["clientExp"] },
+  { id: "ai", name: "Ahsan Ijaz", title: "Chief Architect, AI", tier: 4, division: "Technology", status: "grey", parentId: "bi", location: "Singapore",
+    commentary: "Reports to Benyameen Issa. 193 employees. Chief Architect for AI within the engineering team. Key person to understand for AI positioning — could be ally or gatekeeper. SCB building own AI agents (Stancy FX agent) under this team.",
+    priorities: "AI architecture, engineering, internal AI agents",
+    lastEngagement: "Not yet engaged", risk: "Medium — aligned with Issa engineering preference but AI focus creates potential common ground",
+    opportunityIds: [], strategicThemes: ["techRes"] },
   // Tier 3 — Senior Leaders
   { id: "jw", name: "Januar Wayong", title: "Global Head, Engineering", tier: 3, division: "Technology", status: "red", parentId: "bi", location: "Singapore",
     commentary: "⚠️ SAME SENTIMENT AS BEN ISSA. Reports to Ben Issa. Leads global engineering organisation. Previously Head of Technology at ING Neo Innovation, built mobile-only bank for ING Philippines. Background: ING Australia, UBS. Strong engineering culture advocate — likely aligned with Ben Issa's 'build' preference. University of Melbourne (Computer Science/Engineering).",
     priorities: "Engineering excellence, platform development, cloud-first strategy, developer experience",
     lastEngagement: "No direct engagement", risk: "HIGH — aligned with Ben Issa's build preference",
     opportunityIds: [], strategicThemes: [] },
-  { id: "dh", name: "David Hardoon", title: "Chief AI Officer", tier: 3, division: "Technology", status: "green", parentId: "cdo", location: "Singapore",
-    commentary: "AI Control Tower stakeholder. Published 'AI Cognitive Dissonance' research — leverage for positioning. 200+ AI use cases under governance. Strategic voice on AI strategy. Reports to CDO (currently vacant).",
-    priorities: "AI governance, ethical AI deployment, AI use case management",
-    lastEngagement: "Monthly via AI Control Tower", risk: "Low — governance partnership",
-    opportunityIds: [1, 6], strategicThemes: ["ffg", "clientExp"] },
+  { id: "sba", name: "Shebani Baweja", title: "Interim Chief Data Officer", tier: 2, division: "Technology", status: "amber", parentId: "ne", location: "Singapore",
+    commentary: "Appointed Interim CDO following David Hardoon's departure. Key stakeholder for AI governance, data strategy, and AI Control Tower. Engagement approach TBD — must build relationship quickly given AICT go-live 30 April.",
+    priorities: "Data strategy, AI governance, data platform modernisation, AI Control Tower",
+    lastEngagement: "New contact — not yet engaged", risk: "Medium — new appointment, critical for AI governance",
+    opportunityIds: [1, 6], strategicThemes: ["techRes"] },
   { id: "mkor", name: "Martin Kornicki", title: "COO, CABM / Group Strategy / HR", tier: 3, division: "Strategy & Talent", status: "green", parentId: "mk", location: "London",
     commentary: "Leads COO team for Corporate Affairs, Brand and Marketing (CABM), Group Strategy, and Human Resources. Reports to Melinda McKinley. Key operational leader for S&T functions.",
     priorities: "CABM operations, Group Strategy support, HR operations",
@@ -305,7 +347,7 @@ const ADOPTION_DATA = {
     { family: "ITAM", products: ["Hardware Asset Management", "Software Asset Management"], adoption: "Low", users: "<400", status: "red", notes: "⚠️ SAM optimisation opportunity — $1B tech spend; ServiceBench threat" },
     { family: "ITBM", products: ["Project Portfolio", "Agile Development", "Test Management"], adoption: "Medium", users: "2,000+", status: "amber", notes: "Engineering teams — Ben Issa domain" },
     { family: "Customer Service", products: ["CSM Core", "Field Service"], adoption: "None", users: "0", status: "red", notes: "Opportunity in WRB client service" },
-    { family: "AI & Automation", products: ["NowAssist", "AI Control Tower", "Process Automation"], adoption: "Emerging", users: "Pilot", status: "amber", notes: "$750K NowAssist expansion; David Hardoon partnership" },
+    { family: "AI & Automation", products: ["NowAssist", "AI Control Tower", "Process Automation"], adoption: "Emerging", users: "Pilot", status: "amber", notes: "$750K NowAssist expansion; AI governance partnership — Shebani Baweja (Interim CDO)" },
     { family: "App Engine", products: ["Custom Apps", "Integrations", "Workflows"], adoption: "Medium", users: "Dev teams", status: "amber", notes: "Counter Ben Issa's 'build' preference — innovation ON platform" },
     { family: "FSO", products: ["Order Management", "Disputes", "KYC/AML"], adoption: "None", users: "0", status: "red", notes: "Trade Finance pilot — $800K opportunity" },
     { family: "Legal", products: ["Legal Service Delivery", "Contract Management"], adoption: "None", users: "0", status: "amber", notes: "New domain — Legal ops transformation" },
@@ -333,14 +375,14 @@ const GROWTH_OPPORTUNITIES = [
   { id: 1, pursuit: "EmployeeWorks & AI Expansion", nnacv: "$3M", probability: "High", stage: "Active", theme: "ffg", year: "2026",
     products: ["EmployeeWorks", "NowAssist", "Agentic AI", "AI Control Tower"],
     sponsor: "Tanuj Kapilashrami / Melinda McKinley",
-    executiveIds: ["tk", "mk", "dh", "wy", "bon", "mkor", "id", "sl"],
+    executiveIds: ["tk", "mk", "sba", "wy", "bon", "mkor", "id", "sl"],
     competes: "ServiceBench (displace)", partner: "Infosys (MSP)",
-    description: "OneSC full platform go-live 6 April. Agentic AI for Onboarding go-live 13 April. EmployeeWorks (Moveworks) $2.25M deal active — Bhavin Shah call with Melinda 10 April. AI Control Tower Phase 1 MVP ~end April with Infosys. Drives revenue-per-FTE (CEO KPI) and eNPS recovery.",
+    description: "OneSC LIVE (6 April ✅). Agentic AI for Onboarding go-live 15 April. AICT Phase 1 MVP confirmed 30 April. EmployeeWorks (Moveworks) $2.25M deal progressing. Drives revenue-per-FTE (CEO KPI) and eNPS recovery.",
     items: [
-      { name: "EmployeeWorks (Moveworks)", est: "$2.25M", status: "Active", detail: "Action layer on OneSC. Bhavin Shah call with Melinda 10 April. $2.25M pipeline." },
-      { name: "Agentic AI for Onboarding", est: "$200K", status: "Go-Live", detail: "Go-live confirmed 13 April 2026. MVP presented. Sponsor: Melinda McKinley." },
+      { name: "EmployeeWorks (Moveworks)", est: "$2.25M", status: "Active", detail: "Action layer on OneSC (now LIVE). Bhavin Shah engagement with Melinda progressing. $2.25M pipeline." },
+      { name: "Agentic AI for Onboarding", est: "$200K", status: "Go-Live", detail: "Go-live confirmed 15 April 2026. MVP presented. Sponsor: Melinda McKinley." },
       { name: "NowAssist Expansion", est: "$250K", status: "Pipeline", detail: "Contracted June 2025. Expansion beyond HR to ITSM/ITOM." },
-      { name: "AI Control Tower", est: "$150K", status: "Implementing", detail: "Phase 1 MVP with Infosys. 500-unit entitlement. Go-live ~end April. Blockers: SAE visibility rules, versioning. David Hardoon monthly cadence." },
+      { name: "AI Control Tower", est: "$150K", status: "Implementing", detail: "Phase 1 MVP with Infosys. 500-unit entitlement. Go-live 30 April (confirmed). Blockers: SAE visibility rules, versioning. Interim CDO engagement TBD." },
     ]},
   { id: 2, pursuit: "Legal Service Delivery & Contract Management", nnacv: "$500K", probability: "High", stage: "Active", theme: "ffg", year: "2026",
     products: ["Legal Service Delivery", "Contract Lifecycle Management", "Matter Management"],
@@ -380,8 +422,8 @@ const GROWTH_OPPORTUNITIES = [
     ]},
   { id: 5, pursuit: "Technology Resilience & ITOM", nnacv: "$500K", probability: "Medium", stage: "Developing", theme: "techRes", year: "2027",
     products: ["IRM", "ITOM Discovery", "SAM", "Cloud Observability"],
-    sponsor: "Sean Coppinger / Jason Forrester",
-    executiveIds: ["sc", "jf", "ne", "rg", "ls"],
+    sponsor: "Balachandher Balakrishnan / Jason Forrester",
+    executiveIds: ["bb", "jf", "ne", "rg", "ls"],
     competes: "MetricStream (incumbent)", partner: "Infosys (MSP)",
     description: "IRM/GRC for the bank's 6,000+ risk function (Jason Forrester). ITOM Discovery for hybrid cloud visibility. SAM optimisation across $1B annual tech spend. DORA compliance driver.",
     items: [
@@ -390,17 +432,17 @@ const GROWTH_OPPORTUNITIES = [
       { name: "SAM / HAM Optimisation", est: "$100K", status: "Opportunity", detail: "$1B annual tech spend justifies focus" },
       { name: "Cloud Observability", est: "$100K", status: "Opportunity", detail: "Multi-cloud monitoring — AWS, Azure, GCP" },
     ]},
-  { id: 6, pursuit: "Financial Services Operations (FSO)", nnacv: "$3M", probability: "Medium", stage: "Visionary", theme: "clientExp", year: "2027",
-    products: ["FSO", "App Engine", "Agentic AI", "Workflow Data Fabric", "VISA Disputes"],
-    sponsor: "Guillermo Veiga / Roberto Hoornweg",
-    executiveIds: ["gv", "rh", "dh", "ls"],
-    competes: "Microsoft, ServiceBench, Pega (incumbent CIB)", partner: "TCS (to explore)",
-    description: "Middle-to-back office for CIB and WRB. Trade Finance KYC/AML, VISA disputes, RM productivity tools. Supports bank's $1.5B wealth investment and 275K NTB affluent growth. Cross-border income at 61.5% of CIB.",
+  { id: 6, pursuit: "Financial Services Operations (FSO) & CIB", nnacv: "$3M", probability: "Medium", stage: "Developing", theme: "clientExp", year: "2027",
+    products: ["FSO", "App Engine", "Agentic AI", "AI Control Tower", "Kyriba Autonomous Treasury"],
+    sponsor: "Geoff Kot / Roberto Hoornweg / Guillermo Veiga",
+    executiveIds: ["gk", "cc", "jk", "ak", "mw", "gv", "rh", "sba", "je", "rn"],
+    competes: "Pega (selected for CIB client lifecycle replatform — ServiceNow plays adjacency), Microsoft (MAC agreement), ServiceBench (not a factor in CIB — reports through Roberto, not T&O)", partner: "Kyriba (autonomous treasury partnership), Infosys (MSP)",
+    description: "BREAKTHROUGH: First entry into CIB ($12.4B income division). New buying centre opened March 2026 via Geoff Kot, bypassing T&O chain entirely. Three workstreams agreed: (1) Client lifecycle/bank account management, (2) AI Control Tower governance for CIB, (3) Kyriba autonomous treasury innovation. Workshop planned 16-17 April. Bank account management agreed as first use case. Agent-to-agent interoperability (ServiceNow ↔ SCB Stancy agent) a key differentiator. Conservative $2-3M pipeline within 6 months; stretch $5M+ over 18-24 months.",
     items: [
-      { name: "FSO — Trade Finance KYC/AML", est: "$1.2M", status: "Opportunity", detail: "Case management, regulatory compliance — pilot stage" },
-      { name: "App Engine First Use Case", est: "$600K", status: "Opportunity", detail: "Counters Ben Issa's 'build' preference — innovation ON platform" },
-      { name: "Disputes Management (VISA)", est: "$800K", status: "Early", detail: "Co-exist with ServiceBench" },
-      { name: "Workflow Data Fabric", est: "$400K", status: "Concept", detail: "Cross-process automation for FFG" },
+      { name: "Track 1: Client Lifecycle & Bank Account Mgmt", est: "$1.2M", status: "Developing", detail: "First use case agreed. Craig Corte as business owner. Workshop mid-April. Pega adjacency play — operational workflow orchestration around client lifecycle." },
+      { name: "Track 2: AI Control Tower in CIB", est: "$300K", status: "Active", detail: "Connects AICT end-of-April go-live to CIB needs. CEO Scorecard visibility. Shebani Baweja + Geoff Kot alignment." },
+      { name: "Track 3: Kyriba Autonomous Treasury", est: "$1M", status: "Exploratory", detail: "Intra-day liquidity swaps, tokenised deposits, wallet infrastructure. Ankur Kanwar + Mark Willis. Quantum initiative." },
+      { name: "VISA Disputes Management", est: "$500K", status: "Early", detail: "Co-exist with ServiceBench in CIB context." },
     ]},
   { id: 7, pursuit: "Revenue Growth & Client Experience", nnacv: "$2.5M", probability: "Medium", stage: "Visionary", theme: "clientExp", year: "2027",
     products: ["CRM", "Agentic AI", "CSM", "Client Portal"],
@@ -421,7 +463,7 @@ const GROWTH_OPPORTUNITIES = [
     competes: "N/A — strategic investment", partner: "Infosys (MSP)",
     description: "Dedicated senior customer success engagement to drive adoption, protect $4M at-risk CACV, and build the quantified value narrative for the 2028 renewal. Directly supports revenue-per-FTE measurement and post-FFG productivity sustainability.",
     items: [
-      { name: "Senior CSE (2 days/week onsite)", est: "$400K", status: "Requested", detail: "Dedicated resource to drive adoption across stalled product areas" },
+      { name: "Dean Lee — Customer Success Executive", est: "$400K", status: "Active", detail: "Assigned. Dedicated resource driving adoption across stalled product areas. 2 days/week onsite." },
       { name: "Platform Architect / Integrated Success Plan", est: "$300K", status: "Pursuing", detail: "Roadmap to $1M+ ISP add-on via Impact programme. Structural answer to delivery skill gap constraining AICT and other programmes." },
       { name: "Telemetry-based value assessment", est: "$200K", status: "Not Started", detail: "Quantify $value delivered to support revenue-per-FTE narrative and renewal positioning" },
       { name: "Executive Health Review", est: "$100K", status: "Not Started", detail: "Annual domain review with CEG leadership and bank executives" },
@@ -499,8 +541,11 @@ function Sidebar({ active, setActive }) {
       <div style={{ padding: "16px 20px", borderTop: `1px solid ${colors.border}`, fontSize: 10, color: colors.textMuted }}>
         <div>CACV: <span style={{ color: colors.green, fontWeight: 700 }}>$13.1M</span></div>
         <div>Next Renewal: <span style={{ color: colors.amber, fontWeight: 600 }}>28 Dec 2028</span></div>
+        <div style={{ marginTop: 6, paddingTop: 6, borderTop: `1px solid ${colors.border}` }}>
+          <div style={{ fontSize: 9, color: colors.textMuted, marginBottom: 2 }}>CSE: <span style={{ color: colors.green }}>Dean Lee</span></div>
+        </div>
         <div style={{ marginTop: 4, opacity: 0.6 }}>ServiceNow · FY2026</div>
-        <div style={{ marginTop: 4, opacity: 0.6 }}>Last updated: 26 March 2026</div>
+        <div style={{ marginTop: 4, opacity: 0.6 }}>Last updated: 9 April 2026</div>
       </div>
     </div>
   );
@@ -672,13 +717,13 @@ function DashboardView() {
           <h3 style={{ fontSize: 14, fontWeight: 600, color: colors.textPrimary, margin: "0 0 14px" }}>Key Actions / Help Needed</h3>
           {[
             { label: "Secure Noelle Eder engagement", priority: "CRITICAL", color: colors.red },
-            { label: "CRES Digital Vision programme — $2.5M pipeline", priority: "ACTIVE", color: colors.green },
-            { label: "WSD + H&S go-live (early 2026)", priority: "ACTIVE", color: colors.green },
-            { label: "Knowledge 2026 — Melinda & Shelley engagement with P5", priority: "HIGH", color: colors.amber },
-            { label: "EmployeeWorks opportunity pursuit", priority: "HIGH", color: colors.green },
+            { label: "CRES Digital Vision programme — $1.5M pipeline", priority: "ACTIVE", color: colors.green },
+            { label: "WSD + H&S go-live (Q4 2026)", priority: "ACTIVE", color: colors.green },
+            { label: "Knowledge 2026 — Melinda engagement with P5 is confirmed", priority: "HIGH", color: colors.amber },
+            { label: "EmployeeWorks opportunity pursuit", priority: "CRITICAL", color: colors.red },
             { label: "Neutralise Ben Issa via platform mandate", priority: "HIGH", color: colors.amber },
             { label: "IRM + SecOps adoption campaign", priority: "HIGH", color: colors.amber },
-            { label: "Assign Customer Success Executive", priority: "URGENT", color: colors.red },
+            { label: "CIB Workshop — first entry into $12.4B division", priority: "CRITICAL", color: colors.red },
           ].map((p, i) => (
             <div key={i} style={{ display: "flex", alignItems: "center", gap: 10, padding: "7px 0", borderBottom: i < 7 ? `1px solid ${colors.border}` : "none" }}>
               <span style={{ fontSize: 9, fontWeight: 700, color: p.color, background: `${p.color}18`, padding: "2px 6px", borderRadius: 4, whiteSpace: "nowrap" }}>{p.priority}</span>
@@ -692,29 +737,117 @@ function DashboardView() {
       <div style={{ background: colors.bgCard, border: `2px solid ${colors.green}`, borderRadius: 10, padding: 20, marginBottom: 20 }}>
         <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 16 }}>
           <div style={{ fontSize: 22 }}>📈</div>
-          <h3 style={{ fontSize: 15, fontWeight: 700, color: colors.green, margin: 0 }}>Value Delivered: HR Hub Success Story</h3>
+          <h3 style={{ fontSize: 15, fontWeight: 700, color: colors.green, margin: 0 }}>AI-Powered Value Delivered</h3>
         </div>
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 16, marginBottom: 16 }}>
-          <div style={{ background: colors.greenGlow, borderRadius: 8, padding: 16, textAlign: "center" }}>
-            <div style={{ fontSize: 28, fontWeight: 800, color: colors.green }}>104K+</div>
-            <div style={{ fontSize: 11, color: colors.green, fontWeight: 500 }}>Productive Hours Saved Annually</div>
+        {/* Go-Live Milestones */}
+        <div style={{ display: "flex", gap: 12, marginBottom: 16 }}>
+          <div style={{ flex: 1, background: colors.greenGlow, borderRadius: 8, padding: "10px 14px", display: "flex", alignItems: "center", gap: 8 }}>
+            <span style={{ fontSize: 16 }}>✅</span>
+            <div><div style={{ fontSize: 12, fontWeight: 700, color: colors.green }}>OneSC HR Hub — LIVE</div><div style={{ fontSize: 10, color: colors.textSecondary }}>6 April 2026 · 82,000 employees</div></div>
           </div>
-          <div style={{ background: colors.greenGlow, borderRadius: 8, padding: 16, textAlign: "center" }}>
-            <div style={{ fontSize: 28, fontWeight: 800, color: colors.green }}>86%</div>
-            <div style={{ fontSize: 11, color: colors.green, fontWeight: 500 }}>Employee Satisfaction</div>
+          <div style={{ flex: 1, background: colors.amberGlow, borderRadius: 8, padding: "10px 14px", display: "flex", alignItems: "center", gap: 8 }}>
+            <span style={{ fontSize: 16 }}>🚀</span>
+            <div><div style={{ fontSize: 12, fontWeight: 700, color: colors.amber }}>Agentic AI Onboarding</div><div style={{ fontSize: 10, color: colors.textSecondary }}>15 April 2026</div></div>
           </div>
-          <div style={{ background: colors.greenGlow, borderRadius: 8, padding: 16, textAlign: "center" }}>
-            <div style={{ fontSize: 28, fontWeight: 800, color: colors.green }}>85%</div>
-            <div style={{ fontSize: 11, color: colors.green, fontWeight: 500 }}>Case Deflection Rate</div>
+          <div style={{ flex: 1, background: `${colors.blue}15`, borderRadius: 8, padding: "10px 14px", display: "flex", alignItems: "center", gap: 8 }}>
+            <span style={{ fontSize: 16 }}>🎯</span>
+            <div><div style={{ fontSize: 12, fontWeight: 700, color: colors.blue }}>AI Control Tower</div><div style={{ fontSize: 10, color: colors.textSecondary }}>30 April 2026</div></div>
           </div>
-          <div style={{ background: colors.greenGlow, borderRadius: 8, padding: 16, textAlign: "center" }}>
-            <div style={{ fontSize: 28, fontWeight: 800, color: colors.green }}>82K</div>
-            <div style={{ fontSize: 11, color: colors.green, fontWeight: 500 }}>Employees Served</div>
+        </div>
+        {/* AI Metrics Grid */}
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 12, marginBottom: 12 }}>
+          <div style={{ background: colors.greenGlow, borderRadius: 8, padding: 14, textAlign: "center" }}>
+            <div style={{ fontSize: 26, fontWeight: 800, color: colors.green }}>77%</div>
+            <div style={{ fontSize: 10, color: colors.green, fontWeight: 500 }}>VA Resolution Preference</div>
+          </div>
+          <div style={{ background: colors.greenGlow, borderRadius: 8, padding: 14, textAlign: "center" }}>
+            <div style={{ fontSize: 26, fontWeight: 800, color: colors.green }}>289%</div>
+            <div style={{ fontSize: 10, color: colors.green, fontWeight: 500 }}>AI Adoption Improvement</div>
+          </div>
+          <div style={{ background: colors.greenGlow, borderRadius: 8, padding: 14, textAlign: "center" }}>
+            <div style={{ fontSize: 26, fontWeight: 800, color: colors.green }}>52%</div>
+            <div style={{ fontSize: 10, color: colors.green, fontWeight: 500 }}>Reduction in Live Chat</div>
+          </div>
+          <div style={{ background: colors.greenGlow, borderRadius: 8, padding: 14, textAlign: "center" }}>
+            <div style={{ fontSize: 26, fontWeight: 800, color: colors.green }}>1,682</div>
+            <div style={{ fontSize: 10, color: colors.green, fontWeight: 500 }}>Hours Saved/Quarter (+410%)</div>
+          </div>
+        </div>
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 12, marginBottom: 16 }}>
+          <div style={{ background: colors.greenGlow, borderRadius: 8, padding: 14, textAlign: "center" }}>
+            <div style={{ fontSize: 26, fontWeight: 800, color: colors.green }}>104K+</div>
+            <div style={{ fontSize: 10, color: colors.green, fontWeight: 500 }}>Productive Hours Saved/Year</div>
+          </div>
+          <div style={{ background: colors.greenGlow, borderRadius: 8, padding: 14, textAlign: "center" }}>
+            <div style={{ fontSize: 26, fontWeight: 800, color: colors.green }}>86%</div>
+            <div style={{ fontSize: 10, color: colors.green, fontWeight: 500 }}>Employee Satisfaction</div>
+          </div>
+          <div style={{ background: colors.greenGlow, borderRadius: 8, padding: 14, textAlign: "center" }}>
+            <div style={{ fontSize: 26, fontWeight: 800, color: colors.green }}>30→10</div>
+            <div style={{ fontSize: 10, color: colors.green, fontWeight: 500 }}>Mins/Case (Onboarding)</div>
+          </div>
+          <div style={{ background: colors.greenGlow, borderRadius: 8, padding: 14, textAlign: "center" }}>
+            <div style={{ fontSize: 26, fontWeight: 800, color: colors.green }}>90%</div>
+            <div style={{ fontSize: 10, color: colors.green, fontWeight: 500 }}>New Hire Experience Target</div>
           </div>
         </div>
         <p style={{ fontSize: 12, color: colors.textSecondary, lineHeight: 1.6, margin: 0 }}>
-          The OneSC HR Hub is our flagship success story — demonstrating the art of the possible when ServiceNow is fully adopted. This proven value must be replicated across ITSM, ITOM, Security, and Workplace domains to protect the renewal base and justify expansion investment.
+          The OneSC HR Hub is our flagship success story — AI Pacesetters Innovation Award 2026 nominee. This proven value must be replicated across ITSM, ITOM, Security, and Workplace domains to protect the renewal base and justify expansion investment.
         </p>
+      </div>
+      
+      {/* AI INNOVATION & GO-LIVES */}
+      <div style={{ background: colors.bgCard, border: `2px solid ${colors.blue}`, borderRadius: 10, padding: 20, marginBottom: 20 }}>
+        <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 16 }}>
+          <div style={{ fontSize: 22 }}>🤖</div>
+          <h3 style={{ fontSize: 15, fontWeight: 700, color: colors.blue, margin: 0 }}>AI Innovation & Upcoming Go-Lives</h3>
+        </div>
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 12, marginBottom: 16 }}>
+          <div style={{ background: colors.greenGlow, borderRadius: 8, padding: 14, textAlign: "center", border: `1px solid ${colors.green}40` }}>
+            <div style={{ fontSize: 10, color: colors.green, fontWeight: 600, marginBottom: 4 }}>LIVE ✅</div>
+            <div style={{ fontSize: 16, fontWeight: 800, color: colors.green }}>OneSC</div>
+            <div style={{ fontSize: 10, color: colors.textMuted, marginTop: 4 }}>6 April 2026</div>
+          </div>
+          <div style={{ background: colors.amberGlow, borderRadius: 8, padding: 14, textAlign: "center", border: `1px solid ${colors.amber}40` }}>
+            <div style={{ fontSize: 10, color: colors.amber, fontWeight: 600, marginBottom: 4 }}>GO-LIVE</div>
+            <div style={{ fontSize: 16, fontWeight: 800, color: colors.amber }}>Agentic AI</div>
+            <div style={{ fontSize: 10, color: colors.textMuted, marginTop: 4 }}>15 April 2026</div>
+          </div>
+          <div style={{ background: `${colors.blue}15`, borderRadius: 8, padding: 14, textAlign: "center", border: `1px solid ${colors.blue}40` }}>
+            <div style={{ fontSize: 10, color: colors.blue, fontWeight: 600, marginBottom: 4 }}>GO-LIVE</div>
+            <div style={{ fontSize: 16, fontWeight: 800, color: colors.blue }}>AI Control Tower</div>
+            <div style={{ fontSize: 10, color: colors.textMuted, marginTop: 4 }}>30 April 2026</div>
+          </div>
+        </div>
+        <div style={{ fontSize: 12, fontWeight: 600, color: colors.textPrimary, marginBottom: 10 }}>AI Impact Metrics (from AI Pacesetters submission)</div>
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 12, marginBottom: 12 }}>
+          <div style={{ background: colors.bgPanel, borderRadius: 6, padding: 10 }}>
+            <div style={{ fontSize: 20, fontWeight: 800, color: colors.green }}>77%</div>
+            <div style={{ fontSize: 10, color: colors.textSecondary }}>VA resolution preference (up from 22%)</div>
+          </div>
+          <div style={{ background: colors.bgPanel, borderRadius: 6, padding: 10 }}>
+            <div style={{ fontSize: 20, fontWeight: 800, color: colors.green }}>289%</div>
+            <div style={{ fontSize: 10, color: colors.textSecondary }}>AI adoption improvement in pilot markets</div>
+          </div>
+          <div style={{ background: colors.bgPanel, borderRadius: 6, padding: 10 }}>
+            <div style={{ fontSize: 20, fontWeight: 800, color: colors.green }}>52%</div>
+            <div style={{ fontSize: 10, color: colors.textSecondary }}>Reduction in live chat volumes YoY</div>
+          </div>
+        </div>
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 12 }}>
+          <div style={{ background: colors.bgPanel, borderRadius: 6, padding: 10 }}>
+            <div style={{ fontSize: 20, fontWeight: 800, color: colors.blue }}>1,682</div>
+            <div style={{ fontSize: 10, color: colors.textSecondary }}>Hours saved/quarter (+410% improvement)</div>
+          </div>
+          <div style={{ background: colors.bgPanel, borderRadius: 6, padding: 10 }}>
+            <div style={{ fontSize: 20, fontWeight: 800, color: colors.blue }}>30→10</div>
+            <div style={{ fontSize: 10, color: colors.textSecondary }}>Mins per case (onboarding specialist)</div>
+          </div>
+          <div style={{ background: colors.bgPanel, borderRadius: 6, padding: 10 }}>
+            <div style={{ fontSize: 20, fontWeight: 800, color: colors.blue }}>83%→90%</div>
+            <div style={{ fontSize: 10, color: colors.textSecondary }}>New hire experience score (target)</div>
+          </div>
+        </div>
       </div>
       
       <div style={{ background: `linear-gradient(135deg, ${colors.redGlow}, ${colors.amberGlow})`, border: `2px solid ${colors.red}`, borderRadius: 10, padding: 20 }}>
@@ -770,8 +903,8 @@ function APACReviewView() {
       theme: "techRes",
       whatItIs: "Deploy AI Control Tower as the governance foundation for GenAI at scale, plus integrated risk management and security operations for DORA compliance.",
       whyItMatters: "Bill Winters’ 2026 personal objective: ‘Lead creation of a bank-specific approach to GenAI.’ Board hosted AI governance stewardship event Nov 2025. DORA compliance is non-negotiable. Software write-offs ($588M to $42M) suggest custom-build depreciation cycle complete.",
-      howWeHelp: "AI Control Tower governs 200+ use cases with David Hardoon’s framework. IRM/GRC for policy and compliance. SecOps VR with Databricks integration. Software impairment cycle complete ($588M→$42M) — strengthens consolidation case.",
-      whoBuys: "Noelle Eder (Group Head T&O), Jason Forrester (Group CRO), Alvaro Garrido (CIO InfoSec), David Hardoon (Chief AI Officer)",
+      howWeHelp: "AI Control Tower governs 200+ use cases with the bank’s AI governance framework. IRM/GRC for policy and compliance. SecOps VR with Databricks integration. Software impairment cycle complete ($588M→$42M) — strengthens consolidation case.",
+      whoBuys: "Noelle Eder (Group Head T&O), Jason Forrester (Group CRO), Alvaro Garrido (CIO InfoSec), Shebani Baweja (Interim CDO)",
       nnacv: "$1.5-2M",
       nnacvYear: "2027",
     },
@@ -782,7 +915,7 @@ function APACReviewView() {
       whatItIs: "Transform client onboarding, RM productivity, and cross-border servicing through FSO and CSM — directly enabling the bank’s record affluent and CIB growth engines.",
       whyItMatters: "$447B AUM, 275K new affluent clients, $52B NNM. The growth machine is working — but client onboarding speed, RM productivity, and servicing quality are the bottlenecks to scaling further. CIB cross-border income at 61.5%. The bank's planned $1.5B investment in wealth management (50% people, 25% digital) creates a direct opening for ServiceNow to add value.",
       howWeHelp: "FSO for Trade Finance KYC/AML and disputes management. CSM for client service excellence. App Engine for RM tools. CRM for wealth RM productivity — the digital banker, financial planner vision. All governed by AI Control Tower.",
-      whoBuys: "Judy Hsu (CEO WRB), Guillermo Veiga (Group CIO), Roberto Hoornweg (CEO CIB), David Hardoon (Chief AI Officer)",
+      whoBuys: "Judy Hsu (CEO WRB), Guillermo Veiga (Group CIO), Roberto Hoornweg (CEO CIB), Shebani Baweja (Interim CDO)",
       nnacv: "$3.5-5.5M",
       nnacvYear: "2027",
     },
@@ -1390,10 +1523,25 @@ function OrgChartView() {
           <div style={{ fontSize: 13, fontWeight: 700, color: colors.textPrimary }}>{exec.name}</div>
         </div>
         <div style={{ fontSize: 11, color: colors.textSecondary, lineHeight: 1.4 }}>{exec.title}</div>
+        {exec.parentId && (() => {
+          const parent = EXECUTIVES.find(e => e.id === exec.parentId);
+          return parent ? (
+            <div style={{ fontSize: 9, color: colors.blue, marginTop: 2, opacity: 0.8 }}>↑ {parent.name}</div>
+          ) : null;
+        })()}
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginTop: 4 }}>
           <div style={{ fontSize: 10, color: colors.textMuted }}>{exec.division}</div>
           {exec.location && <div style={{ fontSize: 10, color: colors.blue }}>📍 {exec.location}</div>}
         </div>
+        {exec.parentId && (() => {
+          const parent = EXECUTIVES.find(e => e.id === exec.parentId);
+          return parent ? (
+            <div style={{ fontSize: 9, color: colors.textMuted, marginTop: 4, paddingTop: 4, borderTop: `1px dashed ${colors.border}`, display: "flex", alignItems: "center", gap: 4 }}>
+              <span style={{ color: statusColors[parent.status]?.color || colors.textMuted }}>↑</span>
+              <span>Reports to <span style={{ color: colors.textSecondary, fontWeight: 600 }}>{parent.name}</span></span>
+            </div>
+          ) : null;
+        })()}
         {/* Strategic Theme Badges */}
         {themes.length > 0 && (
           <div style={{ display: "flex", gap: 4, marginTop: 8, flexWrap: "wrap" }}>
@@ -1808,8 +1956,8 @@ function AdoptionView() {
             <div style={{ display: "flex", alignItems: "flex-start", gap: 10 }}>
               <div style={{ width: 24, height: 24, borderRadius: "50%", background: colors.blue, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 12, fontWeight: 700, color: colors.white, flexShrink: 0 }}>1</div>
               <div>
-                <div style={{ fontSize: 12, fontWeight: 700, color: colors.textPrimary, marginBottom: 4 }}>Senior Customer Success Executive</div>
-                <div style={{ fontSize: 11, color: colors.textSecondary, lineHeight: 1.5 }}>Dedicated resource as part of the account team, spending at least <strong style={{ color: colors.blue }}>2 days per week onsite</strong> with the customer to drive adoption and engagement.</div>
+                <div style={{ fontSize: 12, fontWeight: 700, color: colors.green, marginBottom: 4 }}>✅ Dean Lee — Customer Success Executive (Assigned)</div>
+                <div style={{ fontSize: 11, color: colors.textSecondary, lineHeight: 1.5 }}>Dedicated resource as part of the account team, spending <strong style={{ color: colors.green }}>2 days per week onsite</strong>. Driving adoption and protecting $4M at-risk CACV.</div>
               </div>
             </div>
           </div>
@@ -1922,7 +2070,7 @@ function GrowthView() {
           </div>
           <div style={{ fontSize: 10, color: colors.textSecondary, lineHeight: 1.6 }}>
             <div style={{ marginBottom: 4 }}><strong style={{ color: colors.textPrimary }}>Displace:</strong> ServiceBench (EmployeeWorks, Contract Mgmt, CRES, FSO)</div>
-            <div style={{ marginBottom: 4 }}><strong style={{ color: colors.textPrimary }}>Incumbent:</strong> MetricStream (IRM/GRC), Pega (CIB systems)</div>
+            <div style={{ marginBottom: 4 }}><strong style={{ color: colors.textPrimary }}>Incumbent:</strong> MetricStream (IRM/GRC), Pega (selected for CIB client lifecycle replatform — we play adjacency)</div>
             <div><strong style={{ color: colors.textPrimary }}>Platform:</strong> Microsoft (MAC agreement), AWS (hyperscaler), SAP (ERP)</div>
           </div>
         </div>
@@ -1933,7 +2081,7 @@ function GrowthView() {
           <div style={{ fontSize: 10, color: colors.textSecondary, lineHeight: 1.6 }}>
             <div style={{ marginBottom: 4 }}><strong style={{ color: colors.textPrimary }}>MSP:</strong> Infosys (contract through Dec 2028) — all engagements</div>
             <div style={{ marginBottom: 4 }}><strong style={{ color: colors.textPrimary }}>CRES:</strong> JLL — workplace & facilities implementation partner</div>
-            <div><strong style={{ color: colors.textPrimary }}>FSO:</strong> TCS — to explore for financial services operations</div>
+            <div style={{ marginBottom: 4 }}><strong style={{ color: colors.textPrimary }}>FSO/CIB:</strong> Kyriba (autonomous treasury partnership) + TCS (to explore)</div>
           </div>
         </div>
       </div>
@@ -2032,28 +2180,30 @@ function GrowthView() {
 // ─── Actions View ─────────────────────────────────────────────────────────────
 const ACTIONS_DATA = [
   // Growth & Upsell Actions
-  { id: 1, category: "Growth", action: "Secure meeting with Noelle Eder", criticality: "Critical", bankContact: "Noelle Eder (Group Head T&O)", snContact: "Chris Bedi / Arun Ragothaman", dueDate: "Q1 2026", status: "Not Started", notes: "Single most critical engagement gap — controls all technology strategy. Board confirmed strategic weight of her appointment.", marqueeOffer: "Access: Global Advisory Council" },
-  { id: 2, category: "Growth", action: "Meet Guillermo Veiga for FSO positioning", criticality: "High", bankContact: "Guillermo Veiga (Group CIO)", snContact: "Arun Ragothaman / FSO Specialist", dueDate: "Mar 2026", status: "Not Started", notes: "Critical for FSO opportunity — must meet to land use cases. CIB cross-border at 61.5%, digital transactions at 72.1%.", marqueeOffer: "Advantage: AI Advantage Team" },
-  { id: 3, category: "Growth", action: "Revive Cezary Piekarski relationship for Veza/Armis", criticality: "High", bankContact: "Cezary Piekarski (CISO)", snContact: "Lou Fiorello / Security Team", dueDate: "Mar 2026", status: "In Progress", notes: "Last engagement Dec 2024 — need to revive for security platform expansion. DORA compliance creates urgency.", marqueeOffer: "Advantage: Industry Customer Advisory Board" },
-  { id: 4, category: "Growth", action: "Engage Lavy Stokhamer for SecOps and Financial Crime", criticality: "Medium", bankContact: "Lavy Stokhamer (Global Head Cyber & Anti-Crime)", snContact: "Arun Ragothaman / Security Team", dueDate: "Mar 2026", status: "In Progress", notes: "Reports to Cezary. Key for security and FSO financial crime use cases." },
-  { id: 5, category: "Growth", action: "Progress CRES Digital Vision requirements with Shelley", criticality: "High", bankContact: "Shelley Boland (Head CRES)", snContact: "Melissa Ries / Arun Ragothaman", dueDate: "Feb 2026", status: "In Progress", notes: "WSD signed and in delivery. CRES executive visit 30 April London (Salisbury Sq + PIC). Shelley attending Knowledge 2026. Potential Platinum programme candidate.", marqueeOffer: "Access: Complimentary Knowledge Passes" },
-  { id: 6, category: "Growth", action: "Agentic AI for Onboarding go-live", criticality: "High", bankContact: "Melinda McKinley / David Hardoon", snContact: "AI Team / Arun Ragothaman", dueDate: "13 Apr 2026", status: "In Progress", notes: "MVP presented. Directly supports GenAI governance mandate and revenue-per-FTE KPI.", marqueeOffer: "Advantage: AI Advantage Team" },
+  { id: 1, category: "Growth", action: "Secure meeting with Noelle Eder", criticality: "Critical", bankContact: "Noelle Eder (Group Head T&O)", snContact: "Chris Bedi / Arun Ragothaman", dueDate: "Q2 2026", status: "Not Started", notes: "Single most critical engagement gap — controls all technology strategy. Preferred path: peer-brokered introduction via Chris Bedi and Tanuj. Target: before or at Knowledge 2026 (May).", marqueeOffer: "Access: Global Advisory Council" },
+  { id: 2, category: "Growth", action: "Meet Guillermo Veiga for FSO positioning", criticality: "High", bankContact: "Guillermo Veiga (Group CIO)", snContact: "Arun Ragothaman / FSO Specialist", dueDate: "Q2 2026", status: "Not Started", notes: "CIB engagement via Geoff Kot has opened an alternative path into FSO. Veiga still important for broader T&O platform strategy and Balachandher Balakrishnan alignment.", marqueeOffer: "Advantage: AI Advantage Team" },
+  { id: 3, category: "Growth", action: "Revive Cezary Piekarski relationship for Veza/Armis", criticality: "High", bankContact: "Cezary Piekarski (CISO)", snContact: "Lou Fiorello / Security Team", dueDate: "Q2 2026", status: "In Progress", notes: "Last engagement Dec 2024 — need to revive for security platform expansion. DORA compliance creates urgency.", marqueeOffer: "Advantage: Industry Customer Advisory Board" },
+  { id: 4, category: "Growth", action: "Engage Lavy Stokhamer for SecOps and Financial Crime", criticality: "Medium", bankContact: "Lavy Stokhamer (Global Head Cyber & Anti-Crime)", snContact: "Arun Ragothaman / Security Team", dueDate: "Q2 2026", status: "In Progress", notes: "Executive dinner held. Reports to Cezary. Key for security and FSO financial crime use cases." },
+  { id: 5, category: "Growth", action: "Progress CRES Digital Vision requirements with Shelley", criticality: "High", bankContact: "Shelley Boland (Head CRES)", snContact: "Melissa Ries / Arun Ragothaman", dueDate: "Ongoing", status: "In Progress", notes: "WSD signed and in delivery. CRES executive visit 30 April London (Salisbury Sq + PIC). Shelley attending Knowledge 2026. Potential Platinum programme candidate.", marqueeOffer: "Access: Complimentary Knowledge Passes" },
+  { id: 6, category: "Growth", action: "Agentic AI for Onboarding go-live", criticality: "High", bankContact: "Melinda McKinley", snContact: "AI Team / Arun Ragothaman", dueDate: "15 Apr 2026", status: "In Progress", notes: "Go-live 15 April 2026. MVP presented. Directly supports GenAI governance mandate and revenue-per-FTE KPI.", marqueeOffer: "Advantage: AI Advantage Team" },
   { id: 7, category: "Growth", action: "Legal Service Delivery requirements gathering", criticality: "Medium", bankContact: "Legal Function / Tanuj Kapilashrami", snContact: "Arun Ragothaman", dueDate: "Q2 2026", status: "In Progress", notes: "New domain — strong executive sponsorship from Tanuj. Extends platform consolidation into FFG final-year savings." },
-  { id: 8, category: "Growth", action: "Engage Pete Burrill (Interim GCFO) for value/TCO narrative", criticality: "Critical", bankContact: "Pete Burrill (Interim GCFO)", snContact: "Chris Bedi / Arun Ragothaman", dueDate: "Q1 2026", status: "Not Started", notes: "Must engage before May 2026 medium-term framework. Build value narrative on reported basis for 2028 renewal.", marqueeOffer: "Access: Dedicated Executive Sponsor" },
+  { id: 8, category: "Growth", action: "Engage Pete Burrill (Interim GCFO) for value/TCO narrative", criticality: "Critical", bankContact: "Pete Burrill (Interim GCFO)", snContact: "Chris Bedi / Arun Ragothaman", dueDate: "Q2 2026", status: "Not Started", notes: "Must engage before May 2026 medium-term framework. Build value narrative on reported basis for 2028 renewal.", marqueeOffer: "Access: Dedicated Executive Sponsor" },
   // Post-FFG & Intelligence Actions
-  { id: 20, category: "Growth", action: "Identify Platinum programmes via Tanuj/Warren Young", criticality: "Critical", bankContact: "Tanuj Kapilashrami / Warren Young", snContact: "Arun Ragothaman", dueDate: "Q1 2026", status: "Not Started", notes: "2026 board scorecard (15% weighting) includes Platinum programmes. If ServiceNow is not in one, risk of budget marginalisation.", marqueeOffer: "Access: Marquee Leaders Advantage" },
+  { id: 20, category: "Growth", action: "Identify Platinum programmes via Tanuj/Warren Young", criticality: "Critical", bankContact: "Tanuj Kapilashrami / Warren Young", snContact: "Arun Ragothaman", dueDate: "Q2 2026", status: "Not Started", notes: "2026 board scorecard (15% weighting) includes Platinum programmes. If ServiceNow is not in one, risk of budget marginalisation.", marqueeOffer: "Access: Marquee Leaders Advantage" },
   { id: 21, category: "Growth", action: "Prepare for May 2026 medium-term financial framework", criticality: "Critical", bankContact: "Pete Burrill / Tanuj Kapilashrami", snContact: "Arun Ragothaman / Account Team", dueDate: "Apr 2026", status: "Not Started", notes: "SCB publishes new multi-year framework in May 2026. ServiceNow must be embedded in the post-FFG narrative before budgets are set.", marqueeOffer: "Acceleration: Commercial Strategy & Advisory" },
   { id: 22, category: "Growth", action: "Build revenue-per-FTE value narrative", criticality: "High", bankContact: "Pete Burrill / Warren Young", snContact: "Arun Ragothaman", dueDate: "Q2 2026", status: "Not Started", notes: "NEW 2026 CEO scorecard KPI. Quantify HR Hub 104K hours + CRES + Legal productivity gains into board-ready narrative.", marqueeOffer: "Acceleration: Annual Executive Health Review" },
   { id: 23, category: "Growth", action: "Position eNPS recovery story with Melinda/Tanuj", criticality: "High", bankContact: "Melinda McKinley / Tanuj Kapilashrami", snContact: "Arun Ragothaman", dueDate: "Q2 2026", status: "Not Started", notes: "eNPS declined 3.9pts to 17.56 (board KPI). HR Hub shows 86% satisfaction. Position WSD, EmployeeWorks, Agentic AI as recovery vehicle.", marqueeOffer: "Advantage: AI Benchmarking & Insights Report" },
-  { id: 24, category: "Growth", action: "Map AI Control Tower to GenAI governance mandate", criticality: "High", bankContact: "David Hardoon / Noelle Eder", snContact: "AI Team / Arun Ragothaman", dueDate: "Q2 2026", status: "Not Started", notes: "Bill Winters' 2026 personal objective: GenAI strategy. Board held AI governance stewardship event Nov 2025. Reframe AI Control Tower as enterprise foundation for GenAI at scale.", marqueeOffer: "Advantage: AI Solutions Product Advisory Council" },
-  // Adoption & Renewal Actions
-  { id: 9, category: "Adoption", action: "Deploy Senior Customer Success Executive (2 days/week onsite)", criticality: "Critical", bankContact: "Melinda McKinley / Tanuj Kapilashrami", snContact: "ServiceNow Leadership", dueDate: "Q1 2026", status: "Requested", notes: "Investment ask to drive adoption and protect $4M at-risk CACV.", marqueeOffer: "Acceleration: Now on Now Concierge" },
-  { id: 10, category: "Adoption", action: "Platform Architect engagement for stalled areas", criticality: "Critical", bankContact: "Technology Teams", snContact: "Platform Architect (TBD)", dueDate: "Q1 2026", status: "Requested", notes: "3-month engagement for ITOM, HAM, SAM, SecOps VR, IRM (DORA), AICT.", marqueeOffer: "Acceleration: Deployment & Adoption Roundtables" },
-  { id: 11, category: "Adoption", action: "Progress Expert Services SoWs", criticality: "High", bankContact: "SCB Procurement", snContact: "CEG Team", dueDate: "Q1 2026", status: "In Progress", notes: "2 Expert Services SoWs already in play.", marqueeOffer: "Acceleration: Commercial Strategy & Advisory" },
+  { id: 24, category: "Growth", action: "Map AI Control Tower to GenAI governance mandate", criticality: "High", bankContact: "Shebani Baweja / Noelle Eder", snContact: "AI Team / Arun Ragothaman", dueDate: "Q2 2026", status: "Not Started", notes: "Bill Winters' 2026 personal objective: GenAI strategy. Board held AI governance stewardship event Nov 2025. Reframe AI Control Tower as enterprise foundation for GenAI at scale.", marqueeOffer: "Advantage: AI Solutions Product Advisory Council" },
+  { id: 25, category: "Growth", action: "CIB Workshop — confirm 16-17 April with Geoff Kot / Craig Corte", criticality: "Critical", bankContact: "Geoff Kot / Craig Corte / Jennifer Ketelaar", snContact: "Arun Ragothaman / Stuart Pearce / Ryan Clare", dueDate: "16 Apr 2026", status: "In Progress", notes: "BREAKTHROUGH: First entry into CIB. Three workstreams agreed. Bank account management as first use case. Stuart Pearce for executive air cover. Connect AICT go-live (30 Apr) to Geoff's CIB needs. Position for Knowledge 2026 storytelling.", marqueeOffer: "Advantage: AI Advantage Team" },
+  { id: 26, category: "Growth", action: "Connect GCFO (Tom Pfaff) to CIB engagement post-workshop", criticality: "Medium", bankContact: "Tom Pfaff / Geoff Kot", snContact: "Arun Ragothaman", dueDate: "May 2026", status: "Not Started", notes: "Post-CIB workshop: connect the GCFO/COO buying centre to the CIB engagement for broader account coverage." },
+    // Adoption & Renewal Actions
+  { id: 9, category: "Adoption", action: "Customer Success Executive onboarded (Dean Lee)", criticality: "High", bankContact: "Melinda McKinley / Tanuj Kapilashrami", snContact: "Dean Lee (CSE)", dueDate: "Q1 2026", status: "Complete", notes: "Investment ask to drive adoption and protect $4M at-risk CACV.", marqueeOffer: "Acceleration: Now on Now Concierge" },
+  { id: 10, category: "Adoption", action: "Platform Architect engagement for stalled areas", criticality: "Critical", bankContact: "Technology Teams", snContact: "Platform Architect (TBD)", dueDate: "Q2 2026", status: "Requested", notes: "3-month engagement for ITOM, HAM, SAM, SecOps VR, IRM (DORA), AICT.", marqueeOffer: "Acceleration: Deployment & Adoption Roundtables" },
+  { id: 11, category: "Adoption", action: "Progress Expert Services SoWs", criticality: "High", bankContact: "SCB Procurement", snContact: "CEG Team", dueDate: "Q2 2026", status: "In Progress", notes: "2 Expert Services SoWs already in play.", marqueeOffer: "Acceleration: Commercial Strategy & Advisory" },
   { id: 12, category: "Adoption", action: "Maximise $30K training credits utilisation", criticality: "Medium", bankContact: "HR / Training Teams", snContact: "Training Team", dueDate: "Q2 2026", status: "Not Started", notes: "Bank has unused training credits — need proactive guidance." },
-  { id: 13, category: "Adoption", action: "Establish bi-monthly Executive Review Forum", criticality: "High", bankContact: "Tanuj / Melinda", snContact: "CEG Leaders / Product BU", dueDate: "Mar 2026", status: "Not Started", notes: "Operational cadence covering innovations, progress, value realised.", marqueeOffer: "Access: Marquee Leaders Advantage" },
-  { id: 14, category: "Adoption", action: "Implement telemetry-based value assessment", criticality: "Critical", bankContact: "Warren Young / Brian O'Neill", snContact: "Value Engineering / Arun Ragothaman", dueDate: "Q1 2026", status: "Not Started", notes: "Use telemetry to assess $value delivered — critical for renewal positioning.", marqueeOffer: "Advantage: AI Benchmarking & Insights Report" },
-  { id: 15, category: "Adoption", action: "ITOM/HAM/SAM adoption acceleration", criticality: "High", bankContact: "Sean Coppinger / Technology Teams", snContact: "Platform Team", dueDate: "Q2 2026", status: "Not Started", notes: "$4M at-risk CACV. Est. 20-30% utilisation outside HR — critical gap." },
+  { id: 13, category: "Adoption", action: "Establish bi-monthly Executive Review Forum", criticality: "High", bankContact: "Tanuj / Melinda", snContact: "CEG Leaders / Product BU", dueDate: "Q2 2026", status: "Not Started", notes: "Operational cadence covering innovations, progress, value realised.", marqueeOffer: "Access: Marquee Leaders Advantage" },
+  { id: 14, category: "Adoption", action: "Implement telemetry-based value assessment", criticality: "Critical", bankContact: "Warren Young / Brian O'Neill", snContact: "Value Engineering / Arun Ragothaman", dueDate: "Q2 2026", status: "Not Started", notes: "Use telemetry to assess $value delivered — critical for renewal positioning.", marqueeOffer: "Advantage: AI Benchmarking & Insights Report" },
+  { id: 15, category: "Adoption", action: "ITOM/HAM/SAM adoption acceleration", criticality: "High", bankContact: "Balachandher Balakrishnan / Technology Teams", snContact: "Platform Team", dueDate: "Q2 2026", status: "Not Started", notes: "$4M at-risk CACV. Est. 20-30% utilisation outside HR — critical gap." },
   { id: 16, category: "Adoption", action: "SecOps VR Databricks integration completion", criticality: "High", bankContact: "Alvaro Garrido / Lavy Stokhamer", snContact: "Security Team", dueDate: "Q2 2026", status: "Developing", notes: "Reduce downsell risk — security stack integration with Databricks." },
 ];
 
@@ -2128,7 +2278,7 @@ function ActionsView() {
             <div style={{ fontSize: 10, color: colors.textPrimary, lineHeight: 1.6 }}>
               <div style={{ marginBottom: 6 }}><strong style={{ color: colors.green }}>Deals:</strong> Close WSD deal</div>
               <div style={{ marginBottom: 6 }}><strong style={{ color: colors.green }}>Projects:</strong> Kick off CRES project</div>
-              <div style={{ marginBottom: 6 }}><strong style={{ color: colors.green }}>Go-Lives:</strong> OneSC platform (6 Apr), Agentic AI (13 Apr), AICT MVP (~end Apr)</div>
+              <div style={{ marginBottom: 6 }}><strong style={{ color: colors.green }}>Go-Lives:</strong> OneSC ✅ LIVE (6 Apr), Agentic AI (15 Apr), AICT MVP (30 Apr)</div>
               <div><strong style={{ color: colors.amber }}>Cadence:</strong> Strategic Review #1 (Infosys-Bank-ServiceNow)</div>
             </div>
           </div>
