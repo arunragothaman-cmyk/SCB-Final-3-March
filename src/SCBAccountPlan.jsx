@@ -514,6 +514,7 @@ function Sidebar({ active, setActive }) {
     { id: "adoption", label: "Adoption & Renewal", icon: "🤝" },
     { id: "growth", label: "Growth & Upsell", icon: "▲" },
     { id: "actions", label: "Actions", icon: "✓" },
+    { id: "licenses", label: "License Entitlements", icon: "📋" },
   ];
   return (
     <div style={{ width: 220, minHeight: "100vh", background: `linear-gradient(180deg, ${colors.bgPanel} 0%, ${colors.bg} 100%)`, borderRight: `1px solid ${colors.border}`, display: "flex", flexDirection: "column", position: "fixed", left: 0, top: 0, zIndex: 100 }}>
@@ -2433,6 +2434,161 @@ function ActionsView() {
 }
 
 // ─── Main App ────────────────────────────────────────────────────────────────
+// ─── License Entitlements View ────────────────────────────────────────────────
+const LICENSE_DATA = [
+  { bu: "ITSM", code: "PROD11356", name: "IT Service Management Professional", type: "Unrestricted User", units: "70,000", acv: 1470000, tcv: 5113651, order: "OF1 + OF2" },
+  { bu: "Platform", code: "PROD19351", name: "App Engine Enterprise", type: "Fulfiller User", units: "535", acv: 288900, tcv: 1004989, order: "OF1" },
+  { bu: "Platform", code: "PROD12492", name: "Agile Team", type: "Module", units: "1", acv: 0, tcv: 0, order: "OF1" },
+  { bu: "Platform", code: "PROD17800", name: "Business Stakeholder", type: "Bus. Stakeholder User", units: "600", acv: 14400, tcv: 50093, order: "OF1" },
+  { bu: "Platform", code: "PROD15406", name: "Mobile Publishing", type: "Application", units: "1", acv: 22500, tcv: 78270, order: "OF1" },
+  { bu: "HRSD", code: "PROD17238", name: "HR Service Delivery Enterprise", type: "HR User", units: "80,000", acv: 1689600, tcv: 5877567, order: "OF1" },
+  { bu: "Risk", code: "PROD23799", name: "Integrated Risk Management Professional", type: "Unrestricted User", units: "70,000", acv: 588000, tcv: 2045460, order: "OF1 + OF3" },
+  { bu: "Risk", code: "PROD20914", name: "Third-party Risk Management Base", type: "Module", units: "1", acv: 17640, tcv: 61364, order: "OF1" },
+  { bu: "Risk", code: "PROD20917", name: "Third-party Risk Management Standard", type: "Transactions", units: "2,000", acv: 180000, tcv: 626161, order: "OF3" },
+  { bu: "Risk", code: "PROD14201", name: "Business Continuity Management Professional", type: "BCM Operator", units: "300", acv: 180000, tcv: 626161, order: "OF3" },
+  { bu: "Risk", code: "PROD03427", name: "Performance Analytics for GRC", type: "Application", units: "1", acv: 0, tcv: 0, order: "OF1" },
+  { bu: "SecOps", code: "PROD16744", name: "Security Operations Professional \u2013 SIR", type: "Unrestricted User", units: "70,000", acv: 655200, tcv: 2279227, order: "OF3" },
+  { bu: "SecOps", code: "PROD18276", name: "Security Operations Professional \u2013 VR", type: "Unrestricted User", units: "70,000", acv: 394800, tcv: 1373380, order: "OF1" },
+  { bu: "ITOM", code: "PROD14995", name: "ITOM AIOps Professional", type: "Subscription Unit", units: "60,000", acv: 1692000, tcv: 5885916, order: "OF1" },
+  { bu: "ITAM", code: "PROD13583", name: "Hardware Asset Management Professional", type: "Subscription Unit", units: "50,000", acv: 672000, tcv: 2337669, order: "OF1" },
+  { bu: "ITAM", code: "PROD15033", name: "Software Asset Management Professional", type: "Subscription Unit", units: "65,000", acv: 686400, tcv: 2387762, order: "OF1" },
+  { bu: "Ent. Arch", code: "PROD23527", name: "Enterprise Architecture Professional", type: "Business Application", units: "2,000", acv: 384000, tcv: 1335811, order: "OF1" },
+  { bu: "AI", code: "PROD25226", name: "Now Assist for Enterprise", type: "Assist", units: "2 (30M/yr)", acv: 897192, tcv: 3121038, order: "OF2" },
+  { bu: "AI", code: "PROD26238", name: "AI Control Tower", type: "Subscription Unit", units: "500", acv: 72000, tcv: 250465, order: "OF2" },
+  { bu: "AI", code: "PROD23494", name: "RaptorDB Professional", type: "Application", units: "1", acv: 495150, tcv: 1722467, order: "OF2" },
+  { bu: "AI", code: "PROD15338", name: "AI Search Starter", type: "Documents", units: "500K docs", acv: 0, tcv: 0, order: "OF1" },
+  { bu: "WDF", code: "PROD24512", name: "Workflow Data Fabric Standard", type: "Unattended Robot", units: "1", acv: 49500, tcv: 172194, order: "OF1" },
+  { bu: "WDF", code: "PROD18254", name: "WDF Bundle \u2013 100M IntHub Transactions", type: "Transaction Pack", units: "1", acv: 36000, tcv: 125232, order: "OF1" },
+  { bu: "Infra", code: "PROD20936", name: "Dedicated Environment Capacity (6TB)", type: "Ded. Environment", units: "14", acv: 428400, tcv: 1490264, order: "OF1" },
+  { bu: "Infra", code: "PROD18696", name: "Included Production Instance", type: "Ded. Environment", units: "1", acv: 0, tcv: 0, order: "OF1" },
+  { bu: "Infra", code: "PROD18698", name: "Additional Production Instance", type: "Ded. Environment", units: "1", acv: 0, tcv: 0, order: "OF1" },
+  { bu: "Infra", code: "PROD18697", name: "Included Non-Production Instance", type: "Ded. Environment", units: "2", acv: 0, tcv: 0, order: "OF1" },
+  { bu: "Infra", code: "PROD18699", name: "Additional Non-Production Instance", type: "Ded. Environment", units: "6", acv: 61200, tcv: 212895, order: "OF1" },
+  { bu: "Infra", code: "PROD25331", name: "Platform Encryption", type: "Application", units: "1", acv: 414000, tcv: 1440171, order: "OF1" },
+  { bu: "Success", code: "PROD19214", name: "Impact Guided \u2013 MSP Dedicated Instance", type: "Success", units: "1", acv: 485817, tcv: 1689998, order: "OF1" },
+  { bu: "Success", code: "PROD22474", name: "Managed Support", type: "Success", units: "3", acv: 225000, tcv: 782702, order: "OF1" },
+];
+
+function LicenseView() {
+  const [filterBU, setFilterBU] = useState("All");
+  const buOptions = ["All", ...new Set(LICENSE_DATA.map(p => p.bu))];
+  const filtered = filterBU === "All" ? LICENSE_DATA : LICENSE_DATA.filter(p => p.bu === filterBU);
+  const totalAcv = filtered.reduce((s, p) => s + p.acv, 0);
+  const totalTcv = filtered.reduce((s, p) => s + p.tcv, 0);
+  const fmt = (n) => n === 0 ? "\u2013" : "$" + n.toLocaleString("en-US");
+
+  const buColors = {
+    "ITSM": { bg: `${colors.blue}15`, color: colors.blue },
+    "Platform": { bg: `${colors.textMuted}15`, color: colors.textMuted },
+    "HRSD": { bg: colors.greenGlow, color: colors.green },
+    "Risk": { bg: colors.amberGlow, color: colors.amber },
+    "SecOps": { bg: `${colors.red}15`, color: colors.red },
+    "ITOM": { bg: `rgba(167,139,250,0.12)`, color: "#a78bfa" },
+    "ITAM": { bg: `rgba(45,212,191,0.12)`, color: "#2dd4bf" },
+    "Ent. Arch": { bg: `rgba(251,191,36,0.08)`, color: "#fcd34d" },
+    "AI": { bg: `rgba(56,189,248,0.18)`, color: "#7dd3fc" },
+    "WDF": { bg: `${colors.textMuted}15`, color: colors.textMuted },
+    "Infra": { bg: `${colors.textMuted}15`, color: colors.textMuted },
+    "Success": { bg: `rgba(168,85,247,0.12)`, color: "#c084fc" },
+  };
+
+  return (
+    <div>
+      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: 20 }}>
+        <div>
+          <h1 style={{ fontSize: 24, fontWeight: 700, color: colors.textPrimary, margin: "0 0 4px" }}>License Entitlements</h1>
+          <p style={{ fontSize: 13, color: colors.textSecondary, margin: 0 }}>Infosys\u2013Standard Chartered \u00B7 Contract LCN0025670 \u00B7 Term: 29 Jun 2025 \u2013 21 Dec 2028</p>
+        </div>
+        <div style={{ textAlign: "right", fontSize: 10, color: colors.textMuted, fontFamily: "monospace" }}>
+          <div>Account # ACCT0213754</div>
+          <div>3 Order Forms Consolidated</div>
+        </div>
+      </div>
+
+      {/* Stats */}
+      <div style={{ display: "grid", gridTemplateColumns: "repeat(6, 1fr)", gap: 10, marginBottom: 20 }}>
+        {[
+          { label: "Active Products", value: "31", sub: "Across 9 BU domains" },
+          { label: "Combined ACV", value: "$12.0M", sub: "Annual subscription" },
+          { label: "Total Contract Value", value: "$37.6M", sub: "~41-month term" },
+          { label: "ITSM Users", value: "70,000", sub: "Unrestricted" },
+          { label: "HR Users", value: "80,000", sub: "HRSD Enterprise" },
+          { label: "IRM Users", value: "70,000", sub: "Unrestricted" },
+        ].map((s, i) => (
+          <div key={i} style={{ background: colors.bgCard, border: `1px solid ${colors.border}`, borderRadius: 8, padding: "12px 14px" }}>
+            <div style={{ fontSize: 9, color: colors.textMuted, textTransform: "uppercase", letterSpacing: "0.08em", marginBottom: 4 }}>{s.label}</div>
+            <div style={{ fontSize: 20, fontWeight: 700, color: colors.blue }}>{s.value}</div>
+            <div style={{ fontSize: 10, color: colors.textSecondary, marginTop: 2 }}>{s.sub}</div>
+          </div>
+        ))}
+      </div>
+
+      {/* Filter */}
+      <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 16 }}>
+        <span style={{ fontSize: 11, color: colors.textMuted }}>Filter by BU:</span>
+        <select value={filterBU} onChange={(e) => setFilterBU(e.target.value)}
+          style={{ background: colors.bgCard, border: `1px solid ${colors.border}`, borderRadius: 6, padding: "6px 10px", color: colors.textPrimary, fontSize: 11, cursor: "pointer" }}>
+          {buOptions.map(b => <option key={b} value={b}>{b}</option>)}
+        </select>
+        <span style={{ marginLeft: "auto", fontSize: 11, color: colors.textMuted }}>Showing {filtered.length} of {LICENSE_DATA.length} products</span>
+      </div>
+
+      {/* Table */}
+      <div style={{ background: colors.bgCard, border: `1px solid ${colors.border}`, borderRadius: 10, overflow: "hidden" }}>
+        <div style={{ display: "grid", gridTemplateColumns: "0.7fr 1fr 2.5fr 1.2fr 0.8fr 1fr 1fr 0.6fr", gap: 8, padding: "12px 16px", background: colors.bgPanel, borderBottom: `1px solid ${colors.border}` }}>
+          {["BU", "Code", "Product Name", "Licence Type", "Units", "ACV (USD)", "TCV (USD)", "Order"].map(h => (
+            <div key={h} style={{ fontSize: 10, fontWeight: 700, color: colors.textMuted, textTransform: "uppercase", letterSpacing: "0.05em", textAlign: h.includes("USD") || h === "Units" ? "right" : "left" }}>{h}</div>
+          ))}
+        </div>
+        {filtered.map((p, i) => {
+          const buStyle = buColors[p.bu] || buColors["Platform"];
+          return (
+            <div key={i} style={{ display: "grid", gridTemplateColumns: "0.7fr 1fr 2.5fr 1.2fr 0.8fr 1fr 1fr 0.6fr", gap: 8, padding: "10px 16px", borderBottom: i < filtered.length - 1 ? `1px solid ${colors.border}` : "none" }}>
+              <div><span style={{ fontSize: 9, fontWeight: 600, color: buStyle.color, background: buStyle.bg, padding: "2px 8px", borderRadius: 10 }}>{p.bu}</span></div>
+              <div style={{ fontSize: 10, color: colors.textMuted, fontFamily: "monospace" }}>{p.code}</div>
+              <div style={{ fontSize: 11, fontWeight: 500, color: colors.textPrimary }}>{p.name}</div>
+              <div style={{ fontSize: 10, color: colors.textSecondary }}>{p.type}</div>
+              <div style={{ fontSize: 11, fontWeight: 600, color: colors.textPrimary, textAlign: "right", fontFamily: "monospace" }}>{p.units}</div>
+              <div style={{ fontSize: 11, fontWeight: 600, color: colors.green, textAlign: "right", fontFamily: "monospace" }}>{fmt(p.acv)}</div>
+              <div style={{ fontSize: 11, color: colors.textSecondary, textAlign: "right", fontFamily: "monospace" }}>{fmt(p.tcv)}</div>
+              <div style={{ fontSize: 9, color: colors.textMuted, background: `${colors.textMuted}10`, padding: "2px 6px", borderRadius: 3, fontFamily: "monospace" }}>{p.order}</div>
+            </div>
+          );
+        })}
+        {/* Totals row */}
+        <div style={{ display: "grid", gridTemplateColumns: "0.7fr 1fr 2.5fr 1.2fr 0.8fr 1fr 1fr 0.6fr", gap: 8, padding: "12px 16px", background: colors.bgPanel, borderTop: `2px solid ${colors.border}` }}>
+          <div style={{ gridColumn: "1 / 6", fontSize: 10, fontWeight: 700, color: colors.textMuted, textTransform: "uppercase", letterSpacing: "0.08em", textAlign: "right" }}>Total ({filtered.length} products)</div>
+          <div style={{ fontSize: 12, fontWeight: 700, color: colors.green, textAlign: "right", fontFamily: "monospace" }}>{fmt(totalAcv)}</div>
+          <div style={{ fontSize: 12, fontWeight: 700, color: colors.textSecondary, textAlign: "right", fontFamily: "monospace" }}>{fmt(totalTcv)}</div>
+          <div></div>
+        </div>
+      </div>
+
+      {/* Key Notes */}
+      <div style={{ background: colors.bgCard, border: `1px solid ${colors.border}`, borderRadius: 10, padding: 20, marginTop: 20 }}>
+        <h3 style={{ fontSize: 12, fontWeight: 700, color: colors.blue, margin: "0 0 12px", textTransform: "uppercase", letterSpacing: "0.05em" }}>Key Contractual Notes</h3>
+        {[
+          "Dual Instance: SCB may use licences across scbnow01 and scsg until 31 Dec 2025. After that, scbnow01 must be decommissioned or +$3,750/month applies.",
+          "IRM Professional: Usage limited to Policy & Compliance, GRC, Risk Mgmt, Use Case Accelerators, Operational Resilience. Expanded scope via new order form.",
+          "Product Exchange: OF1 includes flexible exchange clause (60-day notice) across 16 products at locked monthly rates.",
+          "Now Assist for Enterprise: 2 Assists \u00D7 15M = 30M Assists annually. Requires Next Experience and GenAI Controller.",
+          "AI Control Tower: 500 Subscription Units. GRC apps restricted to AI Asset governance only.",
+          "Impact Guided: Fee pegged at 4.29% of total annual subscription product fees. Scales with additional purchases.",
+          "RaptorDB Professional: Fee indexed to total annual subscription fees across all products.",
+          "EU AI Act: Explicit compliance clause for Advanced AI and Data Products under Regulation (EU) 2024/1689.",
+          "Hosting: Europe data centre, dedicated environments. 14 \u00D7 6TB = 84TB total storage.",
+          "All three Order Forms (ORD2198466-11, ORD3650930-1, ORD3651142-1) must be fully executed for any to be enforceable.",
+        ].map((note, i) => (
+          <div key={i} style={{ display: "flex", gap: 8, marginBottom: 8 }}>
+            <span style={{ color: colors.blue, fontSize: 12, lineHeight: 1 }}>\u2022</span>
+            <span style={{ fontSize: 11, color: colors.textSecondary, lineHeight: 1.5 }}>{note}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
 export default function SCBAccountPlan() {
   const [activeSection, setActiveSection] = useState("dashboard");
 
@@ -2448,6 +2604,7 @@ export default function SCBAccountPlan() {
       case "adoption": return <AdoptionView />;
       case "growth": return <GrowthView />;
       case "actions": return <ActionsView />;
+      case "licenses": return <LicenseView />;
       default: return <DashboardView />;
     }
   };
