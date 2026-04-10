@@ -2434,6 +2434,271 @@ function ActionsView() {
 }
 
 // ─── Main App ────────────────────────────────────────────────────────────────
+// ─── Migration Simulation View ───────────────────────────────────────────────
+const USAGE_DATA = [
+  { product: "App Engine Enterprise", entitled: "535 FU", actual: "~1,535 FU", pct: 287, status: "overage", acv: 288900 },
+  { product: "HRSD Enterprise", entitled: "80,000 HR", actual: "132,723 HR", pct: 166, status: "overage", acv: 1689600 },
+  { product: "Cloud Storage", entitled: "84 TB", actual: "151.7 TB", pct: 181, status: "overage", acv: 428400 },
+  { product: "ITSM Professional", entitled: "70,000 UU", actual: "66,653 UU", pct: 95, status: "core", acv: 1470000 },
+  { product: "SAM Professional", entitled: "65,000 SU", actual: "60,993 SU", pct: 94, status: "core", acv: 686400 },
+  { product: "HAM Professional", entitled: "50,000 SU", actual: "47,983 SU", pct: 96, status: "core", acv: 672000 },
+  { product: "Enterprise Architecture", entitled: "2,000 BA", actual: "1,731 BA", pct: 87, status: "core", acv: 384000 },
+  { product: "ITOM AIOps", entitled: "60,000 SU", actual: "49,304 SU", pct: 82, status: "core", acv: 1692000 },
+  { product: "SecOps SIR", entitled: "70,000 UU", actual: "66,653 UU", pct: 95, status: "core", acv: 655200 },
+  { product: "TPRM Standard", entitled: "2,000 txns", actual: "1,012 txns", pct: 51, status: "underused", acv: 197640 },
+  { product: "AI Control Tower", entitled: "500 SU", actual: "65 SU", pct: 13, status: "implementation", acv: 72000 },
+  { product: "BCM Professional", entitled: "300 ops", actual: "23 ops", pct: 8, status: "dormant", acv: 180000 },
+  { product: "Now Assist (Assists)", entitled: "30,000,000", actual: "575,199", pct: 1.9, status: "dormant", acv: 897192 },
+  { product: "WSD Enterprise", entitled: "10,000", actual: "0", pct: 0, status: "implementation", acv: 0 },
+  { product: "IRM Professional", entitled: "70,000 UU", actual: "Shared count", pct: 0, status: "offload", acv: 588000 },
+  { product: "SecOps VR", entitled: "70,000 UU", actual: "Shared count", pct: 0, status: "offload", acv: 394800 },
+];
+
+const NNACV_WATERFALL = [
+  { category: "A", label: "App Engine true-up (535 -> ~1,535 FU)", low: 270000, mid: 361800, high: 540000 },
+  { category: "A", label: "HRSD true-up (80K -> 132,723 HR Users)", low: 557494, mid: 743326, high: 1113509 },
+  { category: "A", label: "Storage true-up (84TB -> 152TB)", low: 183600, mid: 275400, high: 367200 },
+  { category: "B", label: "IRM Professional (offload)", low: -588000, mid: -588000, high: -588000 },
+  { category: "B", label: "SecOps VR (offload)", low: -394800, mid: -394800, high: -394800 },
+  { category: "B", label: "BCM Professional (offload)", low: -180000, mid: -180000, high: -180000 },
+  { category: "B", label: "TPRM Standard + Base (offload)", low: -197640, mid: -197640, high: -197640 },
+  { category: "C", label: "ITSM Pro -> Prime (70K UU)", low: 147000, mid: 220500, high: 367500 },
+  { category: "C", label: "ITOM AIOps Pro -> Prime (60K SU)", low: 169200, mid: 253800, high: 423000 },
+  { category: "C", label: "EA Pro -> Prime (2K BA)", low: 38400, mid: 57600, high: 96000 },
+  { category: "C", label: "SIR Pro -> Advanced (70K UU)", low: 32760, mid: 65520, high: 98280 },
+  { category: "C", label: "SAM Pro -> Advanced (65K SU)", low: 34320, mid: 68640, high: 102960 },
+  { category: "C", label: "HAM Pro -> Advanced (50K SU)", low: 33600, mid: 67200, high: 100800 },
+  { category: "C", label: "HRSD Ent -> Advanced (132K HR)", low: 84480, mid: 168960, high: 253440 },
+  { category: "C", label: "AE Ent -> Prime (~1,535 FU)", low: 83000, mid: 124000, high: 207000 },
+  { category: "C", label: "AICT -> Foundation", low: 3600, mid: 7200, high: 14400 },
+  { category: "D", label: "Moveworks for Enterprise (standalone)", low: 500000, mid: 800000, high: 1200000 },
+];
+
+function MigrationView() {
+  const [activeTab, setActiveTab] = useState("usage");
+  const fmt = (n) => {
+    if (n === 0) return "–";
+    const prefix = n < 0 ? "-" : "";
+    return prefix + "$" + Math.abs(n).toLocaleString("en-US");
+  };
+
+  const statusStyles = {
+    overage: { bg: `${colors.red}15`, color: colors.red, label: "Overage" },
+    core: { bg: colors.greenGlow, color: colors.green, label: "Core" },
+    underused: { bg: colors.amberGlow, color: colors.amber, label: "Under-used" },
+    dormant: { bg: colors.amberGlow, color: colors.amber, label: "Dormant" },
+    implementation: { bg: "rgba(108,52,131,0.12)", color: "#a78bfa", label: "Implementation" },
+    offload: { bg: `${colors.red}10`, color: colors.red, label: "Offload" },
+  };
+
+  const tabs = [
+    { id: "usage", label: "Usage Analysis" },
+    { id: "waterfall", label: "NNACV Waterfall" },
+    { id: "scenarios", label: "Scenarios" },
+    { id: "guide", label: "Conversation Guide" },
+  ];
+
+  // Calculate waterfall totals
+  const totals = { low: 0, mid: 0, high: 0 };
+  NNACV_WATERFALL.forEach(r => { totals.low += r.low; totals.mid += r.mid; totals.high += r.high; });
+  const catTotals = {};
+  NNACV_WATERFALL.forEach(r => {
+    if (!catTotals[r.category]) catTotals[r.category] = { low: 0, mid: 0, high: 0 };
+    catTotals[r.category].low += r.low; catTotals[r.category].mid += r.mid; catTotals[r.category].high += r.high;
+  });
+
+  return (
+    <div>
+      <div style={{ marginBottom: 20 }}>
+        <h1 style={{ fontSize: 24, fontWeight: 700, color: colors.textPrimary, margin: "0 0 4px" }}>Migration Simulation</h1>
+        <p style={{ fontSize: 13, color: colors.textSecondary, margin: 0 }}>AI Native migration model – usage scan 9 April 2026 – End of sale for legacy SKUs: 1 July 2026</p>
+      </div>
+
+      {/* Summary Stats */}
+      <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 10, marginBottom: 20 }}>
+        <div style={{ background: colors.bgCard, border: `1px solid ${colors.border}`, borderRadius: 8, padding: "12px 14px" }}>
+          <div style={{ fontSize: 9, color: colors.textMuted, textTransform: "uppercase", letterSpacing: "0.08em" }}>Current ACV</div>
+          <div style={{ fontSize: 20, fontWeight: 700, color: colors.textPrimary }}>$12.1M</div>
+        </div>
+        <div style={{ background: colors.bgCard, border: `1px solid ${colors.red}40`, borderRadius: 8, padding: "12px 14px" }}>
+          <div style={{ fontSize: 9, color: colors.textMuted, textTransform: "uppercase", letterSpacing: "0.08em" }}>Dormant ACV to Offload</div>
+          <div style={{ fontSize: 20, fontWeight: 700, color: colors.red }}>$1.36M</div>
+        </div>
+        <div style={{ background: colors.bgCard, border: `1px solid ${colors.green}40`, borderRadius: 8, padding: "12px 14px" }}>
+          <div style={{ fontSize: 9, color: colors.textMuted, textTransform: "uppercase", letterSpacing: "0.08em" }}>Net NNACV (Mid)</div>
+          <div style={{ fontSize: 20, fontWeight: 700, color: colors.green }}>$1.9M</div>
+        </div>
+        <div style={{ background: colors.bgCard, border: `1px solid ${colors.blue}40`, borderRadius: 8, padding: "12px 14px" }}>
+          <div style={{ fontSize: 9, color: colors.textMuted, textTransform: "uppercase", letterSpacing: "0.08em" }}>Post-Migration ACV</div>
+          <div style={{ fontSize: 20, fontWeight: 700, color: colors.blue }}>~$14.0M</div>
+        </div>
+      </div>
+
+      {/* Tabs */}
+      <div style={{ display: "flex", gap: 4, marginBottom: 20, borderBottom: `1px solid ${colors.border}` }}>
+        {tabs.map(t => (
+          <button key={t.id} onClick={() => setActiveTab(t.id)}
+            style={{ background: "none", border: "none", borderBottom: activeTab === t.id ? `2px solid ${colors.blue}` : "2px solid transparent", padding: "8px 16px", fontSize: 11, fontWeight: 600, color: activeTab === t.id ? colors.blue : colors.textMuted, cursor: "pointer", textTransform: "uppercase", letterSpacing: "0.05em" }}>
+            {t.label}
+          </button>
+        ))}
+      </div>
+
+      {/* USAGE TAB */}
+      {activeTab === "usage" && (
+        <div>
+          <div style={{ background: colors.bgCard, border: `1px solid ${colors.border}`, borderRadius: 10, overflow: "hidden" }}>
+            <div style={{ display: "grid", gridTemplateColumns: "2fr 1fr 1fr 1.5fr 0.8fr", gap: 8, padding: "12px 16px", background: colors.bgPanel, borderBottom: `1px solid ${colors.border}` }}>
+              {["Product", "Entitled", "Actual", "Utilisation", "Status"].map(h => (
+                <div key={h} style={{ fontSize: 10, fontWeight: 700, color: colors.textMuted, textTransform: "uppercase", letterSpacing: "0.05em" }}>{h}</div>
+              ))}
+            </div>
+            {USAGE_DATA.map((p, i) => {
+              const st = statusStyles[p.status] || statusStyles.core;
+              const barWidth = Math.min(p.pct, 100);
+              const barColor = p.status === "overage" ? colors.red : p.status === "core" ? colors.green : p.status === "implementation" ? "#a78bfa" : colors.amber;
+              return (
+                <div key={i} style={{ display: "grid", gridTemplateColumns: "2fr 1fr 1fr 1.5fr 0.8fr", gap: 8, padding: "10px 16px", borderBottom: i < USAGE_DATA.length - 1 ? `1px solid ${colors.border}` : "none", background: p.status === "offload" || p.status === "dormant" ? `${colors.amber}08` : p.status === "overage" ? `${colors.red}05` : "transparent" }}>
+                  <div style={{ fontSize: 12, fontWeight: 600, color: colors.textPrimary }}>{p.product}</div>
+                  <div style={{ fontSize: 11, color: colors.textSecondary, fontFamily: "monospace" }}>{p.entitled}</div>
+                  <div style={{ fontSize: 11, fontWeight: 600, color: p.status === "overage" ? colors.red : colors.textPrimary, fontFamily: "monospace" }}>{p.actual}</div>
+                  <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+                    <div style={{ width: 80, height: 6, background: `${colors.textMuted}20`, borderRadius: 3, overflow: "hidden" }}>
+                      <div style={{ width: `${barWidth}%`, height: "100%", background: barColor, borderRadius: 3 }} />
+                    </div>
+                    <span style={{ fontSize: 11, fontWeight: 600, color: barColor, fontFamily: "monospace" }}>{p.pct > 0 ? p.pct + "%" : "–"}</span>
+                  </div>
+                  <div><span style={{ fontSize: 9, fontWeight: 600, color: st.color, background: st.bg, padding: "2px 8px", borderRadius: 10 }}>{st.label}</span></div>
+                </div>
+              );
+            })}
+          </div>
+          <div style={{ background: colors.bgCard, border: `1px solid ${colors.amber}40`, borderRadius: 8, padding: 14, marginTop: 16 }}>
+            <div style={{ fontSize: 11, color: colors.textSecondary, lineHeight: 1.6 }}>
+              <strong style={{ color: colors.amber }}>Note:</strong> App Engine usage report shows 18,748 FU (inflated by role-based counting). Actual overage is approximately 1,000 FU. IRM and SecOps VR share the same 66,653 UU count as ITSM — not a measure of product-specific usage.
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* WATERFALL TAB */}
+      {activeTab === "waterfall" && (
+        <div>
+          <div style={{ background: colors.bgCard, border: `1px solid ${colors.border}`, borderRadius: 10, overflow: "hidden" }}>
+            <div style={{ display: "grid", gridTemplateColumns: "2.5fr 1fr 1fr 1fr", gap: 8, padding: "12px 16px", background: colors.bgPanel, borderBottom: `1px solid ${colors.border}` }}>
+              {["Line Item", "Low", "Mid", "High"].map(h => (
+                <div key={h} style={{ fontSize: 10, fontWeight: 700, color: colors.textMuted, textTransform: "uppercase", letterSpacing: "0.05em", textAlign: h !== "Line Item" ? "right" : "left" }}>{h}</div>
+              ))}
+            </div>
+            {["A", "B", "C", "D"].map(cat => {
+              const catLabels = { A: "Overage True-Ups", B: "Offloaded Products", C: "AI Native Tier Uplifts", D: "New Products" };
+              const rows = NNACV_WATERFALL.filter(r => r.category === cat);
+              const ct = catTotals[cat];
+              return (
+                <div key={cat}>
+                  <div style={{ padding: "10px 16px", background: colors.bgPanel, fontSize: 11, fontWeight: 700, color: colors.textPrimary, borderBottom: `1px solid ${colors.border}` }}>{cat}. {catLabels[cat]}</div>
+                  {rows.map((r, i) => (
+                    <div key={i} style={{ display: "grid", gridTemplateColumns: "2.5fr 1fr 1fr 1fr", gap: 8, padding: "8px 16px", borderBottom: `1px solid ${colors.border}` }}>
+                      <div style={{ fontSize: 11, color: colors.textSecondary }}>{r.label}</div>
+                      <div style={{ fontSize: 11, fontWeight: 600, color: r.low < 0 ? colors.red : colors.green, textAlign: "right", fontFamily: "monospace" }}>{fmt(r.low)}</div>
+                      <div style={{ fontSize: 11, fontWeight: 600, color: r.mid < 0 ? colors.red : colors.green, textAlign: "right", fontFamily: "monospace" }}>{fmt(r.mid)}</div>
+                      <div style={{ fontSize: 11, fontWeight: 600, color: r.high < 0 ? colors.red : colors.green, textAlign: "right", fontFamily: "monospace" }}>{fmt(r.high)}</div>
+                    </div>
+                  ))}
+                  <div style={{ display: "grid", gridTemplateColumns: "2.5fr 1fr 1fr 1fr", gap: 8, padding: "8px 16px", background: `${colors.bgPanel}`, borderBottom: `2px solid ${colors.border}` }}>
+                    <div style={{ fontSize: 11, fontWeight: 700, color: colors.textPrimary }}>Subtotal {cat}</div>
+                    <div style={{ fontSize: 11, fontWeight: 700, color: ct.low < 0 ? colors.red : colors.green, textAlign: "right", fontFamily: "monospace" }}>{fmt(ct.low)}</div>
+                    <div style={{ fontSize: 11, fontWeight: 700, color: ct.mid < 0 ? colors.red : colors.green, textAlign: "right", fontFamily: "monospace" }}>{fmt(ct.mid)}</div>
+                    <div style={{ fontSize: 11, fontWeight: 700, color: ct.high < 0 ? colors.red : colors.green, textAlign: "right", fontFamily: "monospace" }}>{fmt(ct.high)}</div>
+                  </div>
+                </div>
+              );
+            })}
+            <div style={{ display: "grid", gridTemplateColumns: "2.5fr 1fr 1fr 1fr", gap: 8, padding: "14px 16px", background: colors.bgPanel, borderTop: `3px solid ${colors.green}` }}>
+              <div style={{ fontSize: 13, fontWeight: 700, color: colors.textPrimary }}>Net NNACV Opportunity</div>
+              <div style={{ fontSize: 14, fontWeight: 800, color: colors.green, textAlign: "right", fontFamily: "monospace" }}>{fmt(totals.low)}</div>
+              <div style={{ fontSize: 14, fontWeight: 800, color: colors.green, textAlign: "right", fontFamily: "monospace" }}>{fmt(totals.mid)}</div>
+              <div style={{ fontSize: 14, fontWeight: 800, color: colors.green, textAlign: "right", fontFamily: "monospace" }}>{fmt(totals.high)}</div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* SCENARIOS TAB */}
+      {activeTab === "scenarios" && (
+        <div>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 16, marginBottom: 20 }}>
+            {[
+              { label: "Conservative", value: "$0.8M", color: colors.amber, details: "50% discount on true-ups. 10% tier uplifts (Pro to Prime). 5% tier uplifts (Pro to Adv). Lower-end Moveworks." },
+              { label: "Moderate", value: "$1.9M", color: colors.green, details: "33% discount on true-ups. 15% tier uplifts (Pro to Prime). 10% tier uplifts (Pro to Adv). Mid-range Moveworks." },
+              { label: "Optimistic", value: "$3.5M", color: colors.blue, details: "Contract rate true-ups. 25% tier uplifts (Pro to Prime). 15% tier uplifts (Pro to Adv). Full Moveworks rollout." },
+            ].map((s, i) => (
+              <div key={i} style={{ background: colors.bgCard, border: `2px solid ${s.color}`, borderRadius: 10, padding: 20, textAlign: "center" }}>
+                <div style={{ fontSize: 12, fontWeight: 700, color: s.color, textTransform: "uppercase", letterSpacing: "0.08em", marginBottom: 8 }}>{s.label}</div>
+                <div style={{ fontSize: 36, fontWeight: 800, color: s.color, marginBottom: 12 }}>{s.value}</div>
+                <div style={{ fontSize: 11, color: colors.textSecondary, lineHeight: 1.6, textAlign: "left" }}>{s.details}</div>
+              </div>
+            ))}
+          </div>
+          <div style={{ background: colors.bgCard, border: `1px solid ${colors.green}40`, borderRadius: 10, padding: 20 }}>
+            <div style={{ fontSize: 12, fontWeight: 700, color: colors.green, marginBottom: 10 }}>Revenue Composition (Mid Scenario)</div>
+            {[
+              { label: "AI Native Tier Uplifts", value: "$1,034,275", pct: 32 },
+              { label: "Moveworks for Enterprise", value: "$800,000", pct: 25 },
+              { label: "HRSD True-Up", value: "$743,326", pct: 23 },
+              { label: "App Engine True-Up", value: "$361,800", pct: 11 },
+              { label: "Storage True-Up", value: "$275,400", pct: 9 },
+            ].map((r, i) => (
+              <div key={i} style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 8 }}>
+                <div style={{ width: 100, height: 6, background: `${colors.green}20`, borderRadius: 3, overflow: "hidden" }}>
+                  <div style={{ width: `${r.pct * 3}%`, height: "100%", background: colors.green, borderRadius: 3 }} />
+                </div>
+                <span style={{ fontSize: 11, fontWeight: 600, color: colors.green, fontFamily: "monospace", width: 90 }}>{r.value}</span>
+                <span style={{ fontSize: 11, color: colors.textSecondary }}>{r.label} ({r.pct}%)</span>
+              </div>
+            ))}
+            <div style={{ marginTop: 12, paddingTop: 12, borderTop: `1px solid ${colors.border}`, display: "flex", justifyContent: "space-between" }}>
+              <span style={{ fontSize: 12, fontWeight: 700, color: colors.textPrimary }}>Gross Positive: $3,214,801</span>
+              <span style={{ fontSize: 12, fontWeight: 700, color: colors.red }}>Offload Credits: -$1,360,440</span>
+              <span style={{ fontSize: 12, fontWeight: 700, color: colors.green }}>Net NNACV: $1,854,361</span>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* CONVERSATION GUIDE TAB */}
+      {activeTab === "guide" && (
+        <div>
+          {[
+            { step: "1", title: "Start with the success story", detail: "ITSM, HRSD, ITOM, SAM, HAM, and App Engine are running at or above capacity. OneSC is a genuine industry first. That is the foundation." },
+            { step: "2", title: "Acknowledge what is ramping vs stalled", detail: "WSD, H&S, SPM, and AI Control Tower are investments in motion, not failures. By contrast, IRM (scope-restricted), SecOps VR (shared count), BCM (8%), and TPRM (51%) have not found a home." },
+            { step: "3", title: "Present the platform shift", detail: "ServiceNow is moving to AI Native. Moveworks, NowAssist, and agentic AI are embedded directly into the platform. The question is not whether to migrate but how to maximise the return." },
+            { step: "4", title: "Frame as reinvestment, not upsell", detail: "You are spending roughly $1.36M/year on four products that are not delivering. Redirect that into Moveworks for Enterprise: an AI assistant across every application in the bank." },
+            { step: "5", title: "Address overages constructively", detail: "App Engine and HRSD overages reflect success, not misuse. SCB built extensively because the platform works. Frame the true-up as enabling continued growth, not a penalty." },
+            { step: "6", title: "The Moveworks hook", detail: "Moveworks for Enterprise works across all enterprise applications, not just ServiceNow. For a bank operating in 55 countries with hundreds of systems, that is the differentiator. Frame against SCB's internal Yoda tool." },
+          ].map((s, i) => (
+            <div key={i} style={{ display: "flex", gap: 16, marginBottom: 16 }}>
+              <div style={{ width: 32, height: 32, borderRadius: "50%", background: colors.blue, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 14, fontWeight: 700, color: colors.bg, flexShrink: 0 }}>{s.step}</div>
+              <div style={{ flex: 1 }}>
+                <div style={{ fontSize: 13, fontWeight: 700, color: colors.textPrimary, marginBottom: 4 }}>{s.title}</div>
+                <div style={{ fontSize: 12, color: colors.textSecondary, lineHeight: 1.6 }}>{s.detail}</div>
+              </div>
+            </div>
+          ))}
+          <div style={{ background: colors.bgCard, border: `1px solid ${colors.green}40`, borderRadius: 8, padding: 16, marginTop: 16 }}>
+            <div style={{ fontSize: 12, fontWeight: 700, color: colors.green, marginBottom: 8 }}>The pitch in one sentence</div>
+            <div style={{ fontSize: 13, color: colors.textSecondary, lineHeight: 1.6 }}>Today you are paying ~$1.36M/year for four products that are not delivering. Redirect that into Moveworks for Enterprise and you transform dormant spend into an AI assistant that works across every application in the bank, not just ServiceNow. That is a fundamentally different return on the same capital.</div>
+          </div>
+        </div>
+      )}
+
+      <div style={{ marginTop: 20, fontSize: 10, color: colors.textMuted, textAlign: "center" }}>
+        Internal – Not for client distribution | ACCT0213754 | Usage scan: 9 April 2026 | All uplift percentages indicative
+      </div>
+    </div>
+  );
+}
+
 // ─── License Entitlements View ────────────────────────────────────────────────
 const LICENSE_DATA = [
   { bu: "ITSM", code: "PROD11356", name: "IT Service Management Professional", type: "Unrestricted User", units: "70,000", acv: 1470000, tcv: 5113651, order: "OF1 + OF2" },
@@ -2604,6 +2869,7 @@ export default function SCBAccountPlan() {
       case "adoption": return <AdoptionView />;
       case "growth": return <GrowthView />;
       case "actions": return <ActionsView />;
+      case "migration": return <MigrationView />;
       case "licenses": return <LicenseView />;
       default: return <DashboardView />;
     }
