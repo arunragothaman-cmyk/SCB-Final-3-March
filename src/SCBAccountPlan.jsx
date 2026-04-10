@@ -2447,8 +2447,8 @@ const LICENSE_DATA = [
   { bu: "Risk", code: "PROD20917", name: "Third-party Risk Management Standard", type: "Transactions", units: "2,000", acv: 180000, tcv: 626161, order: "OF3" },
   { bu: "Risk", code: "PROD14201", name: "Business Continuity Management Professional", type: "BCM Operator", units: "300", acv: 180000, tcv: 626161, order: "OF3" },
   { bu: "Risk", code: "PROD03427", name: "Performance Analytics for GRC", type: "Application", units: "1", acv: 0, tcv: 0, order: "OF1" },
-  { bu: "SecOps", code: "PROD16744", name: "Security Operations Professional \u2013 SIR", type: "Unrestricted User", units: "70,000", acv: 655200, tcv: 2279227, order: "OF3" },
-  { bu: "SecOps", code: "PROD18276", name: "Security Operations Professional \u2013 VR", type: "Unrestricted User", units: "70,000", acv: 394800, tcv: 1373380, order: "OF1" },
+  { bu: "SecOps", code: "PROD16744", name: "Security Operations Professional – SIR", type: "Unrestricted User", units: "70,000", acv: 655200, tcv: 2279227, order: "OF3" },
+  { bu: "SecOps", code: "PROD18276", name: "Security Operations Professional – VR", type: "Unrestricted User", units: "70,000", acv: 394800, tcv: 1373380, order: "OF1" },
   { bu: "ITOM", code: "PROD14995", name: "ITOM AIOps Professional", type: "Subscription Unit", units: "60,000", acv: 1692000, tcv: 5885916, order: "OF1" },
   { bu: "ITAM", code: "PROD13583", name: "Hardware Asset Management Professional", type: "Subscription Unit", units: "50,000", acv: 672000, tcv: 2337669, order: "OF1" },
   { bu: "ITAM", code: "PROD15033", name: "Software Asset Management Professional", type: "Subscription Unit", units: "65,000", acv: 686400, tcv: 2387762, order: "OF1" },
@@ -2458,14 +2458,14 @@ const LICENSE_DATA = [
   { bu: "AI", code: "PROD23494", name: "RaptorDB Professional", type: "Application", units: "1", acv: 495150, tcv: 1722467, order: "OF2" },
   { bu: "AI", code: "PROD15338", name: "AI Search Starter", type: "Documents", units: "500K docs", acv: 0, tcv: 0, order: "OF1" },
   { bu: "WDF", code: "PROD24512", name: "Workflow Data Fabric Standard", type: "Unattended Robot", units: "1", acv: 49500, tcv: 172194, order: "OF1" },
-  { bu: "WDF", code: "PROD18254", name: "WDF Bundle \u2013 100M IntHub Transactions", type: "Transaction Pack", units: "1", acv: 36000, tcv: 125232, order: "OF1" },
+  { bu: "WDF", code: "PROD18254", name: "WDF Bundle – 100M IntHub Transactions", type: "Transaction Pack", units: "1", acv: 36000, tcv: 125232, order: "OF1" },
   { bu: "Infra", code: "PROD20936", name: "Dedicated Environment Capacity (6TB)", type: "Ded. Environment", units: "14", acv: 428400, tcv: 1490264, order: "OF1" },
   { bu: "Infra", code: "PROD18696", name: "Included Production Instance", type: "Ded. Environment", units: "1", acv: 0, tcv: 0, order: "OF1" },
   { bu: "Infra", code: "PROD18698", name: "Additional Production Instance", type: "Ded. Environment", units: "1", acv: 0, tcv: 0, order: "OF1" },
   { bu: "Infra", code: "PROD18697", name: "Included Non-Production Instance", type: "Ded. Environment", units: "2", acv: 0, tcv: 0, order: "OF1" },
   { bu: "Infra", code: "PROD18699", name: "Additional Non-Production Instance", type: "Ded. Environment", units: "6", acv: 61200, tcv: 212895, order: "OF1" },
   { bu: "Infra", code: "PROD25331", name: "Platform Encryption", type: "Application", units: "1", acv: 414000, tcv: 1440171, order: "OF1" },
-  { bu: "Success", code: "PROD19214", name: "Impact Guided \u2013 MSP Dedicated Instance", type: "Success", units: "1", acv: 485817, tcv: 1689998, order: "OF1" },
+  { bu: "Success", code: "PROD19214", name: "Impact Guided – MSP Dedicated Instance", type: "Success", units: "1", acv: 485817, tcv: 1689998, order: "OF1" },
   { bu: "Success", code: "PROD22474", name: "Managed Support", type: "Success", units: "3", acv: 225000, tcv: 782702, order: "OF1" },
 ];
 
@@ -2475,7 +2475,7 @@ function LicenseView() {
   const filtered = filterBU === "All" ? LICENSE_DATA : LICENSE_DATA.filter(p => p.bu === filterBU);
   const totalAcv = filtered.reduce((s, p) => s + p.acv, 0);
   const totalTcv = filtered.reduce((s, p) => s + p.tcv, 0);
-  const fmt = (n) => n === 0 ? "\u2013" : "$" + n.toLocaleString("en-US");
+  const fmt = (n) => n === 0 ? "–" : "$" + n.toLocaleString("en-US");
 
   const buColors = {
     "ITSM": { bg: `${colors.blue}15`, color: colors.blue },
@@ -2497,7 +2497,7 @@ function LicenseView() {
       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: 20 }}>
         <div>
           <h1 style={{ fontSize: 24, fontWeight: 700, color: colors.textPrimary, margin: "0 0 4px" }}>License Entitlements</h1>
-          <p style={{ fontSize: 13, color: colors.textSecondary, margin: 0 }}>Infosys\u2013Standard Chartered \u00B7 Contract LCN0025670 \u00B7 Term: 29 Jun 2025 \u2013 21 Dec 2028</p>
+          <p style={{ fontSize: 13, color: colors.textSecondary, margin: 0 }}>Infosys–Standard Chartered · Contract LCN0025670 · Term: 29 Jun 2025 – 21 Dec 2028</p>
         </div>
         <div style={{ textAlign: "right", fontSize: 10, color: colors.textMuted, fontFamily: "monospace" }}>
           <div>Account # ACCT0213754</div>
@@ -2571,16 +2571,16 @@ function LicenseView() {
           "Dual Instance: SCB may use licences across scbnow01 and scsg until 31 Dec 2025. After that, scbnow01 must be decommissioned or +$3,750/month applies.",
           "IRM Professional: Usage limited to Policy & Compliance, GRC, Risk Mgmt, Use Case Accelerators, Operational Resilience. Expanded scope via new order form.",
           "Product Exchange: OF1 includes flexible exchange clause (60-day notice) across 16 products at locked monthly rates.",
-          "Now Assist for Enterprise: 2 Assists \u00D7 15M = 30M Assists annually. Requires Next Experience and GenAI Controller.",
+          "Now Assist for Enterprise: 2 Assists × 15M = 30M Assists annually. Requires Next Experience and GenAI Controller.",
           "AI Control Tower: 500 Subscription Units. GRC apps restricted to AI Asset governance only.",
           "Impact Guided: Fee pegged at 4.29% of total annual subscription product fees. Scales with additional purchases.",
           "RaptorDB Professional: Fee indexed to total annual subscription fees across all products.",
           "EU AI Act: Explicit compliance clause for Advanced AI and Data Products under Regulation (EU) 2024/1689.",
-          "Hosting: Europe data centre, dedicated environments. 14 \u00D7 6TB = 84TB total storage.",
+          "Hosting: Europe data centre, dedicated environments. 14 × 6TB = 84TB total storage.",
           "All three Order Forms (ORD2198466-11, ORD3650930-1, ORD3651142-1) must be fully executed for any to be enforceable.",
         ].map((note, i) => (
           <div key={i} style={{ display: "flex", gap: 8, marginBottom: 8 }}>
-            <span style={{ color: colors.blue, fontSize: 12, lineHeight: 1 }}>\u2022</span>
+            <span style={{ color: colors.blue, fontSize: 12, lineHeight: 1 }}>•</span>
             <span style={{ fontSize: 11, color: colors.textSecondary, lineHeight: 1.5 }}>{note}</span>
           </div>
         ))}
