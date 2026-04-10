@@ -514,6 +514,7 @@ function Sidebar({ active, setActive }) {
     { id: "adoption", label: "Adoption & Renewal", icon: "🤝" },
     { id: "growth", label: "Growth & Upsell", icon: "▲" },
     { id: "actions", label: "Actions", icon: "✓" },
+    { id: "migration", label: "Migration Simulation", icon: "⚡" },
     { id: "licenses", label: "License Entitlements", icon: "📋" },
   ];
   return (
