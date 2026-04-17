@@ -472,24 +472,27 @@ const GROWTH_OPPORTUNITIES = [
 
 // ─── Theme & Styles ──────────────────────────────────────────────────────────
 const colors = {
-  bg: "#0a1628",
-  bgCard: "#0f1f35",
-  bgHover: "#152a45",
-  bgPanel: "#0d1a2e",
-  border: "#1a3050",
-  borderLight: "#243d5c",
-  green: "#3ddc84",
-  greenDark: "#2ba864",
-  greenGlow: "rgba(61,220,132,0.15)",
-  blue: "#4a9eff",
-  blueGlow: "rgba(74,158,255,0.15)",
-  amber: "#f5a623",
-  amberGlow: "rgba(245,166,35,0.12)",
-  red: "#ff4757",
-  redGlow: "rgba(255,71,87,0.12)",
-  textPrimary: "#e8edf5",
-  textSecondary: "#8a9bb5",
-  textMuted: "#5a6d85",
+  // Standard Chartered Brand Palette
+  // Primary: SC Blue #0072AA, SC Teal #00A896
+  // Dark theme adapted from SCB masterbrand guidelines
+  bg: "#001A2E",
+  bgCard: "#002640",
+  bgHover: "#003352",
+  bgPanel: "#001E34",
+  border: "rgba(0,114,170,0.2)",
+  borderLight: "rgba(0,168,150,0.2)",
+  green: "#00A896",        // SC Teal (primary green accent)
+  greenDark: "#008577",
+  greenGlow: "rgba(0,168,150,0.12)",
+  blue: "#0072AA",         // SC Blue (primary brand colour)
+  blueGlow: "rgba(0,114,170,0.12)",
+  amber: "#F5A623",
+  amberGlow: "rgba(245,166,35,0.10)",
+  red: "#E74C3C",
+  redGlow: "rgba(231,76,60,0.10)",
+  textPrimary: "#E8EDF2",
+  textSecondary: "#94A8BA",
+  textMuted: "#607080",
   white: "#ffffff",
 };
 
@@ -497,7 +500,7 @@ const statusColors = {
   green: { bg: colors.greenGlow, color: colors.green, label: "Strong Ally" },
   amber: { bg: colors.amberGlow, color: colors.amber, label: "Needs Development" },
   red: { bg: colors.redGlow, color: colors.red, label: "Risk / No Relationship" },
-  grey: { bg: "rgba(138,155,181,0.12)", color: "#8a9bb5", label: "Evaluating Need" },
+  grey: { bg: "rgba(96,112,128,0.12)", color: "#94A8BA", label: "Evaluating Need" },
 };
 
 // ─── Components ──────────────────────────────────────────────────────────────
@@ -514,6 +517,8 @@ function Sidebar({ active, setActive }) {
     { id: "adoption", label: "Adoption & Renewal", icon: "🤝" },
     { id: "growth", label: "Growth & Upsell", icon: "▲" },
     { id: "actions", label: "Actions", icon: "✓" },
+    { id: "aicoach", label: "ServiceNow AI Coach", icon: "🤖" },
+    { id: "telemetry", label: "Platform Telemetry", icon: "📊" },
     { id: "migration", label: "Migration Simulation", icon: "⚡" },
     { id: "licenses", label: "License Entitlements", icon: "📋" },
   ];
@@ -2435,6 +2440,743 @@ function ActionsView() {
 }
 
 // ─── Main App ────────────────────────────────────────────────────────────────
+// ─── AI Coach Output View ─────────────────────────────────────────────────────
+const AI_COACH_HTML = `<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Standard Chartered Plc — ServiceNow Partnership Briefing</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@300;400;500;600;700&family=Barlow+Condensed:wght@600;700&display=swap" rel="stylesheet">
+<style>
+/* ─── SC Brand Tokens ─────────────────────────────── */
+:root {
+  --sc-navy:      #2C3A87;
+  --sc-blue:      #0061C7;
+  --sc-bright:    #0473EA;
+  --sc-green:     #38D200;
+  --sc-grey:      #525355;
+  --sc-green-70:  #74DF4C;
+  --sc-blue-70:   #4F9DF0;
+  --sc-green-20:  #CDF4BF;
+  --sc-blue-20:   #C3DEFA;
+  --sc-navy-10:   #ECEEF7;
+  --white:        #FFFFFF;
+  --off-white:    #F7F8FC;
+  --border:       #E2E5F0;
+  --text-dark:    #1A1F3C;
+  --text-body:    #525355;
+  --text-muted:   #8C8E90;
+  --red:          #D72B2B;
+  --amber:        #E87B00;
+  --success:      #1A7E3C;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Barlow', sans-serif; background: var(--off-white); color: var(--text-body); font-size: 13.5px; line-height: 1.6; }
+
+/* ─── Header ──────────────────────────────────────── */
+.site-header {
+  background: var(--sc-navy);
+  padding: 0 32px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 64px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 2px 12px rgba(44,58,135,0.25);
+}
+.sc-logo { display: flex; align-items: baseline; }
+.sc-logo .wordmark { color: var(--white); font-family: 'Barlow Condensed', sans-serif; font-size: 22px; font-weight: 700; letter-spacing: 0.5px; }
+.header-meta { text-align: right; }
+.header-meta .doc-title { color: rgba(255,255,255,0.9); font-size: 12px; font-weight: 500; letter-spacing: 0.3px; }
+.header-meta .doc-sub { color: var(--sc-green-70); font-size: 10.5px; margin-top: 2px; }
+.confidential-badge { background: rgba(56,210,0,0.15); border: 1px solid var(--sc-green); color: var(--sc-green); font-size: 10px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; padding: 3px 10px; border-radius: 2px; }
+
+/* ─── Summary Bar ─────────────────────────────────── */
+.summary-bar {
+  background: var(--white);
+  border-bottom: 1px solid var(--border);
+  padding: 14px 32px;
+  display: flex;
+  gap: 40px;
+  align-items: center;
+}
+.kpi { display: flex; flex-direction: column; }
+.kpi .k-val { font-size: 20px; font-weight: 700; color: var(--text-dark); font-family: 'Barlow Condensed', sans-serif; }
+.kpi .k-val.green { color: var(--sc-blue); }
+.kpi .k-lbl { font-size: 10px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.7px; margin-top: 1px; }
+.kpi-divider { width: 1px; height: 36px; background: var(--border); }
+
+/* ─── Tab Navigation ──────────────────────────────── */
+.tab-nav {
+  background: var(--white);
+  border-bottom: 2px solid var(--border);
+  padding: 0 32px;
+  display: flex;
+  gap: 0;
+  position: sticky;
+  top: 64px;
+  z-index: 90;
+}
+.tab-btn {
+  padding: 14px 24px;
+  font-family: 'Barlow', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-muted);
+  border: none;
+  background: none;
+  cursor: pointer;
+  border-bottom: 3px solid transparent;
+  margin-bottom: -2px;
+  transition: all 0.2s ease;
+  letter-spacing: 0.2px;
+  white-space: nowrap;
+}
+.tab-btn:hover { color: var(--sc-navy); }
+.tab-btn.active { color: var(--sc-navy); border-bottom-color: var(--sc-green); }
+.tab-btn .tab-icon { margin-right: 6px; }
+
+/* ─── Tab Content ─────────────────────────────────── */
+.tab-panel { display: none; padding: 24px 32px 40px; max-width: 1200px; }
+.tab-panel.active { display: block; }
+
+/* ─── Grid Layouts ────────────────────────────────── */
+.g2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px; }
+.g3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; margin-bottom: 16px; }
+.g4 { display: grid; grid-template-columns: repeat(4,1fr); gap: 14px; margin-bottom: 16px; }
+
+/* ─── Cards ───────────────────────────────────────── */
+.card {
+  background: var(--white);
+  border-radius: 8px;
+  padding: 20px 22px;
+  border: 1px solid var(--border);
+  margin-bottom: 16px;
+}
+.card-h {
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--sc-navy);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 14px;
+  padding-bottom: 8px;
+  border-bottom: 2px solid var(--sc-green);
+  display: inline-block;
+}
+
+/* ─── KPI Tiles ───────────────────────────────────── */
+.kpi-tile {
+  background: var(--white);
+  border-radius: 8px;
+  padding: 18px 16px;
+  text-align: center;
+  border: 1px solid var(--border);
+  border-top: 3px solid var(--sc-navy);
+}
+.kpi-tile .val { font-size: 26px; font-weight: 700; color: var(--text-dark); font-family: 'Barlow Condensed', sans-serif; }
+.kpi-tile .val.green { color: var(--sc-blue); }
+.kpi-tile .lbl { font-size: 10px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.7px; margin-bottom: 6px; }
+.kpi-tile .sub { font-size: 11px; color: var(--text-muted); margin-top: 4px; }
+.kpi-tile.accent { border-top-color: var(--sc-green); }
+
+/* ─── Rows ────────────────────────────────────────── */
+.row { display: flex; align-items: flex-start; padding: 8px 0; border-bottom: 1px solid #F0F2F8; gap: 12px; }
+.row:last-child { border-bottom: none; }
+.row .rl { color: var(--text-muted); font-size: 12px; width: 175px; flex-shrink: 0; }
+.row .rv { color: var(--text-dark); font-size: 12px; font-weight: 500; flex: 1; }
+
+/* ─── Stakeholder Cards ───────────────────────────── */
+.person { border-radius: 6px; padding: 11px 14px; margin-bottom: 9px; background: var(--off-white); border-left: 3px solid var(--sc-blue); }
+.person .p-name { font-weight: 700; font-size: 13px; color: var(--text-dark); }
+.person .p-role { font-size: 11px; color: var(--text-muted); margin-top: 2px; }
+.person .p-note { font-size: 11px; color: var(--sc-navy); margin-top: 4px; font-style: italic; }
+.person.champion { border-left-color: var(--sc-green); }
+
+/* ─── Pills ───────────────────────────────────────── */
+.pill { display: inline-flex; align-items: center; padding: 2px 9px; border-radius: 2px; font-size: 10px; font-weight: 700; letter-spacing: 0.3px; }
+.pill.green { background: var(--sc-green-20); color: var(--success); }
+.pill.red { background: #FFE5E5; color: var(--red); }
+.pill.amber { background: #FFF0D9; color: var(--amber); }
+.pill.blue { background: var(--sc-blue-20); color: var(--sc-blue); }
+.pill.navy { background: var(--sc-navy-10); color: var(--sc-navy); }
+
+/* ─── Products ────────────────────────────────────── */
+.prod { display: flex; align-items: center; justify-content: space-between; padding: 7px 0; border-bottom: 1px solid #F0F2F8; }
+.prod:last-child { border-bottom: none; }
+.prod .pn { font-size: 12px; color: var(--text-dark); font-weight: 500; }
+.prod .pc { font-size: 12px; color: var(--text-muted); }
+
+/* ─── Progress Bars ───────────────────────────────── */
+.prog { margin-bottom: 13px; }
+.prog .pl { display: flex; justify-content: space-between; font-size: 12px; color: var(--text-dark); margin-bottom: 5px; }
+.prog .pl .pv { font-weight: 600; color: var(--text-muted); }
+.prog .pb { background: var(--border); border-radius: 2px; height: 7px; }
+.prog .pf { height: 7px; border-radius: 2px; background: var(--sc-green); }
+.prog .pf.blue { background: var(--sc-blue); }
+.prog .pf.red { background: var(--red); }
+.prog .pf.amber { background: var(--amber); }
+
+/* ─── Timeline ────────────────────────────────────── */
+.tl-item { display: flex; gap: 14px; margin-bottom: 16px; }
+.tl-dot { width: 11px; height: 11px; border-radius: 50%; background: var(--sc-green); flex-shrink: 0; margin-top: 4px; border: 2px solid var(--white); box-shadow: 0 0 0 2px var(--sc-green); }
+.tl-dot.red { background: var(--red); box-shadow: 0 0 0 2px var(--red); }
+.tl-dot.blue { background: var(--sc-blue); box-shadow: 0 0 0 2px var(--sc-blue); }
+.tl-dot.navy { background: var(--sc-navy); box-shadow: 0 0 0 2px var(--sc-navy); }
+.tl-body .tl-date { font-size: 10.5px; font-weight: 700; color: var(--sc-blue); text-transform: uppercase; letter-spacing: 0.5px; }
+.tl-body .tl-event { font-size: 13px; color: var(--text-dark); font-weight: 600; margin-top: 2px; }
+.tl-body .tl-detail { font-size: 12px; color: var(--text-muted); margin-top: 3px; line-height: 1.5; }
+
+/* ─── Action Items ────────────────────────────────── */
+.action { border-radius: 6px; padding: 14px 16px; margin-bottom: 12px; border-left: 4px solid; }
+.action.urgent { background: #FFF5F5; border-left-color: var(--red); }
+.action.high { background: #FFFAF0; border-left-color: var(--amber); }
+.action.medium { background: #F0F5FF; border-left-color: var(--sc-blue); }
+.action.strategic { background: #F3FBF0; border-left-color: var(--sc-green); }
+.action .ah { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 8px; }
+.action .at { font-weight: 700; font-size: 13px; color: var(--text-dark); }
+.action .ad-badge { font-size: 10px; font-weight: 700; border-radius: 2px; padding: 2px 9px; white-space: nowrap; }
+.action.urgent .ad-badge { background: #FFE5E5; color: var(--red); }
+.action.high .ad-badge { background: #FFF0D9; color: var(--amber); }
+.action.medium .ad-badge { background: var(--sc-blue-20); color: var(--sc-blue); }
+.action.strategic .ad-badge { background: var(--sc-green-20); color: var(--success); }
+.action .ab { font-size: 12px; color: var(--text-body); line-height: 1.6; margin-bottom: 9px; }
+.action .am { display: flex; flex-wrap: wrap; gap: 14px; }
+.action .am-item { font-size: 11px; }
+.action .am-item .aml { color: var(--text-muted); }
+.action .am-item .amv { color: var(--text-dark); font-weight: 600; }
+
+/* ─── OKR Rows ────────────────────────────────────── */
+.okr { display: flex; align-items: center; padding: 10px 0; border-bottom: 1px solid #F0F2F8; gap: 12px; }
+.okr:last-child { border-bottom: none; }
+.okr .oo { font-size: 13px; font-weight: 600; color: var(--text-dark); flex: 2; }
+.okr .ok { font-size: 12px; color: var(--text-muted); flex: 3; line-height: 1.4; }
+.okr .os { flex-shrink: 0; }
+
+/* ─── Pipeline Table ──────────────────────────────── */
+.pipe-table { width: 100%; border-collapse: collapse; font-size: 12.5px; }
+.pipe-table th { background: var(--sc-navy); color: var(--white); text-align: left; padding: 10px 12px; font-size: 10.5px; font-weight: 600; letter-spacing: 0.5px; text-transform: uppercase; }
+.pipe-table th:first-child { border-radius: 6px 0 0 0; }
+.pipe-table th:last-child { border-radius: 0 6px 0 0; }
+.pipe-table td { padding: 10px 12px; border-bottom: 1px solid #F0F2F8; vertical-align: middle; }
+.pipe-table tr:last-child td { border-bottom: none; }
+.pipe-table tr:hover td { background: var(--off-white); }
+.opty-num { font-family: 'Barlow Condensed', sans-serif; font-size: 12px; color: var(--text-muted); font-weight: 600; letter-spacing: 0.5px; }
+.opty-name { font-weight: 600; color: var(--text-dark); }
+
+/* ─── Priority cards (Industry) ───────────────────── */
+.priority-card { background: var(--white); border-radius: 8px; overflow: hidden; margin-bottom: 16px; border: 1px solid var(--border); }
+.priority-header { background: var(--sc-navy); padding: 14px 20px; }
+.priority-header .pnum { font-size: 10px; color: var(--sc-green-70); font-weight: 700; text-transform: uppercase; letter-spacing: 1px; }
+.priority-header h4 { color: var(--white); font-size: 15px; font-weight: 700; margin-top: 4px; font-family: 'Barlow', sans-serif; }
+.priority-body { padding: 18px 20px; }
+.priority-body .ctx { font-size: 12.5px; color: var(--text-body); line-height: 1.65; margin-bottom: 14px; }
+.signal { background: var(--sc-blue-20); border-radius: 5px; padding: 10px 13px; margin-bottom: 8px; border-left: 3px solid var(--sc-blue); }
+.signal .sl { font-size: 9.5px; font-weight: 700; color: var(--sc-navy); text-transform: uppercase; letter-spacing: 0.7px; margin-bottom: 3px; }
+.signal .st { font-size: 12px; color: var(--text-dark); }
+.sn-play { background: var(--sc-green-20); border-radius: 5px; padding: 10px 13px; margin-bottom: 8px; border-left: 3px solid var(--sc-green); }
+.sn-play .sl { font-size: 9.5px; font-weight: 700; color: var(--success); text-transform: uppercase; letter-spacing: 0.7px; margin-bottom: 3px; }
+.sn-play .st { font-size: 12px; color: var(--text-dark); }
+.conv { background: var(--sc-navy-10); border-radius: 5px; padding: 11px 13px; margin-top: 10px; border: 1px dashed rgba(44,58,135,0.3); }
+.conv .cl { font-size: 9.5px; font-weight: 700; color: var(--sc-navy); text-transform: uppercase; letter-spacing: 0.7px; margin-bottom: 4px; }
+.conv .ct { font-size: 12px; color: var(--text-body); font-style: italic; line-height: 1.55; }
+
+/* ─── Info boxes ──────────────────────────────────── */
+.info-box { border-radius: 6px; padding: 12px 14px; margin-top: 14px; }
+.info-box.green { background: var(--sc-green-20); border-left: 3px solid var(--sc-green); }
+.info-box.blue { background: var(--sc-blue-20); border-left: 3px solid var(--sc-blue); }
+.info-box.amber { background: #FFF0D9; border-left: 3px solid var(--amber); }
+.info-box.red { background: #FFE5E5; border-left: 3px solid var(--red); }
+.info-box .ib-title { font-size: 11px; font-weight: 700; color: var(--text-dark); margin-bottom: 4px; }
+.info-box .ib-body { font-size: 12px; color: var(--text-body); line-height: 1.55; }
+
+/* ─── Workstream grid ─────────────────────────────── */
+.ws-card { background: var(--off-white); border-radius: 6px; padding: 13px 14px; border-top: 3px solid var(--sc-green); }
+.ws-card.blue { border-top-color: var(--sc-blue); }
+.ws-card .ws-title { font-weight: 700; font-size: 12.5px; color: var(--text-dark); margin-bottom: 5px; }
+.ws-card .ws-body { font-size: 11.5px; color: var(--text-muted); line-height: 1.55; }
+
+/* ─── Reg rows ────────────────────────────────────── */
+.reg-row { display: flex; gap: 12px; padding: 9px 0; border-bottom: 1px solid #F0F2F8; align-items: flex-start; }
+.reg-row:last-child { border-bottom: none; }
+.reg-tag { font-size: 10px; font-weight: 700; border-radius: 2px; padding: 2px 8px; flex-shrink: 0; white-space: nowrap; }
+.reg-tag.red { background: #FFE5E5; color: var(--red); }
+.reg-tag.amber { background: #FFF0D9; color: var(--amber); }
+.reg-tag.blue { background: var(--sc-blue-20); color: var(--sc-blue); }
+.reg-detail { font-size: 12px; color: var(--text-dark); }
+.reg-sn { font-size: 11px; color: var(--text-muted); margin-top: 3px; }
+
+/* ─── Steps list ──────────────────────────────────── */
+.steps { list-style: none; }
+.steps li { display: flex; gap: 12px; padding: 8px 0; border-bottom: 1px solid #F0F2F8; font-size: 12px; align-items: flex-start; }
+.steps li:last-child { border-bottom: none; }
+.step-n { width: 22px; height: 22px; background: var(--sc-navy); color: var(--sc-green); border-radius: 50%; font-size: 11px; font-weight: 700; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+
+/* ─── Footer ──────────────────────────────────────── */
+.doc-footer { text-align: center; color: var(--text-muted); font-size: 10.5px; padding: 20px 32px 28px; border-top: 1px solid var(--border); margin-top: 8px; }
+.doc-footer .sc-tagline { color: var(--sc-navy); font-weight: 700; font-size: 11px; margin-bottom: 4px; }
+
+/* ─── Narrative callout ───────────────────────────── */
+.narrative { background: linear-gradient(135deg, var(--sc-navy) 0%, #1A2566 100%); border-radius: 8px; padding: 16px 20px; color: var(--white); margin-bottom: 0; }
+.narrative .n-title { font-size: 11px; font-weight: 700; color: var(--sc-green-70); text-transform: uppercase; letter-spacing: 0.8px; margin-bottom: 6px; }
+.narrative .n-body { font-size: 12.5px; line-height: 1.6; color: rgba(255,255,255,0.88); }
+</style>
+</head>
+<body>
+
+<!-- ═══ HEADER ═══════════════════════════════════════ -->
+<header class="site-header">
+  <div class="sc-logo">
+    <span class="wordmark">Standard Chartered Plc</span>
+  </div>
+  <div style="display:flex; align-items:center; gap:16px;">
+    <div class="header-meta">
+      <div class="doc-title">ServiceNow Partnership Briefing</div>
+      <div class="doc-sub">ACCT0213754 &amp; ACCT0212500 · April 2026</div>
+    </div>
+    <div class="confidential-badge">Confidential</div>
+  </div>
+</header>
+
+<!-- ═══ SUMMARY BAR ══════════════════════════════════ -->
+<div class="summary-bar">
+  <div class="kpi"><div class="k-val">$13.2M</div><div class="k-lbl">Total CACV</div></div>
+  <div class="kpi-divider"></div>
+  <div class="kpi"><div class="k-val green">$64.4M</div><div class="k-lbl">Total Addressable Market</div></div>
+  <div class="kpi-divider"></div>
+  <div class="kpi"><div class="k-val">$4.99M</div><div class="k-lbl">Open Pipeline</div></div>
+  <div class="kpi-divider"></div>
+  <div class="kpi"><div class="k-val">100.0</div><div class="k-lbl">NPS Score</div></div>
+  <div class="kpi-divider"></div>
+  <div class="kpi"><div class="k-val">540K</div><div class="k-lbl">Monthly Active Users</div></div>
+  <div class="kpi-divider"></div>
+  <div class="kpi"><div class="k-val">5M</div><div class="k-lbl">Workflows / Month</div></div>
+  <div class="kpi-divider"></div>
+  <div class="kpi"><div class="k-val">Dec 2028</div><div class="k-lbl">Primary SPA Renewal</div></div>
+</div>
+
+<!-- ═══ TAB NAV ══════════════════════════════════════ -->
+<nav class="tab-nav">
+  <button class="tab-btn active" onclick="showTab('profile',this)"><span class="tab-icon">◈</span> Account Profile</button>
+  <button class="tab-btn" onclick="showTab('growth',this)"><span class="tab-icon">◈</span> Growth &amp; Profitability</button>
+  <button class="tab-btn" onclick="showTab('industry',this)"><span class="tab-icon">◈</span> Industry Priorities</button>
+  <button class="tab-btn" onclick="showTab('action',this)"><span class="tab-icon">◈</span> Action Plan</button>
+</nav>
+
+<!-- ════════════════════════════════════════════════════
+     TAB 1 — ACCOUNT PROFILE
+════════════════════════════════════════════════════ -->
+<div id="tab-profile" class="tab-panel active">
+
+  <div class="g4">
+    <div class="kpi-tile accent"><div class="lbl">Total CACV</div><div class="val">$13.2M</div><div class="sub">Both accounts</div></div>
+    <div class="kpi-tile"><div class="lbl">TAM</div><div class="val green">$64.4M</div><div class="sub">~$51M whitespace</div></div>
+    <div class="kpi-tile"><div class="lbl">NPS</div><div class="val">100.0</div><div class="sub">Primary account</div></div>
+    <div class="kpi-tile"><div class="lbl">Platform Scale</div><div class="val">540K</div><div class="sub">MAUs · 5M workflows/mo</div></div>
+  </div>
+
+  <div class="g2">
+    <div class="card">
+      <div class="card-h">Account Snapshot</div>
+      <div class="row"><span class="rl">Primary Account</span><span class="rv">ACCT0213754 — SPA / Dedicated Instance</span></div>
+      <div class="row"><span class="rl">Primary CACV</span><span class="rv">~$12.85M · Contract through December 2028</span></div>
+      <div class="row"><span class="rl">Managed Service Partner</span><span class="rv">Infosys</span></div>
+      <div class="row"><span class="rl">Secondary Account</span><span class="rv">ACCT0212500 — Self-Hosted (WDF / RPA)</span></div>
+      <div class="row"><span class="rl">Secondary CACV</span><span class="rv">$343K · Renewal 14 November 2026</span></div>
+      <div class="row"><span class="rl">Engagement Level</span><span class="rv">High (primary) · Medium (self-hosted)</span></div>
+      <div class="row"><span class="rl">Licence Utilisation</span><span class="rv">104% overall</span></div>
+      <div class="row"><span class="rl">Now Assist Owned</span><span class="rv">$969K · 30M pooled assists</span></div>
+      <div class="row"><span class="rl">Headquarters</span><span class="rv">London, UK · 50+ markets globally</span></div>
+      <div class="row"><span class="rl">Global Parent</span><span class="rv">Standard Chartered plc (300000204391)</span></div>
+      <div class="row"><span class="rl">Segment</span><span class="rv">Large Enterprise · Marquee</span></div>
+      <div style="margin-top: 14px;">
+        <div class="narrative">
+          <div class="n-title">Account Narrative</div>
+          <div class="n-body">"Deep but narrow" — strong engagement where deployed (540K MAUs, NPS 100), but significant licensed capacity unactivated. Red-flagged BUs reflect breadth gaps, not usage failures. This distinction is critical for all internal and external storytelling.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-h">Key Stakeholders</div>
+      <div class="person"><div class="p-name">Bill Winters</div><div class="p-role">Group CEO</div><div class="p-note">Target for CEO-to-CEO engagement with Bill McDermott · P5 briefing produced</div></div>
+      <div class="person champion"><div class="p-name">Guillermo Veiga</div><div class="p-role">Group CIO</div><div class="p-note">Primary technology decision-maker · AI platform and Now Assist sponsor</div></div>
+      <div class="person champion"><div class="p-name">Melinda McKinley</div><div class="p-role">COO Strategy &amp; Talent, Singapore</div><div class="p-note">Established champion · HR &amp; Workplace engagement lead</div></div>
+      <div class="person"><div class="p-name">Tom Pfaff</div><div class="p-role">COO Group CFO Office · Aspire Programme Director</div><div class="p-note">SAP S/4 HANA programme lead · Source-to-Pay angle</div></div>
+      <div class="person"><div class="p-name">Cezary Piekarski / Vijay Kunchur</div><div class="p-role">Group CISO</div><div class="p-note">Security engagement · ISPM / Veza Access Graph</div></div>
+      <div class="person"><div class="p-name">Mohammed Rahim</div><div class="p-role">Group CDO</div><div class="p-note">Data strategy · RaptorDB activation angle</div></div>
+      <div class="person"><div class="p-name">Ben Issa</div><div class="p-role">Platform Owner (ServiceNow)</div><div class="p-note">Internal SCB ServiceNow owner · Infosys liaison</div></div>
+    </div>
+  </div>
+
+  <div class="g2">
+    <div class="card">
+      <div class="card-h">ServiceNow Footprint — Primary SPA (ACCT0213754)</div>
+      <div class="prod"><span class="pn">ITSM Professional</span><span class="pc">70,000 users · $1.47M/yr &nbsp;<span class="pill green">95% used</span></span></div>
+      <div class="prod"><span class="pn">HRSD Enterprise</span><span class="pc">80,000 HR users · $1.69M/yr &nbsp;<span class="pill amber">91K profiles on scbnow01</span></span></div>
+      <div class="prod"><span class="pn">ITOM AIOps Professional</span><span class="pc">60,000 units · $1.69M/yr &nbsp;<span class="pill green">82% used</span></span></div>
+      <div class="prod"><span class="pn">HAM Professional</span><span class="pc">50,000 units · $672K/yr &nbsp;<span class="pill green">96% used</span></span></div>
+      <div class="prod"><span class="pn">SAM Professional</span><span class="pc">65,000 units · $686K/yr &nbsp;<span class="pill green">94% used</span></span></div>
+      <div class="prod"><span class="pn">SecOps SIR + VR</span><span class="pc">70,000 users each · $1.05M/yr &nbsp;<span class="pill green">95% used</span></span></div>
+      <div class="prod"><span class="pn">IRM Professional</span><span class="pc">70,000 users combined · $588K/yr &nbsp;<span class="pill amber">Activating</span></span></div>
+      <div class="prod"><span class="pn">Now Assist for Enterprise</span><span class="pc">30M pooled assists · $897K/yr &nbsp;<span class="pill red">2% used</span></span></div>
+      <div class="prod"><span class="pn">App Engine Enterprise</span><span class="pc">535 users entitled · $289K/yr &nbsp;<span class="pill red">⚠ 18,748 actual</span></span></div>
+      <div class="prod"><span class="pn">Workplace SD Enterprise</span><span class="pc">10,000 users entitled &nbsp;<span class="pill red">Activating</span></span></div>
+      <div class="prod"><span class="pn">BCM Professional</span><span class="pc">300 BCM Operators · $180K/yr &nbsp;<span class="pill red">8% used</span></span></div>
+      <div class="prod"><span class="pn">TPRM Standard + Base</span><span class="pc">2,000 transactions · $198K/yr &nbsp;<span class="pill amber">51% used</span></span></div>
+      <div class="prod"><span class="pn">RaptorDB Professional</span><span class="pc">1 application · $495K/yr &nbsp;<span class="pill navy">Activating</span></span></div>
+      <div class="prod"><span class="pn">AI Control Tower</span><span class="pc">500 units · $72K/yr &nbsp;<span class="pill navy">Activating</span></span></div>
+      <div class="prod"><span class="pn">Enterprise Architecture</span><span class="pc">2,000 Business Apps · $384K/yr</span></div>
+      <div class="prod"><span class="pn">Platform Encryption</span><span class="pc">$414K/yr · all instances covered</span></div>
+      <div class="prod"><span class="pn">Impact Guided MSP</span><span class="pc">$486K/yr &nbsp;<span class="pill red">Red</span></span></div>
+      <div class="prod"><span class="pn">WDF Standard (scbnow01)</span><span class="pc">1 Unattended Robot · $49.5K/yr</span></div>
+    </div>
+
+    <div>
+      <div class="card">
+        <div class="card-h">Partner Ecosystem</div>
+        <div class="person" style="border-left-color:var(--sc-navy)"><div class="p-name">Infosys</div><div class="p-role">Managed Service Provider (MSP)</div><div class="p-note">Manages primary SPA instance · key delivery partner</div></div>
+        <div class="person" style="border-left-color:var(--sc-navy)"><div class="p-name">DXC Technology</div><div class="p-role">IT Support Outsourcing</div></div>
+        <div class="person" style="border-left-color:var(--sc-navy)"><div class="p-name">JLL</div><div class="p-role">Workplace / Facilities</div><div class="p-note">Relevant to Workplace Services activation (0% util.)</div></div>
+        <div class="card-h" style="margin-top:16px;">ServiceNow Executive Sponsors</div>
+        <div class="person champion"><div class="p-name">Stuart Pearce</div><div class="p-role">ServiceNow Executive Sponsor</div><div class="p-note">CEO-to-CEO framework · CFO office alignment</div></div>
+        <div class="person champion"><div class="p-name">Jan Morgenthal</div><div class="p-role">ServiceNow Executive Sponsor</div></div>
+      </div>
+      <div class="card">
+        <div class="card-h">Active Workstreams</div>
+        <div class="g2" style="margin:0; gap:10px;">
+          <div class="ws-card"><div class="ws-title">CIB Track 1</div><div class="ws-body">Ketelaar &amp; Corte · Workshop June 15–19 · Goldman Sachs proof point</div></div>
+          <div class="ws-card blue"><div class="ws-title">Moveworks ($2.1M)</div><div class="ws-body">OPTY5329687 · Stage 3 Objection · Deal desk + ECPro offset needed</div></div>
+          <div class="ws-card"><div class="ws-title">CEO-to-CEO</div><div class="ws-body">P5 briefing complete · Stuart Pearce engaged · Bill Winters target</div></div>
+          <div class="ws-card blue"><div class="ws-title">Veza ISPM CISO</div><div class="ws-body">OPTY5330340 · Stage 2 · CISO peer meeting to arrange</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ════════════════════════════════════════════════════
+     TAB 2 — GROWTH & PROFITABILITY
+════════════════════════════════════════════════════ -->
+<div id="tab-growth" class="tab-panel">
+
+  <div class="g4">
+    <div class="kpi-tile accent"><div class="lbl">Current CACV</div><div class="val">$13.2M</div><div class="sub">Both accounts</div></div>
+    <div class="kpi-tile"><div class="lbl">Total Addressable Market</div><div class="val green">$64.4M</div><div class="sub">Whitespace ~$51M</div></div>
+    <div class="kpi-tile"><div class="lbl">TAM Penetration</div><div class="val">20.5%</div><div class="sub">Significant headroom</div></div>
+    <div class="kpi-tile"><div class="lbl">Now Assist Owned</div><div class="val">$969K</div><div class="sub">30M pooled assists</div></div>
+  </div>
+
+
+  <div class="g2">
+    <div class="card">
+      <div class="card-h">Contracted Entitlement — All Order Forms (Apr 2026)</div>
+      <div style="font-size:10.5px; color:var(--text-muted); margin-bottom:10px;">Source: ORD2198466-11 · ORD3650930-1 · ORD3651142-1 · LCN0025670 · Scanned 9 Apr 2026</div>
+      <div class="prog"><div class="pl"><span>ITSM Professional <span class="pill green" style="font-size:9px;">95%</span></span><span class="pv">70,000 users · $1.47M/yr · Used: 66,653</span></div><div class="pb"><div class="pf" style="width:95%"></div></div></div>
+      <div class="prog"><div class="pl"><span>HRSD Enterprise <span class="pill green" style="font-size:9px;">scsg</span></span><span class="pv">80,000 HR users · $1.69M/yr · 91,402 profiles ⚠</span></div><div class="pb"><div class="pf" style="width:100%"></div></div></div>
+      <div class="prog"><div class="pl"><span>ITOM AIOps Professional <span class="pill green" style="font-size:9px;">82%</span></span><span class="pv">60,000 units · $1.69M/yr · Used: 49,304</span></div><div class="pb"><div class="pf" style="width:82%"></div></div></div>
+      <div class="prog"><div class="pl"><span>SAM Professional <span class="pill green" style="font-size:9px;">94%</span></span><span class="pv">65,000 units · $686K/yr · Used: 60,993</span></div><div class="pb"><div class="pf" style="width:94%"></div></div></div>
+      <div class="prog"><div class="pl"><span>HAM Professional <span class="pill green" style="font-size:9px;">96%</span></span><span class="pv">50,000 units · $672K/yr · Used: 47,983</span></div><div class="pb"><div class="pf" style="width:96%"></div></div></div>
+      <div class="prog"><div class="pl"><span>SecOps VR + SIR <span class="pill green" style="font-size:9px;">95%</span></span><span class="pv">70,000 users each · $1.05M/yr · Used: 66,653</span></div><div class="pb"><div class="pf" style="width:95%"></div></div></div>
+      <div class="prog"><div class="pl"><span>IRM Professional <span class="pill navy" style="font-size:9px;">70K combined</span></span><span class="pv">46,832 + 23,168 users · $588K/yr</span></div><div class="pb"><div class="pf blue" style="width:75%"></div></div></div>
+      <div class="prog"><div class="pl"><span>Now Assist for Enterprise <span class="pill red" style="font-size:9px;">2% used</span></span><span class="pv">30M pooled assists · $897K/yr · Used: 575,199</span></div><div class="pb"><div class="pf red" style="width:2%"></div></div></div>
+      <div class="prog"><div class="pl"><span>App Engine Enterprise <span class="pill red" style="font-size:9px;">⚠ 3,500% over</span></span><span class="pv">535 users entitled · $289K/yr · Actual: 18,748</span></div><div class="pb"><div class="pf red" style="width:100%"></div></div></div>
+      <div class="prog"><div class="pl"><span>Workplace SD Enterprise <span class="pill red" style="font-size:9px;">Activating</span></span><span class="pv">10,000 users entitled — deployment in progress</span></div><div class="pb"><div class="pf red" style="width:3%"></div></div></div>
+      <div class="prog"><div class="pl"><span>BCM Professional <span class="pill red" style="font-size:9px;">8%</span></span><span class="pv">300 BCM Operators · $180K/yr · Used: 23</span></div><div class="pb"><div class="pf red" style="width:8%"></div></div></div>
+      <div class="prog"><div class="pl"><span>RaptorDB Professional <span class="pill navy" style="font-size:9px;">Activating</span></span><span class="pv">1 application · $495K/yr · on scbnow01</span></div><div class="pb"><div class="pf blue" style="width:10%"></div></div></div>
+      <div class="prog"><div class="pl"><span>AI Control Tower <span class="pill navy" style="font-size:9px;">Activating</span></span><span class="pv">500 units · $72K/yr</span></div><div class="pb"><div class="pf blue" style="width:10%"></div></div></div>
+      <div class="info-box red" style="margin-top:12px;">
+        <div class="ib-title">Critical: App Engine Overage — Immediate Action Required</div>
+        <div class="ib-body">535 fulfillers entitled; 18,748 actual (18,213 over). This is a true-up liability. Engage Ben Issa and Infosys to understand the expanded usage and either right-size the entitlement or constrain usage. Do not allow this to compound unaddressed into renewal.</div>
+      </div>
+      <div class="info-box amber" style="margin-top:10px;">
+        <div class="ib-title">Cloud Storage Overage</div>
+        <div class="ib-body">84TB entitled; 151.67TB actual across all instances (+67.67TB, 67% over). Primary instances: scbnow01 (37.57TB prod), sdpnonprod1 (24.84TB), scbnow02 (27.17TB). Address before next true-up.</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-h">Renewal &amp; Commercial Timeline</div>
+      <div class="tl-item"><div class="tl-dot red"></div><div class="tl-body"><div class="tl-date">30 May 2026 — Immediate</div><div class="tl-event">$559K Renewal</div><div class="tl-detail">Protect and initiate CSM expansion conversation. CSM pipeline ($1.5M NNACV) should be part of this commercial conversation.</div></div></div>
+      <div class="tl-item"><div class="tl-dot navy"></div><div class="tl-body"><div class="tl-date">1 July 2026</div><div class="tl-event">Pro Plus End of Sale</div><div class="tl-detail">Migration / upgrade conversation required. AI Native tier positioning needed before this date.</div></div></div>
+      <div class="tl-item"><div class="tl-dot blue"></div><div class="tl-body"><div class="tl-date">14 November 2026 — OPTY6395869</div><div class="tl-event">$343K Self-Hosted Renewal (WDF / RPA)</div><div class="tl-detail">Currently at Stage 7 Commit showing -$343K NNACV — full downsell risk. Engage Ben Issa now to understand RPA unwind and protect / convert. Health: Red (Snowflake).</div></div></div>
+      <div class="tl-item"><div class="tl-dot"></div><div class="tl-body"><div class="tl-date">December 2028</div><div class="tl-event">Primary SPA Contract End (~$12.85M)</div><div class="tl-detail">All unactivated BUs (Workplace SD, AI Platform, RaptorDB, Creator, CSM) must show meaningful adoption before mid-2027 to justify and grow CACV at this renewal.</div></div></div>
+      <div class="info-box green">
+        <div class="ib-title">Now Assist Commercial Signal</div>
+        <div class="ib-body">SCB owns 30M pooled assists ($897K) yet only 575,199 (1.9%) have been consumed. New Assist Packs (GA April 2026) reframe the conversation as activating existing investment. This is a platform confidence story — zero incremental cost to demonstrate value at scale with what SCB already owns.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-h">Prioritised Growth Opportunities</div>
+    <div class="g3" style="margin:0; gap:14px;">
+      <div>
+        <div class="action strategic"><div class="ah"><div class="at">Moveworks / EmployeeWorks</div><div class="ad-badge">$2.1M NNACV</div></div><div class="ab">SCB wants Moveworks across IT, HR, and WSD simultaneously. EmployeeWorks or Standalone (not bundled) required for cross-domain coverage. Deal desk + ECPro offset resolution is the blocker. OPTY5329687 currently at Stage 3 Objection.</div><div class="am"><div class="am-item"><span class="aml">OPTY: </span><span class="amv">OPTY5329687</span></div><div class="am-item"><span class="aml">Status: </span><span class="amv">Stuck at Stage 3</span></div></div></div>
+        <div class="action medium"><div class="ah"><div class="at">CSM Expansion — CIB</div><div class="ad-badge">$1.5M Pipeline</div></div><div class="ab">Near-zero contracted CACV ($6K) against $5M+ TAM. CIB client journey is the entry point. Goldman Sachs proof point confirms the use case. Workshop June 15–19.</div><div class="am"><div class="am-item"><span class="aml">Stage: </span><span class="amv">Discovery (CIB)</span></div></div></div>
+      </div>
+      <div>
+        <div class="action strategic"><div class="ah"><div class="at">Platform Architect Add-On (Impact)</div><div class="ad-badge">OPTY5322900</div></div><div class="ab">Net-new opportunity at Stage 2 Discovery — close targeted 2 September 2026. Impact BU currently Red ($707K CACV). Engage Ben Issa and Infosys for funding approval path.</div><div class="am"><div class="am-item"><span class="aml">Close: </span><span class="amv">02 Sep 2026</span></div><div class="am-item"><span class="aml">Stage: </span><span class="amv">2 — Discovery</span></div></div></div>
+        <div class="action medium"><div class="ah"><div class="at">Workplace Services Activation</div><div class="ad-badge">$450K at Risk</div></div><div class="ab">Contracted at $450K but 0% utilisation. Champion: Melinda McKinley. JLL partnership creates a natural facilities integration angle. Must activate to protect this contract line at renewal.</div><div class="am"><div class="am-item"><span class="aml">Champion: </span><span class="amv">Melinda McKinley</span></div></div></div>
+      </div>
+      <div>
+        <div class="action high"><div class="ah"><div class="at">Self-Hosted RPA Unwind</div><div class="ad-badge">⚠ $343K Risk</div></div><div class="ab">OPTY6395869 at Stage 7 Commit showing -$343K NNACV. Conversion to cloud-managed or RPA-to-automation bridge needed urgently before Nov close. Health: Red (Snowflake confirmed).</div><div class="am"><div class="am-item"><span class="aml">OPTY: </span><span class="amv">OPTY6395869</span></div><div class="am-item"><span class="aml">Close: </span><span class="amv">14 Nov 2026</span></div></div></div>
+        <div class="action strategic"><div class="ah"><div class="at">Source-to-Pay / Aspire Programme</div><div class="ad-badge">Strategic</div></div><div class="ab">Tom Pfaff leads SCB's SAP S/4 HANA programme. ServiceNow is the AI orchestration layer above SAP — sensing, deciding, acting across workflows. Source-to-Pay Operations is the entry point.</div><div class="am"><div class="am-item"><span class="aml">Stakeholder: </span><span class="amv">Tom Pfaff (CFO Office)</span></div></div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-h">Account Strategy Principles</div>
+    <div class="g3" style="margin:0; gap:12px;">
+      <div class="info-box green"><div class="ib-title">Adoption before expansion</div><div class="ib-body">Fair exchange of value. Do not pursue expansion without visibly progressing activation of existing licences — Workplace, AI Platform, RaptorDB, Creator.</div></div>
+      <div class="info-box blue"><div class="ib-title">SAP is complementary, not competitive</div><div class="ib-body">Aspire programme is SAP-centric. ServiceNow is the AI orchestration and workflow layer on top — reinforce this framing with Tom Pfaff at every interaction.</div></div>
+      <div class="info-box amber"><div class="ib-title">Conservative ROI for external use</div><div class="ib-body">Customer-facing materials target 5–6× ROI with conservative assumptions. Aggressive ratios are for internal planning only. Never share internal modelling with SCB stakeholders.</div></div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ════════════════════════════════════════════════════
+     TAB 3 — INDUSTRY PRIORITIES
+════════════════════════════════════════════════════ -->
+<div id="tab-industry" class="tab-panel">
+
+  <div class="card" style="margin-bottom:16px;">
+    <div class="card-h">SCB Strategic Context</div>
+    <div style="font-size:12.5px; color:var(--text-body); line-height:1.7; margin-bottom:12px;">Standard Chartered operates across 50+ markets with particular exposure to Asia, Africa, and the Middle East. The bank faces intersecting pressures: geopolitical fragmentation driving compliance complexity, intensifying competition from digital-native challengers in core Asian markets, and a technology estate requiring modernisation at scale. The Aspire programme (SAP S/4 HANA) signals a major transformation agenda — one that ServiceNow is uniquely positioned to complement as the workflow and AI orchestration layer across business functions.</div>
+    <div style="display:flex; flex-wrap:wrap; gap:6px;">
+      <span class="pill green">AI-native banking</span>
+      <span class="pill green">Operational resilience</span>
+      <span class="pill green">Digital corporate banking (CIB)</span>
+      <span class="pill navy">Regulatory fragmentation</span>
+      <span class="pill navy">Cost optimisation</span>
+      <span class="pill navy">Cybersecurity / ISPM</span>
+      <span class="pill navy">SAP S/4 HANA transformation</span>
+      <span class="pill navy">Financial crime compliance</span>
+    </div>
+  </div>
+
+  <div class="priority-card">
+    <div class="priority-header"><div class="pnum">Priority 1</div><h4>AI-Powered Enterprise Automation &amp; Intelligent Operations</h4></div>
+    <div class="priority-body">
+      <div class="ctx">Global banks are under pressure to demonstrate tangible productivity gains from AI investment. For SCB, this means moving beyond departmental experiments toward enterprise-wide autonomous workflows — in IT operations, HR service delivery, and corporate banking client services. The risk: AI bolted onto legacy processes compounds complexity rather than eliminating it.</div>
+      <div class="g2" style="margin:0; gap:12px;">
+        <div>
+          <div class="signal"><div class="sl">SCB Signal</div><div class="st">SCB owns 30M pooled Now Assist licences ($969K) and RaptorDB ($495K), both largely unactivated. Aspire creates an AI orchestration requirement spanning SAP and non-SAP workflows.</div></div>
+          <div class="signal"><div class="sl">SCB Signal</div><div class="st">HRSD shows 166% utilisation — the strongest deployment. This is the enterprise AI proof point to replicate across ITSM and CIB.</div></div>
+        </div>
+        <div>
+          <div class="sn-play"><div class="sl">ServiceNow Play</div><div class="st"><strong>Now Assist + Agentic AI:</strong> Activate 30M pooled assists across ITSM, HR, and CIB. Position AI Control Tower as the orchestration layer above SAP S/4 HANA — sensing data, deciding actions, governing outcomes.</div></div>
+          <div class="sn-play"><div class="sl">ServiceNow Play</div><div class="st"><strong>Moveworks / EmployeeWorks:</strong> Cross-domain AI assistant for IT, HR, and Workplace. $2.1M pipeline in motion (OPTY5329687). EmployeeWorks enables simultaneous multi-domain coverage.</div></div>
+        </div>
+      </div>
+      <div class="conv"><div class="cl">Conversation Starter — Guillermo Veiga / Tom Pfaff</div><div class="ct">"You've already committed to the AI investment through Now Assist and RaptorDB. The question isn't whether to use AI — it's how to make the 30 million assists you own earn their keep. Peers in global banking are automating 210,000 IT and HR interactions monthly. We can have your first agentic workflow live in weeks."</div></div>
+    </div>
+  </div>
+
+  <div class="priority-card">
+    <div class="priority-header"><div class="pnum">Priority 2</div><h4>Cybersecurity Posture, AI Identity Governance &amp; Operational Resilience</h4></div>
+    <div class="priority-body">
+      <div class="ctx">Regulatory frameworks (DORA, MAS TRM, PRA) are raising the bar on operational resilience and security governance. For a bank operating across SCB's geographies, the attack surface is vast — and expanding as AI agents are deployed enterprise-wide. Identity governance for non-human identities (AI agents, service accounts, APIs) has become the frontier security challenge.</div>
+      <div class="g2" style="margin:0; gap:12px;">
+        <div>
+          <div class="signal"><div class="sl">SCB Signal</div><div class="st">Cezary Piekarski (CISO) and Lavy Stokhamer (Global MD, Cyber Defence) are active stakeholders. OPTY5330340 (SC Veza ISPM CISO) is at Stage 2 Discovery — close targeted November 2026.</div></div>
+          <div class="signal"><div class="sl">SCB Signal</div><div class="st">SecOps is Orange ($1.2M) and IRM / Risk is Orange ($1.1M) — adoption gaps in areas where SCB faces acute DORA and PRA pressure.</div></div>
+        </div>
+        <div>
+          <div class="sn-play"><div class="sl">ServiceNow Play</div><div class="st"><strong>SecOps + ISPM + Veza:</strong> Peer CISO meeting — Ben de Bont + Tarun Thakur (Veza CEO) + Cezary Piekarski. Veza Access Graph maps 30B+ permissions, governing human, machine, and AI agent identities.</div></div>
+          <div class="sn-play"><div class="sl">ServiceNow Play</div><div class="st"><strong>IRM / BCM / TPRM:</strong> Activate contracted IRM, BCM, and TPRM to address DORA and operational resilience obligations. Third-party risk is a particular SCB pressure given its supply chain exposure.</div></div>
+        </div>
+      </div>
+      <div class="conv"><div class="cl">Conversation Starter — Cezary Piekarski (CISO)</div><div class="ct">"As you deploy AI agents across the enterprise, every one of them needs an identity, permissions, and a governance boundary. That's a frontier your existing IAM tooling wasn't built for. Veza's Access Graph, combined with ServiceNow SecOps, gives you a unified view of who — and what — has access to everything."</div></div>
+    </div>
+  </div>
+
+  <div class="priority-card">
+    <div class="priority-header"><div class="pnum">Priority 3</div><h4>Digital Corporate Banking &amp; Client Experience (CIB)</h4></div>
+    <div class="priority-body">
+      <div class="ctx">Corporate and institutional banks face mounting pressure from fintechs and client expectations for seamless digital onboarding, real-time transaction visibility, and proactive service. SCB's CCIB division is a strategic growth engine — and digitising the client journey is the differentiating opportunity.</div>
+      <div class="g2" style="margin:0; gap:12px;">
+        <div>
+          <div class="signal"><div class="sl">SCB Signal</div><div class="st">Jennifer Ketelaar (MD, US Transaction Banking) and Craig Corte (Global Head, Digital Channels) are active stakeholders. CIB workshop targeted June 15–19. Relationship originated March 2026.</div></div>
+          <div class="signal"><div class="sl">SCB Signal</div><div class="st">CSM has near-zero contracted CACV ($6K) against a $5M+ TAM — the single largest whitespace BU. CIB client journey is the natural entry point.</div></div>
+        </div>
+        <div>
+          <div class="sn-play"><div class="sl">ServiceNow Play</div><div class="st"><strong>CSM + CIB Client Journey:</strong> Digitise institutional onboarding, KYC workflows, and client servicing. Goldman Sachs proof point: 3× productivity, 100% elimination of offline processes, two weeks to digitise a complex workflow. Do not reference Pega externally.</div></div>
+          <div class="sn-play"><div class="sl">ServiceNow Play</div><div class="st"><strong>Financial Services Operations:</strong> Source-to-pay orchestration layer above SAP via Tom Pfaff / Aspire programme. ServiceNow is not displacing SAP — it is extending it with AI-powered workflow and intelligent routing.</div></div>
+        </div>
+      </div>
+      <div class="conv"><div class="cl">Conversation Starter — Jennifer Ketelaar / Craig Corte</div><div class="ct">"A peer global bank digitised their entire institutional onboarding process in two weeks — eliminating 100% of offline steps and tripling team productivity. That is not a pilot. That is production. And it runs on the same ServiceNow platform SCB already operates. Let us map SCB's client journey to that same outcome in our June workshop."</div></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-h">Regulatory Landscape — ServiceNow Relevance</div>
+    <div class="reg-row"><span class="reg-tag red">DORA</span><div><div class="reg-detail">Digital Operational Resilience Act. Operational resilience testing, ICT risk management, third-party risk reporting.</div><div class="reg-sn">ServiceNow: IRM, BCM, TPRM directly address DORA obligations. IRM currently Orange — gap requiring urgent activation.</div></div></div>
+    <div class="reg-row"><span class="reg-tag amber">MAS TRM</span><div><div class="reg-detail">Monetary Authority of Singapore Technology Risk Management. Stringent IT controls and vendor oversight for SCB's Singapore operations.</div><div class="reg-sn">ServiceNow: SecOps + ITSM incident management + TPRM. ITOM deployment ($1.9M) provides the IT asset visibility MAS TRM demands.</div></div></div>
+    <div class="reg-row"><span class="reg-tag blue">ESG / TCFD</span><div><div class="reg-detail">Climate-related financial disclosures and sustainability reporting. Growing regulatory expectation across SCB's markets.</div><div class="reg-sn">ServiceNow: Environmental Compliance and ESG reporting capabilities within IRM provide audit trails and workflow automation for sustainability data.</div></div></div>
+    <div class="reg-row"><span class="reg-tag amber">AI Governance</span><div><div class="reg-detail">Emerging AI regulation (EU AI Act, MAS AI frameworks) requiring explainability, bias monitoring, and human oversight of automated decisions.</div><div class="reg-sn">ServiceNow: AI Control Tower provides governance, monitoring, and audit for all AI agents on the platform. Veza adds identity governance for AI agent permissions.</div></div></div>
+  </div>
+
+</div>
+
+<!-- ════════════════════════════════════════════════════
+     TAB 4 — ACTION PLAN
+════════════════════════════════════════════════════ -->
+<div id="tab-action" class="tab-panel">
+
+  <div class="card">
+    <div class="card-h">Live Pipeline — Dynamics (April 2026)</div>
+    <table class="pipe-table">
+      <thead><tr><th>Opportunity</th><th>Name</th><th>Product</th><th>Close Date</th><th>Stage</th><th>Priority</th></tr></thead>
+      <tbody>
+        <tr><td><span class="opty-num">OPTY5322900</span></td><td><span class="opty-name">SC Platform Architect Add-On</span></td><td>Impact</td><td>02 Sep 2026</td><td><span class="pill blue">2 — Discovery</span></td><td><span class="pill green">New · Qualify</span></td></tr>
+        <tr><td><span class="opty-num">OPTY5329687</span></td><td><span class="opty-name">SCB Moveworks</span></td><td>Moveworks</td><td>29 Oct 2026</td><td><span class="pill amber">3 — Objection</span></td><td><span class="pill red">Stuck · Unblock</span></td></tr>
+        <tr><td><span class="opty-num">OPTY6395869</span></td><td><span class="opty-name">Standard Chartered Bank — Self Hosted</span></td><td>Workflow Data Fabric</td><td>14 Nov 2026</td><td><span class="pill red">7 — Deal Imminent</span></td><td><span class="pill red">⚠ Downsell Risk</span></td></tr>
+        <tr><td><span class="opty-num">OPTY5330340</span></td><td><span class="opty-name">SC Veza ISPM CISO</span></td><td>Security</td><td>24 Nov 2026</td><td><span class="pill blue">2 — Discovery</span></td><td><span class="pill navy">Strategic · Build</span></td></tr>
+      </tbody>
+    </table>
+    <div class="info-box amber" style="margin-top:12px;">
+      <div class="ib-title">Pipeline Read</div>
+      <div class="ib-body">OPTY6395869 is the most urgent — Stage 7 Commit heading for full downsell at -$343K NNACV. OPTY5329687 (Moveworks) is stuck at Stage 3 and needs deal desk resolution before October. OPTY5322900 (Impact add-on) is net-new at Stage 2 with a September close target — qualify immediately. OPTY5330340 (Veza ISPM) is early but strategically critical for the CISO relationship.</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-h">FY2026 Objectives &amp; Key Results</div>
+    <div class="okr"><div class="oo">O1: Protect existing CACV</div><div class="ok">Secure May 2026 ($559K) and November 2026 ($343K) renewals without downsell</div><div class="os"><span class="pill red">At Risk</span></div></div>
+    <div class="okr"><div class="oo">O2: Activate undeployed capacity</div><div class="ok">Move Workplace (0% → >50%), AI Platform / Now Assist, RaptorDB from Red to active by Q3 2026</div><div class="os"><span class="pill amber">In Progress</span></div></div>
+    <div class="okr"><div class="oo">O3: Land Moveworks ($2.1M)</div><div class="ok">OPTY5329687 — resolve deal desk + ECPro offset · commercial close by Q3 2026</div><div class="os"><span class="pill amber">Blocked</span></div></div>
+    <div class="okr"><div class="oo">O4: Open CSM / CIB pipeline</div><div class="ok">CIB workshop June 15–19 → discovery → formal CSM opportunity · target $1.5M NNACV</div><div class="os"><span class="pill navy">Planning</span></div></div>
+    <div class="okr"><div class="oo">O5: CEO-to-CEO framework</div><div class="ok">Bill McDermott → Bill Winters engagement formalised · P5 briefing → joint innovation agenda</div><div class="os"><span class="pill blue">In Progress</span></div></div>
+    <div class="okr"><div class="oo">O6: Veza / ISPM Security play</div><div class="ok">OPTY5330340 — CISO peer meeting arranged · advance from Stage 2 to Tech Validation by Q3</div><div class="os"><span class="pill navy">Planning</span></div></div>
+  </div>
+
+  <div class="card">
+    <div class="card-h">Immediate Actions — Next 30 Days</div>
+
+    <div class="action urgent"><div class="ah"><div class="at">Secure May 2026 Renewal ($559K)</div><div class="ad-badge">30 May 2026</div></div><div class="ab">Confirm renewal terms and initiate CSM expansion conversation in parallel. Frame as fair exchange of value — ServiceNow's commitment to activate licensed capacity in exchange for commercial commitment from SCB.</div><div class="am"><div class="am-item"><span class="aml">Owner: </span><span class="amv">Arun Ragothaman</span></div><div class="am-item"><span class="aml">Stakeholder: </span><span class="amv">Guillermo Veiga / Procurement</span></div><div class="am-item"><span class="aml">Support: </span><span class="amv">Stuart Pearce (exec sponsor)</span></div></div></div>
+
+    <div class="action urgent"><div class="ah"><div class="at">Self-Hosted Renewal Risk Mitigation — OPTY6395869</div><div class="ad-badge">Close: 14 Nov 2026 · Act Now</div></div><div class="ab">Stage 7 Deal Imminent showing -$343K NNACV — full downsell risk, already at Commit. Engage Ben Issa immediately to understand RPA unwind drivers. Explore cloud migration or automation bridge use case to protect / convert. The deal is near-finalised at reduced value — intervention required before it locks.</div><div class="am"><div class="am-item"><span class="aml">OPTY: </span><span class="amv">OPTY6395869</span></div><div class="am-item"><span class="aml">Stakeholder: </span><span class="amv">Ben Issa (Platform Owner)</span></div><div class="am-item"><span class="aml">Risk: </span><span class="amv">Full $343K CACV loss if unaddressed</span></div></div></div>
+
+    <div class="action high"><div class="ah"><div class="at">Unblock Moveworks — OPTY5329687</div><div class="ad-badge">Close: 29 Oct 2026 · Stage 3</div></div><div class="ab">Stuck at Stage 3 Objection. Identify the specific objection — likely EmployeeWorks vs bundled tier and ECPro offset. Engage deal desk to confirm the cleanest commercial path for cross-domain IT / HR / WSD coverage. $2.1M NNACV is at risk without resolution ahead of the October close date.</div><div class="am"><div class="am-item"><span class="aml">OPTY: </span><span class="amv">OPTY5329687</span></div><div class="am-item"><span class="aml">Owner: </span><span class="amv">Arun Ragothaman + Deal Desk</span></div><div class="am-item"><span class="aml">Blocker: </span><span class="amv">Commercial model + ECPro offset</span></div></div></div>
+
+    <div class="action high"><div class="ah"><div class="at">Qualify Platform Architect Add-On — OPTY5322900</div><div class="ad-badge">Close: 02 Sep 2026 · Stage 2</div></div><div class="ab">Net-new opportunity — Impact platform architect add-on. Impact BU currently Red ($707K CACV). September close target leaves limited time. Prioritise discovery to qualify and align to the Platform Governance / Impact activation workstream. Engage Ben Issa and Infosys for funding approval path.</div><div class="am"><div class="am-item"><span class="aml">OPTY: </span><span class="amv">OPTY5322900</span></div><div class="am-item"><span class="aml">Stakeholder: </span><span class="amv">Ben Issa · Infosys (funding)</span></div></div></div>
+
+    <div class="action high"><div class="ah"><div class="at">Agentic AI Evidence — Shareable Artefacts</div><div class="ad-badge">Urgent</div></div><div class="ab">Internal email to product teams required ahead of SCB go-live — requesting testing evidence and shareable artefacts on agentic AI capabilities. SCB needs validated proof points before committing to broader Now Assist activation.</div><div class="am"><div class="am-item"><span class="aml">Owner: </span><span class="amv">Arun Ragothaman (internal)</span></div><div class="am-item"><span class="aml">Audience: </span><span class="amv">Guillermo Veiga / Mohammed Rahim (CDO)</span></div></div></div>
+  </div>
+
+  <div class="card">
+    <div class="card-h">Actions — 30 to 90 Days</div>
+    <div class="g2" style="margin:0; gap:14px;">
+      <div>
+        <div class="action medium"><div class="ah"><div class="at">CIB Workshop — June 15–19</div><div class="ad-badge">June 15–19</div></div><div class="ab">Prepare and execute CIB engagement workshop with Jennifer Ketelaar and Craig Corte. Goldman Sachs case study as lead proof point (shared under confidential agreement — do not reference Pega externally). Target output: discovery findings + formal CSM opportunity.</div><div class="am"><div class="am-item"><span class="aml">Stakeholders: </span><span class="amv">Ketelaar · Corte · Geoff Kot</span></div></div></div>
+        <div class="action medium"><div class="ah"><div class="at">Pro Plus End of Sale — Migration Conversation</div><div class="ad-badge">Before 1 Jul 2026</div></div><div class="ab">Pro Plus goes End of Sale on 1 July 2026. Initiate migration / upgrade conversation with SCB ahead of this date. Position AI Native tier as the path that unlocks the Now Assist investment SCB has already made.</div><div class="am"><div class="am-item"><span class="aml">Stakeholder: </span><span class="amv">Ben Issa / Guillermo Veiga</span></div></div></div>
+        <div class="action strategic"><div class="ah"><div class="at">Workplace Services Activation Plan</div><div class="ad-badge">Q2–Q3 2026</div></div><div class="ab">$450K contracted at 0% utilisation. Engage Melinda McKinley and JLL to define the workplace activation roadmap. Activation required to justify the licence and position for renewal at par or above.</div><div class="am"><div class="am-item"><span class="aml">Champion: </span><span class="amv">Melinda McKinley</span></div><div class="am-item"><span class="aml">Partner: </span><span class="amv">JLL</span></div></div></div>
+      </div>
+      <div>
+        <div class="action strategic"><div class="ah"><div class="at">CISO Peer Meeting — Veza / ISPM · OPTY5330340</div><div class="ad-badge">Close: 24 Nov 2026 · Stage 2</div></div><div class="ab">Arrange peer-to-peer meeting: Ben de Bont (ServiceNow CISO) + Tarun Thakur (Veza CEO) + Cezary Piekarski (SCB CISO). Advance OPTY5330340 from Stage 2 to Tech Validation. This is a relationship play as much as a product conversation — the November close requires discovery acceleration.</div><div class="am"><div class="am-item"><span class="aml">OPTY: </span><span class="amv">OPTY5330340</span></div><div class="am-item"><span class="aml">Stakeholder: </span><span class="amv">Piekarski / Stokhamer</span></div></div></div>
+        <div class="action strategic"><div class="ah"><div class="at">RaptorDB Activation Plan</div><div class="ad-badge">Q2–Q3 2026</div></div><div class="ab">Engage Mohammed Rahim (CDO) on RaptorDB ($495K contracted) activation. Connect to SCB's data strategy and AI platform roadmap. Target: activation go-live plan agreed by Q3 2026.</div><div class="am"><div class="am-item"><span class="aml">Stakeholder: </span><span class="amv">Mohammed Rahim (CDO)</span></div></div></div>
+        <div class="action medium"><div class="ah"><div class="at">CEO-to-CEO Framework — Formalisation</div><div class="ad-badge">Q3 2026</div></div><div class="ab">Convert P5 briefing into a joint innovation agenda between Bill McDermott and Bill Winters. Stuart Pearce to facilitate. Target: partnership framework document and shared roadmap.</div><div class="am"><div class="am-item"><span class="aml">Owner: </span><span class="amv">Arun Ragothaman + Stuart Pearce</span></div></div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-h">Strategic Horizon — H2 2026 and Beyond</div>
+    <ul class="steps">
+      <li><div class="step-n">1</div><div><strong>Source-to-Pay / Aspire Integration:</strong> Engage Tom Pfaff to position ServiceNow as the AI orchestration layer above SAP S/4 HANA. Target: joint demo of ServiceNow–SAP integration by Q3 2026. Platform Governance impact add-on (Infosys-funded) is the tactical entry point.</div></li>
+      <li><div class="step-n">2</div><div><strong>CSM Full Expansion:</strong> Convert CIB workshop discovery (June 2026) into formal $1.5M CSM opportunity. Target close Q4 2026 ahead of the December 2028 SPA renewal cycle.</div></li>
+      <li><div class="step-n">3</div><div><strong>Now Assist Scale:</strong> Activate 30M pooled assists across ITSM, HR, and CIB by mid-2027. This is the cornerstone of the AI adoption narrative and the primary justification for CACV growth at the 2028 SPA renewal.</div></li>
+      <li><div class="step-n">4</div><div><strong>December 2028 SPA Renewal Preparation:</strong> All unactivated BUs (Workplace, AI Platform, RaptorDB, Creator, CSM) must show measurable adoption by mid-2027. Begin 18-month commercial run-up to protect and grow $12.85M CACV.</div></li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <div class="card-h">Licence Utilisation Snapshot — 9 April 2026 (scbnow01)</div>
+    <div class="g2" style="margin:0; gap:16px;">
+      <div>
+        <div class="prog"><div class="pl"><span>ITSM Pro (70,000 users)</span><span class="pv" style="color:var(--success); font-weight:700;">95% · 66,653</span></div><div class="pb"><div class="pf" style="width:95%"></div></div></div>
+        <div class="prog"><div class="pl"><span>HAM Pro (50,000 units)</span><span class="pv" style="color:var(--success); font-weight:700;">96% · 47,983</span></div><div class="pb"><div class="pf" style="width:96%"></div></div></div>
+        <div class="prog"><div class="pl"><span>SAM Pro (65,000 units)</span><span class="pv" style="color:var(--success); font-weight:700;">94% · 60,993</span></div><div class="pb"><div class="pf" style="width:94%"></div></div></div>
+        <div class="prog"><div class="pl"><span>ITOM AIOps (60,000 units)</span><span class="pv" style="color:var(--success); font-weight:700;">82% · 49,304</span></div><div class="pb"><div class="pf" style="width:82%"></div></div></div>
+        <div class="prog"><div class="pl"><span>SecOps SIR + VR (70,000 ea)</span><span class="pv" style="color:var(--success); font-weight:700;">95% · 66,653</span></div><div class="pb"><div class="pf" style="width:95%"></div></div></div>
+        <div class="prog"><div class="pl"><span>TPRM Standard (2,000 txn)</span><span class="pv" style="color:var(--amber); font-weight:700;">51% · 1,012</span></div><div class="pb"><div class="pf amber" style="width:51%"></div></div></div>
+      </div>
+      <div>
+        <div class="prog"><div class="pl"><span>Now Assist (30M assists)</span><span class="pv" style="color:var(--red); font-weight:700;">2% · 575,199</span></div><div class="pb"><div class="pf red" style="width:2%"></div></div></div>
+        <div class="prog"><div class="pl"><span>App Engine (535 users)</span><span class="pv" style="color:var(--red); font-weight:700;">⚠ 18,748 actual</span></div><div class="pb"><div class="pf red" style="width:100%"></div></div></div>
+        <div class="prog"><div class="pl"><span>BCM Pro (300 operators)</span><span class="pv" style="color:var(--red); font-weight:700;">8% · 23</span></div><div class="pb"><div class="pf red" style="width:8%"></div></div></div>
+        <div class="prog"><div class="pl"><span>AI Search Starter (500K docs)</span><span class="pv" style="color:var(--red); font-weight:700;">0%</span></div><div class="pb"><div class="pf red" style="width:0.5%"></div></div></div>
+        <div class="prog"><div class="pl"><span>Business Stakeholder (600)</span><span class="pv" style="color:var(--red); font-weight:700;">0%</span></div><div class="pb"><div class="pf red" style="width:0.5%"></div></div></div>
+        <div class="prog"><div class="pl"><span>Cloud Storage (84TB entitled)</span><span class="pv" style="color:var(--red); font-weight:700;">180% · 151.67TB</span></div><div class="pb"><div class="pf red" style="width:100%"></div></div></div>
+      </div>
+    </div>
+    <div class="info-box red" style="margin-top:14px;">
+      <div class="ib-title">App Engine Overage — True-Up Liability</div>
+      <div class="ib-body">535 fulfillers entitled; 18,748 actual as at 9 April 2026. Overage of 18,213 users. Engage Ben Issa and Infosys before the next true-up window. Resolve through right-sizing the entitlement or constraining usage. This must not reach the November renewal unaddressed.</div>
+    </div>
+    <div class="info-box amber" style="margin-top:10px;">
+      <div class="ib-title">Narrative Reminder — Internal &amp; External</div>
+      <div class="ib-body">Red flags reflect unactivated capacity within entitlement — not usage failures where deployed. ITSM, HAM, SAM, ITOM, and SecOps all run at 82–96%. The account story is "deep but narrow." Maintain this framing with internal stakeholders and SCB leadership. Instances: scbnow01 (Yokohama Patch 12 HF1) · scsg (Yokohama Patch 10 HF2b).</div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ═══ FOOTER ════════════════════════════════════════ -->
+<div class="doc-footer">
+  <div class="sc-tagline">Here for good · ServiceNow Partnership Briefing</div>
+  ServiceNow Confidential — For Internal Use Only · Sources: ORD2198466-11, ORD3650930-1, ORD3651142-1 (Jun 2025–Dec 2028) · Usage report scanned 9 April 2026 · Verify all data against Dynamics and Snowflake before use. © 2026 ServiceNow, Inc.
+</div>
+
+<script>
+function showTab(id, btn) {
+  document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('tab-' + id).classList.add('active');
+  btn.classList.add('active');
+}
+</script>
+</body>
+</html>
+`;
+
+function AICoachView() {
+  const iframeRef = React.useRef ? React.useRef(null) : { current: null };
+  
+  useEffect(() => {
+    if (iframeRef.current) {
+      const doc = iframeRef.current.contentDocument || iframeRef.current.contentWindow.document;
+      doc.open();
+      doc.write(AI_COACH_HTML);
+      doc.close();
+    }
+  }, []);
+  
+  return (
+    <div>
+      <div style={{ marginBottom: 16 }}>
+        <h1 style={{ fontSize: 24, fontWeight: 700, color: colors.textPrimary, margin: "0 0 4px" }}>ServiceNow AI Coach Output</h1>
+        <p style={{ fontSize: 13, color: colors.textSecondary, margin: 0 }}>Generated from ServiceNow internal AI coaching tools – April 2026</p>
+      </div>
+      <div style={{ background: colors.bgCard, border: `1px solid ${colors.border}`, borderRadius: 10, overflow: "hidden", height: "calc(100vh - 140px)" }}>
+        <iframe
+          ref={iframeRef}
+          style={{ width: "100%", height: "100%", border: "none" }}
+          title="ServiceNow AI Coach Output"
+        />
+      </div>
+    </div>
+  );
+}
+
 // ─── Migration Simulation View ───────────────────────────────────────────────
 const USAGE_DATA = [
   { product: "App Engine Enterprise", entitled: "535 FU", actual: "~1,535 FU", pct: 287, status: "overage", acv: 288900 },
@@ -2700,6 +3442,252 @@ function MigrationView() {
   );
 }
 
+// ─── Platform Telemetry View ──────────────────────────────────────────────────
+const PEER_USAGE = [
+  { workflow: "AI Platform", metric: "VA Conversations/month", usage: 3888711, median: 34231, p75: 207346, hours: 2311197, persona: "All" },
+  { workflow: "AI Platform", metric: "AI Searches/month", usage: 1957926, median: 38241, p75: 1066412, hours: 274110, persona: "All" },
+  { workflow: "AI Platform", metric: "Now Assist Searches/month", usage: 350064, median: 57104, p75: 232448, hours: 52510, persona: "All" },
+  { workflow: "AI Platform", metric: "LLM Calls – Record Resolution", usage: 62105, median: 62105, p75: 62446, hours: 1553, persona: "Fulfiller" },
+  { workflow: "AI Platform", metric: "LLM Calls – Summarisation", usage: 27403, median: 15784, p75: 27403, hours: 1370, persona: "Fulfiller" },
+  { workflow: "AI Platform", metric: "KB Views/day", usage: 4158572, median: 1448304, p75: 2995138, hours: 34516, persona: "Requestor" },
+  { workflow: "Core Business", metric: "HR Cases/month", usage: 525316, median: 183025, p75: 450871, hours: 120823, persona: "All" },
+  { workflow: "Core Business", metric: "Lifecycle Event Cases", usage: 9629, median: 9470, p75: 9629, hours: 1733, persona: "All" },
+  { workflow: "Technology", metric: "ITSM Requests/month", usage: 1507130, median: 825181, p75: 1463099, hours: 256212, persona: "All" },
+  { workflow: "Technology", metric: "Incidents/month", usage: 951817, median: 790251, p75: 1524575, hours: 218918, persona: "All" },
+  { workflow: "Technology", metric: "Problems Created/month", usage: 5700, median: 3990, p75: 8922, hours: 855, persona: "Fulfiller" },
+  { workflow: "Technology", metric: "Standard Changes Closed/month", usage: 45813, median: 67330, p75: 152229, hours: 22907, persona: "Fulfiller" },
+  { workflow: "Technology", metric: "ITOM Visibility SU (90-day avg)", usage: 49311, median: 69048, p75: 117950, hours: 12328, persona: "Fulfiller" },
+  { workflow: "Technology", metric: "ITOM Automation Executions/day", usage: 84798, median: 129123, p75: 644911, hours: 7066, persona: "Fulfiller" },
+  { workflow: "Technology", metric: "GRC Risk Assessments", usage: 882, median: 83, p75: 1355, hours: 4234, persona: "Fulfiller" },
+  { workflow: "Technology", metric: "SPM Demands Created/month", usage: 8, median: 1466, p75: 3331, hours: 10, persona: "Fulfiller" },
+];
+
+const PLATFORM_GROWTH = [
+  { metric: "Workflows Executed/month", value: "5,872,619", yoy: 44 },
+  { metric: "KB Articles Viewed", value: "912,080", yoy: 65 },
+  { metric: "Total Tasks (all time)", value: "70.7M", yoy: 40 },
+  { metric: "Service Portal Sessions/month", value: "2,228,739", yoy: 35 },
+  { metric: "Workflows Published/month", value: "864", yoy: 35 },
+  { metric: "DB Size (all instances)", value: "44.6 TB", yoy: 33 },
+  { metric: "Mobile Sessions/month", value: "3,644", yoy: 29 },
+  { metric: "Active User Profiles/month", value: "632,546", yoy: 28 },
+  { metric: "Dashboards Created/month", value: "63", yoy: 23 },
+  { metric: "Service Catalog Items Requested/month", value: "114,617", yoy: 20 },
+  { metric: "OOB Spokes", value: "119", yoy: 20 },
+  { metric: "Tasks Created (30 days)", value: "1,442,363", yoy: 13 },
+  { metric: "Workspace Pages Configured/month", value: "59", yoy: 13 },
+  { metric: "Configuration Items", value: "142.3M", yoy: 7 },
+  { metric: "Service Catalog Requests/month", value: "109,880", yoy: 5 },
+  { metric: "User Engagement/month", value: "2,396,376", yoy: 2 },
+];
+
+const PRODUCT_ADOPTION = [
+  { product: "Advanced Work Assignment", status: "High Use", value: "147,781", yoy: 4 },
+  { product: "Knowledge Management", status: "High Use", value: "1,419", yoy: 54 },
+  { product: "Performance Analytics Pro", status: "High Use", value: "42,375", yoy: 24 },
+  { product: "Platform Analytics Experience", status: "High Use", value: "12,280", yoy: 2 },
+  { product: "Reporting", status: "High Use", value: "42,375", yoy: 24 },
+  { product: "Service Catalog", status: "High Use", value: "191,233", yoy: 10 },
+  { product: "Service Portal", status: "High Use", value: "52,487", yoy: 94 },
+  { product: "Virtual Agent", status: "High Use", value: "21,339", yoy: 101 },
+  { product: "Employee Center", status: "Medium Use", value: "28,605", yoy: 2 },
+  { product: "Generative AI Controller", status: "Medium Use", value: "211,603", yoy: null },
+  { product: "NLU Models (S2P)", status: "Medium Use", value: null, yoy: null },
+  { product: "ServiceNow Studio", status: "Medium Use", value: null, yoy: null },
+  { product: "Agent Chat", status: "Low Use", value: "69,427", yoy: 21 },
+  { product: "AI Search", status: "Low Use", value: "43,754", yoy: 4 },
+  { product: "Flow Designer", status: "Low Use", value: "248,807", yoy: 30 },
+  { product: "Now Assist – AI Search", status: "Low Use", value: "39,021", yoy: null },
+  { product: "Now Assist – Virtual Agent", status: "Low Use", value: "7,638", yoy: null },
+  { product: "Now Assist – ITSM", status: "Low Use", value: "33,678", yoy: null },
+  { product: "Now Assist Panel", status: "Low Use", value: "5,722", yoy: null },
+  { product: "Performance Analytics", status: "Low Use", value: "274", yoy: 34 },
+  { product: "Playbook Experience", status: "Low Use", value: "155", yoy: 80 },
+  { product: "RaptorDB Pro", status: "Low Use", value: null, yoy: null },
+  { product: "Workspace", status: "Low Use", value: "93", yoy: 210 },
+  { product: "User Experience Analytics", status: "Low Use", value: null, yoy: null },
+  { product: "Now Assist – HR", status: "Not In Use", value: null, yoy: null },
+  { product: "Now Assist – ITOM", status: "Not In Use", value: null, yoy: null },
+  { product: "Now Assist – Security", status: "Not In Use", value: null, yoy: null },
+  { product: "Now Assist – Customer Service", status: "Not In Use", value: null, yoy: null },
+  { product: "Now Assist – Portfolio Mgmt", status: "Not In Use", value: null, yoy: null },
+  { product: "Now Assist – Knowledge Mgmt", status: "Not In Use", value: null, yoy: null },
+  { product: "Now Assist Data Kit", status: "Not In Use", value: null, yoy: null },
+  { product: "Now Assist Guardian", status: "Not In Use", value: null, yoy: null },
+  { product: "Now Assist Skill Kit", status: "Not In Use", value: null, yoy: null },
+  { product: "Automated Test Framework", status: "Not In Use", value: null, yoy: null },
+  { product: "Flow Generation", status: "Not In Use", value: null, yoy: null },
+  { product: "Flow Recommendation", status: "Not In Use", value: null, yoy: null },
+  { product: "Playbook Generation", status: "Not In Use", value: null, yoy: null },
+  { product: "Playbook Recommendation", status: "Not In Use", value: null, yoy: null },
+  { product: "Predictive Intelligence", status: "Not In Use", value: null, yoy: null },
+  { product: "Security Center", status: "Not In Use", value: null, yoy: null },
+  { product: "Task Intelligence Admin Console", status: "Not In Use", value: null, yoy: null },
+];
+
+function TelemetryView() {
+  const [activeTab, setActiveTab] = useState("peers");
+  const fmt = (n) => n >= 1000000 ? (n/1000000).toFixed(1) + "M" : n >= 1000 ? (n/1000).toFixed(0) + "K" : String(n);
+
+  const tabs = [
+    { id: "peers", label: "Usage vs Peers" },
+    { id: "growth", label: "Platform Growth" },
+    { id: "adoption", label: "Product Adoption" },
+  ];
+
+  const statusStyle = {
+    "High Use": { bg: colors.greenGlow, color: colors.green },
+    "Medium Use": { bg: colors.amberGlow, color: colors.amber },
+    "Low Use": { bg: `${colors.red}12`, color: colors.red },
+    "Not In Use": { bg: `${colors.textMuted}12`, color: colors.textMuted },
+  };
+
+  const adoptionCounts = {
+    "High Use": PRODUCT_ADOPTION.filter(p => p.status === "High Use").length,
+    "Medium Use": PRODUCT_ADOPTION.filter(p => p.status === "Medium Use").length,
+    "Low Use": PRODUCT_ADOPTION.filter(p => p.status === "Low Use").length,
+    "Not In Use": PRODUCT_ADOPTION.filter(p => p.status === "Not In Use").length,
+  };
+
+  const totalHours = PEER_USAGE.reduce((s, r) => s + r.hours, 0);
+
+  return (
+    <div>
+      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: 20 }}>
+        <div>
+          <h1 style={{ fontSize: 24, fontWeight: 700, color: colors.textPrimary, margin: "0 0 4px" }}>Platform Telemetry</h1>
+          <p style={{ fontSize: 13, color: colors.textSecondary, margin: 0 }}>Usage scan: April 2026 – ACCT0213754 – Refreshed monthly</p>
+        </div>
+      </div>
+
+      {/* Headline Stats */}
+      <div style={{ display: "grid", gridTemplateColumns: "repeat(5, 1fr)", gap: 10, marginBottom: 20 }}>
+        <div style={{ background: colors.bgCard, border: `1px solid ${colors.green}40`, borderRadius: 8, padding: "12px 14px" }}>
+          <div style={{ fontSize: 9, color: colors.textMuted, textTransform: "uppercase", letterSpacing: "0.08em" }}>Active Users</div>
+          <div style={{ fontSize: 20, fontWeight: 700, color: colors.green }}>632K</div>
+          <div style={{ fontSize: 10, color: colors.green }}>+28% YoY</div>
+        </div>
+        <div style={{ background: colors.bgCard, border: `1px solid ${colors.blue}40`, borderRadius: 8, padding: "12px 14px" }}>
+          <div style={{ fontSize: 9, color: colors.textMuted, textTransform: "uppercase", letterSpacing: "0.08em" }}>Workflows/Month</div>
+          <div style={{ fontSize: 20, fontWeight: 700, color: colors.blue }}>5.9M</div>
+          <div style={{ fontSize: 10, color: colors.blue }}>+44% YoY</div>
+        </div>
+        <div style={{ background: colors.bgCard, border: `1px solid ${colors.green}40`, borderRadius: 8, padding: "12px 14px" }}>
+          <div style={{ fontSize: 9, color: colors.textMuted, textTransform: "uppercase", letterSpacing: "0.08em" }}>VA Conversations</div>
+          <div style={{ fontSize: 20, fontWeight: 700, color: colors.green }}>3.9M</div>
+          <div style={{ fontSize: 10, color: colors.green }}>100x peer median</div>
+        </div>
+        <div style={{ background: colors.bgCard, border: `1px solid ${colors.green}40`, borderRadius: 8, padding: "12px 14px" }}>
+          <div style={{ fontSize: 9, color: colors.textMuted, textTransform: "uppercase", letterSpacing: "0.08em" }}>Est. Hours Saved</div>
+          <div style={{ fontSize: 20, fontWeight: 700, color: colors.green }}>{fmt(totalHours)}</div>
+          <div style={{ fontSize: 10, color: colors.textMuted }}>Modelled (all workflows)</div>
+        </div>
+        <div style={{ background: colors.bgCard, border: `1px solid ${colors.red}40`, borderRadius: 8, padding: "12px 14px" }}>
+          <div style={{ fontSize: 9, color: colors.textMuted, textTransform: "uppercase", letterSpacing: "0.08em" }}>Products Not In Use</div>
+          <div style={{ fontSize: 20, fontWeight: 700, color: colors.red }}>{adoptionCounts["Not In Use"]}</div>
+          <div style={{ fontSize: 10, color: colors.red }}>of {PRODUCT_ADOPTION.length} horizontal</div>
+        </div>
+      </div>
+
+      {/* Tabs */}
+      <div style={{ display: "flex", gap: 4, marginBottom: 20, borderBottom: `1px solid ${colors.border}` }}>
+        {tabs.map(t => (
+          <button key={t.id} onClick={() => setActiveTab(t.id)}
+            style={{ background: "none", border: "none", borderBottom: activeTab === t.id ? `2px solid ${colors.blue}` : "2px solid transparent", padding: "8px 16px", fontSize: 11, fontWeight: 600, color: activeTab === t.id ? colors.blue : colors.textMuted, cursor: "pointer", textTransform: "uppercase", letterSpacing: "0.05em" }}>
+            {t.label}
+          </button>
+        ))}
+      </div>
+
+      {/* USAGE vs PEERS */}
+      {activeTab === "peers" && (
+        <div style={{ background: colors.bgCard, border: `1px solid ${colors.border}`, borderRadius: 10, overflow: "hidden" }}>
+          <div style={{ display: "grid", gridTemplateColumns: "1.2fr 2fr 1fr 1fr 1fr 0.8fr 1fr", gap: 8, padding: "12px 16px", background: colors.bgPanel, borderBottom: `1px solid ${colors.border}` }}>
+            {["Workflow", "Metric", "SCB Usage", "Peer Median", "Peer P75", "Position", "Est. Hours"].map(h => (
+              <div key={h} style={{ fontSize: 10, fontWeight: 700, color: colors.textMuted, textTransform: "uppercase", letterSpacing: "0.05em", textAlign: ["SCB Usage","Peer Median","Peer P75","Est. Hours"].includes(h) ? "right" : "left" }}>{h}</div>
+            ))}
+          </div>
+          {PEER_USAGE.map((r, i) => {
+            const pos = r.usage > r.p75 ? "above" : r.usage >= r.median ? "mid" : "below";
+            const posColor = pos === "above" ? colors.green : pos === "mid" ? colors.amber : colors.red;
+            const posLabel = pos === "above" ? "> P75" : pos === "mid" ? "Median" : "< Median";
+            return (
+              <div key={i} style={{ display: "grid", gridTemplateColumns: "1.2fr 2fr 1fr 1fr 1fr 0.8fr 1fr", gap: 8, padding: "10px 16px", borderBottom: i < PEER_USAGE.length - 1 ? `1px solid ${colors.border}` : "none" }}>
+                <div style={{ fontSize: 10, color: colors.textMuted }}>{r.workflow}</div>
+                <div style={{ fontSize: 11, fontWeight: 500, color: colors.textPrimary }}>{r.metric}</div>
+                <div style={{ fontSize: 11, fontWeight: 700, color: posColor, textAlign: "right", fontFamily: "monospace" }}>{fmt(r.usage)}</div>
+                <div style={{ fontSize: 11, color: colors.textSecondary, textAlign: "right", fontFamily: "monospace" }}>{fmt(r.median)}</div>
+                <div style={{ fontSize: 11, color: colors.textSecondary, textAlign: "right", fontFamily: "monospace" }}>{fmt(r.p75)}</div>
+                <div><span style={{ fontSize: 9, fontWeight: 600, color: posColor, background: `${posColor}15`, padding: "2px 8px", borderRadius: 10 }}>{posLabel}</span></div>
+                <div style={{ fontSize: 11, color: colors.textSecondary, textAlign: "right", fontFamily: "monospace" }}>{fmt(r.hours)}</div>
+              </div>
+            );
+          })}
+        </div>
+      )}
+
+      {/* PLATFORM GROWTH */}
+      {activeTab === "growth" && (
+        <div style={{ background: colors.bgCard, border: `1px solid ${colors.border}`, borderRadius: 10, overflow: "hidden" }}>
+          {PLATFORM_GROWTH.map((r, i) => (
+            <div key={i} style={{ display: "flex", alignItems: "center", gap: 16, padding: "12px 20px", borderBottom: i < PLATFORM_GROWTH.length - 1 ? `1px solid ${colors.border}` : "none" }}>
+              <div style={{ flex: 2, fontSize: 12, fontWeight: 500, color: colors.textPrimary }}>{r.metric}</div>
+              <div style={{ flex: 1, fontSize: 12, fontWeight: 600, color: colors.textPrimary, textAlign: "right", fontFamily: "monospace" }}>{r.value}</div>
+              <div style={{ flex: 1.5, display: "flex", alignItems: "center", gap: 8 }}>
+                <div style={{ flex: 1, height: 8, background: `${colors.textMuted}15`, borderRadius: 4, overflow: "hidden" }}>
+                  <div style={{ width: `${Math.min(r.yoy * 2, 100)}%`, height: "100%", background: r.yoy >= 30 ? colors.green : r.yoy >= 15 ? colors.blue : colors.textSecondary, borderRadius: 4, transition: "width 0.3s" }} />
+                </div>
+                <span style={{ fontSize: 12, fontWeight: 700, color: r.yoy >= 30 ? colors.green : r.yoy >= 15 ? colors.blue : colors.textSecondary, fontFamily: "monospace", width: 45, textAlign: "right" }}>+{r.yoy}%</span>
+              </div>
+            </div>
+          ))}
+        </div>
+      )}
+
+      {/* PRODUCT ADOPTION HEATMAP */}
+      {activeTab === "adoption" && (
+        <div>
+          {/* Summary bar */}
+          <div style={{ display: "flex", gap: 12, marginBottom: 16 }}>
+            {Object.entries(adoptionCounts).map(([status, count]) => {
+              const st = statusStyle[status];
+              return (
+                <div key={status} style={{ flex: 1, background: st.bg, borderRadius: 8, padding: "10px 14px", textAlign: "center" }}>
+                  <div style={{ fontSize: 22, fontWeight: 800, color: st.color }}>{count}</div>
+                  <div style={{ fontSize: 10, fontWeight: 600, color: st.color }}>{status}</div>
+                </div>
+              );
+            })}
+          </div>
+          {/* Product grid */}
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 8 }}>
+            {PRODUCT_ADOPTION.map((p, i) => {
+              const st = statusStyle[p.status];
+              return (
+                <div key={i} style={{ background: colors.bgCard, border: `1px solid ${colors.border}`, borderLeft: `3px solid ${st.color}`, borderRadius: 6, padding: "10px 12px" }}>
+                  <div style={{ fontSize: 11, fontWeight: 600, color: colors.textPrimary, marginBottom: 4 }}>{p.product}</div>
+                  <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+                    <span style={{ fontSize: 9, fontWeight: 600, color: st.color, background: st.bg, padding: "2px 6px", borderRadius: 3 }}>{p.status}</span>
+                    {p.yoy !== null && <span style={{ fontSize: 10, fontWeight: 600, color: p.yoy >= 50 ? colors.green : colors.textMuted, fontFamily: "monospace" }}>+{p.yoy}%</span>}
+                  </div>
+                  {p.value && <div style={{ fontSize: 10, color: colors.textMuted, marginTop: 4, fontFamily: "monospace" }}>{p.value}</div>}
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      )}
+
+      <div style={{ marginTop: 20, padding: 16, background: colors.bgCard, border: `1px solid ${colors.border}`, borderRadius: 8 }}>
+        <div style={{ fontSize: 11, fontWeight: 700, color: colors.blue, marginBottom: 8 }}>How to refresh this data</div>
+        <div style={{ fontSize: 11, color: colors.textSecondary, lineHeight: 1.6 }}>
+          Download the four reports from Value Melody / Customer Dashboard (filter: ACCT0213754). Upload to Claude. The data arrays are regenerated in the JSX and pushed to Vercel. Takes five minutes monthly.
+        </div>
+      </div>
+    </div>
+  );
+}
+
 // ─── License Entitlements View ────────────────────────────────────────────────
 const LICENSE_DATA = [
   { bu: "ITSM", code: "PROD11356", name: "IT Service Management Professional", type: "Unrestricted User", units: "70,000", acv: 1470000, tcv: 5113651, order: "OF1 + OF2" },
@@ -2870,6 +3858,8 @@ export default function SCBAccountPlan() {
       case "adoption": return <AdoptionView />;
       case "growth": return <GrowthView />;
       case "actions": return <ActionsView />;
+      case "aicoach": return <AICoachView />;
+      case "telemetry": return <TelemetryView />;
       case "migration": return <MigrationView />;
       case "licenses": return <LicenseView />;
       default: return <DashboardView />;
