@@ -336,55 +336,71 @@ const EXECUTIVES = [
     opportunityIds: [1], strategicThemes: ["ffg"] },
 ];
 
+const VALUE_DELIVERED = {
+  total: 11242012,
+  byDomain: [
+    { domain: "Virtual Agent", value: 8135414, hours: 2311197, detail: "VA deflection ($6.8M) + requestor time savings ($1.3M). 3.9M conversations/month." },
+    { domain: "ITSM", value: 1361210, hours: 385853, detail: "Request mgmt ($769K), Incident mgmt ($503K), Change ($81K), Problem ($9K)" },
+    { domain: "AI Search & Now Assist", value: 1159988, hours: 329542, detail: "Search deflection ($827K), Genius Search ($185K), AI Search savings ($138K), LLM calls ($10K)" },
+    { domain: "HR & EJM", value: 338376, hours: 80531, detail: "HR case mgmt fulfiller efficiency ($277K), Employee Journey Mgmt ($61K)" },
+    { domain: "Knowledge Mgmt", value: 121497, hours: 34516, detail: "KB article views — requestor time savings. 912K articles viewed (+65% YoY)." },
+    { domain: "ITOM & Discovery", value: 68267, hours: 19394, detail: "Discovery ($43K), AIOps alert automation ($25K)" },
+    { domain: "GRC & Risk", value: 38318, hours: 4234, detail: "Risk assessment automation — 882 assessments (10x peer median)" },
+    { domain: "Process Mining", value: 11354, hours: 3226, detail: "Automated discovery and mapping — 9.6 projects mined" },
+    { domain: "ITAM (SAM + HAM)", value: 5380, hours: 892, detail: "SAM normalisation ($4.3K), SAM models ($615), HAM automation ($444)" },
+    { domain: "Other", value: 2208, hours: 12, detail: "Integration Hub ($2.2K), Demand Mgmt ($35)" },
+  ],
+};
+
 const ADOPTION_DATA = {
   products: [
-    { family: "ITSM", products: ["Incident", "Problem", "Change", "Request", "Knowledge"], adoption: "High", users: "18,000+", status: "green", notes: "Core platform — HR Hub success (86% sat, 85% deflection)" },
-    { family: "HRSD", products: ["Case Management", "Employee Centre", "Lifecycle Events", "Document Management"], adoption: "High", users: "82,000", status: "green", notes: "104K productive hours saved annually; OneSC flagship" },
-    { family: "WSD", products: ["Workplace Reservation", "Facilities Management", "Space Management"], adoption: "Emerging", users: "5,000+", status: "amber", notes: "Go-live early 2026; $600K NNACV in pipeline" },
-    { family: "ITOM", products: ["Discovery", "Service Mapping", "Event Management", "Cloud Observability"], adoption: "Low", users: "<500", status: "red", notes: "⚠️ Significant shelfware risk — ServiceBench replacement threat" },
-    { family: "SecOps", products: ["Vulnerability Response", "Threat Intelligence"], adoption: "Low", users: "<300", status: "red", notes: "⚠️ Databricks integration incomplete; ServiceBench threat" },
-    { family: "IRM", products: ["Policy & Compliance", "Audit", "Risk", "Vendor Risk"], adoption: "Low", users: "<200", status: "red", notes: "⚠️ Risk function not engaged; 6,000 potential users" },
-    { family: "ITAM", products: ["Hardware Asset Management", "Software Asset Management"], adoption: "Low", users: "<400", status: "red", notes: "⚠️ SAM optimisation opportunity — $1B tech spend; ServiceBench threat" },
-    { family: "ITBM", products: ["Project Portfolio", "Agile Development", "Test Management"], adoption: "Medium", users: "2,000+", status: "amber", notes: "Engineering teams — Ben Issa domain" },
-    { family: "Customer Service", products: ["CSM Core", "Field Service"], adoption: "None", users: "0", status: "red", notes: "Opportunity in WRB client service" },
-    { family: "AI & Automation", products: ["NowAssist", "AI Control Tower", "Process Automation"], adoption: "Emerging", users: "Pilot", status: "amber", notes: "$750K NowAssist expansion; AI governance partnership — Shebani Baweja (Interim CDO)" },
-    { family: "App Engine", products: ["Custom Apps", "Integrations", "Workflows"], adoption: "Medium", users: "Dev teams", status: "amber", notes: "Counter Ben Issa's 'build' preference — innovation ON platform" },
-    { family: "FSO", products: ["Order Management", "Disputes", "KYC/AML"], adoption: "None", users: "0", status: "red", notes: "Trade Finance pilot — $800K opportunity" },
-    { family: "Legal", products: ["Legal Service Delivery", "Contract Management"], adoption: "None", users: "0", status: "amber", notes: "New domain — Legal ops transformation" },
-    { family: "Supply Chain", products: ["Procurement", "Sourcing", "Vendor Management"], adoption: "Low", users: "<300", status: "amber", notes: "FFG programme alignment — vendor optimisation" },
-    { family: "Health & Safety", products: ["EHS Management", "Incident Tracking"], adoption: "Emerging", users: "Pilot", status: "amber", notes: "Go-live early 2026 with WSD" },
-    { family: "Integration Hub", products: ["Spoke Library", "Custom Integrations"], adoption: "Medium", users: "Integration teams", status: "amber", notes: "SAP, Workday, Databricks integrations" },
-    { family: "Performance Analytics", products: ["Dashboards", "Reports", "KPIs"], adoption: "Medium", users: "1,500+", status: "amber", notes: "Business intelligence layer" },
-    { family: "Now Mobile", products: ["Mobile Apps", "Virtual Agent"], adoption: "Low", users: "<1,000", status: "amber", notes: "Employee mobile experience — OneSC component" },
+    { family: "ITSM", products: ["Incident", "Problem", "Change", "Request", "Knowledge"], adoption: "High", users: "66,653 UU (95%)", status: "green", notes: "Core platform. 951K incidents/month, 1.5M requests/month — above P75 peers. +13% YoY task growth." },
+    { family: "HRSD", products: ["Case Management", "Employee Centre", "Lifecycle Events", "Document Mgmt"], adoption: "High", users: "132,723 HR (166% of entitlement)", status: "green", notes: "OneSC flagship. 525K HR cases/month (2.9x peer median). 104K productive hours saved/year. 86% satisfaction. Overage needs true-up." },
+    { family: "ITOM", products: ["AIOps", "Discovery", "Event Mgmt", "Cloud Observability"], adoption: "High", users: "49,311 SU (82%)", status: "green", notes: "82% utilisation — healthy. 84,798 automation executions/day. Below peer P75 for ITOM Visibility; automation solid." },
+    { family: "ITAM (SAM)", products: ["Software Asset Management"], adoption: "High", users: "60,993 SU (94%)", status: "green", notes: "94% utilisation — near capacity. $1B annual tech spend justifies investment." },
+    { family: "ITAM (HAM)", products: ["Hardware Asset Management"], adoption: "High", users: "47,983 SU (96%)", status: "green", notes: "96% utilisation — near capacity. Strong operational usage." },
+    { family: "SecOps SIR", products: ["Security Incident Response"], adoption: "High", users: "66,653 UU (95%)", status: "green", notes: "Shared UU count with ITSM. SIR well integrated into security ops." },
+    { family: "Enterprise Architecture", products: ["Enterprise Architecture Professional"], adoption: "High", users: "1,731 BA (87%)", status: "green", notes: "87% utilisation — strong adoption." },
+    { family: "Virtual Agent", products: ["VA", "Now Assist VA"], adoption: "High", users: "3.9M conversations/month", status: "green", notes: "100x peer median. +101% YoY. The standout success metric across the entire estate." },
+    { family: "App Engine", products: ["App Engine Enterprise", "Custom Apps"], adoption: "High", users: "~1,535 FU (287% of entitlement)", status: "amber", notes: "Massive overage: 535 entitled, ~1,535 actual. 248K custom flows/month (+30% YoY). Needs true-up." },
+    { family: "WSD", products: ["Workplace Service Delivery Enterprise"], adoption: "Implementing", users: "10,000 entitled / 0 active", status: "amber", notes: "Signed with Shelley Boland. 41 digital experiences in delivery. Go-live in progress — not a failure, an investment in motion." },
+    { family: "AI & Data", products: ["AI Control Tower", "RaptorDB Pro", "GenAI Controller", "AI Search"], adoption: "Emerging", users: "65 SU (AICT); 211K GAI results/month", status: "amber", notes: "AICT go-live 30 April. GenAI Controller at Medium Use. AI Search at Low Use (43K users). RaptorDB Pro at Low Use." },
+    { family: "Now Assist", products: ["Now Assist ITSM", "Now Assist AI Search", "Now Assist Panel", "Now Assist VA"], adoption: "Low", users: "33,678 (ITSM); 39,021 (Search); 7,638 (VA)", status: "red", notes: "30M assists entitled, 575K consumed (1.9%). ITSM and Search activating. HR, ITOM, Security, CS, Portfolio Mgmt all Not In Use. Critical activation gap." },
+    { family: "IRM / GRC", products: ["IRM Professional", "TPRM", "BCM", "PA for GRC"], adoption: "Low", users: "70,000 UU (scope-restricted)", status: "red", notes: "Contractually limited to Policy, GRC, Risk, Op Resilience. 882 risk assessments/month (10x peer median — good). BCM at 8%, TPRM at 51%. Mixed picture." },
+    { family: "SecOps VR", products: ["Vulnerability Response"], adoption: "Low", users: "Shared 66,653 UU (not VR-specific)", status: "red", notes: "Usage unclear — shared UU count masks actual product adoption. Databricks integration incomplete. Downsell candidate." },
+    { family: "H&S", products: ["Health & Safety Professional"], adoption: "Implementing", users: "1,000 entitled / 20 active", status: "amber", notes: "In active implementation alongside CRES Digital Vision. Not at risk — ramping." },
+    { family: "SPM", products: ["Strategic Portfolio Management"], adoption: "Low", users: "8 demands/month (vs 1,466 peer median)", status: "red", notes: "Severely under-used. 100 users entitled, 1 active. Below P25 peers." },
+    { family: "Performance Analytics", products: ["PA Pro", "Reporting", "Platform Analytics"], adoption: "High", users: "42,375 reports; 12,280 dashboard views", status: "green", notes: "PA Pro and Reporting at High Use (+24% YoY). Platform Analytics at High Use." },
+    { family: "Service Portal & Catalog", products: ["Service Portal", "Service Catalog", "Employee Center"], adoption: "High", users: "2.2M sessions/month; 191K catalog items", status: "green", notes: "Portal +94% YoY, Catalog +10% YoY. Employee Center at Medium Use (28K searches)." },
   ],
   downsellRisk: {
     total: "$4M",
     at36Months: true,
-    products: ["ITOM", "HAM", "SAM", "SecOps VR"],
-    mainThreat: "ServiceBench",
-    threatDescription: "Homegrown bank solution actively being positioned as replacement for underutilised ServiceNow capabilities. Engineering team (Ben Issa / Januar Wayong) advocates for ServiceBench expansion.",
+    products: ["Now Assist (1.9% of 30M assists)", "SecOps VR (unclear usage)", "SPM (8 vs 1,466 peer median)", "BCM (8% utilisation)"],
+    mainThreat: "ServiceBench + Low Now Assist Activation",
+    threatDescription: "Two distinct risks: (1) ServiceBench — homegrown alternative actively positioned for underutilised areas. (2) Now Assist — $897K contracted, 1.9% consumed. 9 of 13 Now Assist products are Not In Use. If AI value is not demonstrated before the 2028 renewal, both the AI investment and the at-risk operational products face downsell pressure.",
   },
   successMeasure: {
-    metric: "Critical Apps Adoption",
+    metric: "Platform Adoption Health",
     target: ">70%",
-    description: "Adoption rate for at-risk solutions (ITOM, HAM, SAM, SecOps VR)",
+    description: "Adoption rate for at-risk solutions — measured via telemetry. Current: 8 High Use, 4 Medium, 12 Low, 17 Not In Use across horizontal products.",
   },
 };
 
 const GROWTH_OPPORTUNITIES = [
-  { id: 1, pursuit: "EmployeeWorks & AI Expansion", nnacv: "$3M", probability: "High", stage: "Active", theme: "ffg", year: "2026",
+  { id: 1, pursuit: "EmployeeWorks & AI Expansion", nnacv: "$2M", probability: "High", stage: "Active", theme: "ffg", year: "2026", progress: "active",
     products: ["EmployeeWorks", "NowAssist", "Agentic AI", "AI Control Tower"],
     sponsor: "Tanuj Kapilashrami / Melinda McKinley",
     executiveIds: ["tk", "mk", "sba", "wy", "bon", "mkor", "id", "sl"],
     competes: "ServiceBench (displace)", partner: "Infosys (MSP)",
-    description: "OneSC LIVE (6 April ✅). Agentic AI for Onboarding go-live 15 April. AICT Phase 1 MVP confirmed 30 April. EmployeeWorks (Moveworks) $2.25M deal progressing. Drives revenue-per-FTE (CEO KPI) and eNPS recovery.",
+    description: "OneSC LIVE (6 April ✅). Agentic AI for Onboarding go-live 24 April. AICT Phase 1 MVP confirmed 30 April. EmployeeWorks (Moveworks) $2.25M deal progressing. Drives revenue-per-FTE (CEO KPI) and eNPS recovery.",
     items: [
       { name: "EmployeeWorks (Moveworks)", est: "$2.25M", status: "Active", detail: "Action layer on OneSC (now LIVE). Bhavin Shah engagement with Melinda progressing. $2.25M pipeline." },
-      { name: "Agentic AI for Onboarding", est: "$200K", status: "Go-Live", detail: "Go-live confirmed 15 April 2026. MVP presented. Sponsor: Melinda McKinley." },
+      { name: "Agentic AI for Onboarding", est: "$200K", status: "Go-Live", detail: "Go-live confirmed 24 April 2026. MVP presented. Sponsor: Melinda McKinley." },
       { name: "NowAssist Expansion", est: "$250K", status: "Pipeline", detail: "Contracted June 2025. Expansion beyond HR to ITSM/ITOM." },
       { name: "AI Control Tower", est: "$150K", status: "Implementing", detail: "Phase 1 MVP with Infosys. 500-unit entitlement. Go-live 30 April (confirmed). Blockers: SAE visibility rules, versioning. Interim CDO engagement TBD." },
     ]},
-  { id: 2, pursuit: "Legal Service Delivery & Contract Management", nnacv: "$500K", probability: "High", stage: "Active", theme: "ffg", year: "2026",
+  { id: 2, pursuit: "Legal Service Delivery & Contract Management", nnacv: "$500K", probability: "High", stage: "Active", theme: "ffg", year: "2026", progress: "stalled",
     products: ["Legal Service Delivery", "Contract Lifecycle Management", "Matter Management"],
     sponsor: "Legal function / Tanuj Kapilashrami",
     executiveIds: ["tk", "wy", "bon"],
@@ -394,7 +410,7 @@ const GROWTH_OPPORTUNITIES = [
       { name: "Legal Service Delivery", est: "$250K", status: "Requirements gathering", detail: "Legal ops transformation — matter management, request intake" },
       { name: "Contract Lifecycle Management", est: "$250K", status: "Opportunity", detail: "Contract authoring, approval workflows, obligation tracking" },
     ]},
-  { id: 3, pursuit: "Security Platform Expansion (Veza & Armis)", nnacv: "$1.6M", probability: "Medium", stage: "Developing", theme: "techRes", year: "2027",
+  { id: 3, pursuit: "Security Platform Expansion (Veza & Armis)", nnacv: "$1.6M", probability: "Medium", stage: "Developing", theme: "techRes", year: "2027", progress: "active",
     products: ["Veza", "Armis", "SecOps VR", "IRM", "AI Governance"],
     sponsor: "Alvaro Garrido / Cezary Piekarski",
     executiveIds: ["ag", "cp", "ne", "ls"],
@@ -405,7 +421,7 @@ const GROWTH_OPPORTUNITIES = [
       { name: "Armis Asset Intelligence", est: "$500K", status: "Evaluation", detail: "Asset visibility, vulnerability management — security engineering priority" },
       { name: "SecOps Integration Completion", est: "$500K", status: "Developing", detail: "Databricks security stack integration — reduce downsell risk" },
     ]},
-  { id: 4, pursuit: "CRES Digital Vision Programme", nnacv: "$1M", probability: "High", stage: "Active", theme: "ffg", year: "2026",
+  { id: 4, pursuit: "CRES Digital Vision Programme", nnacv: "$1M", probability: "High", stage: "Active", theme: "ffg", year: "2026", progress: "stalled",
     products: ["WSD", "Custom Apps", "Integrations"],
     sponsor: "Shelley Boland / Storm Dalati",
     executiveIds: ["sb", "tk", "wy", "bon", "sl"],
@@ -420,19 +436,7 @@ const GROWTH_OPPORTUNITIES = [
       { name: "Service Call Button", est: "$75K", status: "Requirements gathered", detail: "One-touch hospitality request, real-time routing" },
       { name: "Space Finding & Wayfinding", est: "$75K", status: "Opportunity", detail: "Indoor navigation, desk booking, occupancy analytics" },
     ]},
-  { id: 5, pursuit: "Technology Resilience & ITOM", nnacv: "$500K", probability: "Medium", stage: "Developing", theme: "techRes", year: "2027",
-    products: ["IRM", "ITOM Discovery", "SAM", "Cloud Observability"],
-    sponsor: "Balachandher Balakrishnan / Jason Forrester",
-    executiveIds: ["bb", "jf", "ne", "rg", "ls"],
-    competes: "MetricStream (incumbent)", partner: "Infosys (MSP)",
-    description: "IRM/GRC for the bank's 6,000+ risk function (Jason Forrester). ITOM Discovery for hybrid cloud visibility. SAM optimisation across $1B annual tech spend. DORA compliance driver.",
-    items: [
-      { name: "IRM / GRC Adoption", est: "$150K", status: "Opportunity", detail: "Jason Forrester's Risk function — 6,000 employees" },
-      { name: "ITOM Discovery Deployment", est: "$150K", status: "Opportunity", detail: "Hybrid cloud visibility; supports 50% cloud target" },
-      { name: "SAM / HAM Optimisation", est: "$100K", status: "Opportunity", detail: "$1B annual tech spend justifies focus" },
-      { name: "Cloud Observability", est: "$100K", status: "Opportunity", detail: "Multi-cloud monitoring — AWS, Azure, GCP" },
-    ]},
-  { id: 6, pursuit: "Financial Services Operations (FSO) & CIB", nnacv: "$3M", probability: "Medium", stage: "Developing", theme: "clientExp", year: "2027",
+  { id: 6, pursuit: "Financial Services Operations (FSO) & CIB", nnacv: "$4M", probability: "Medium", stage: "Developing", theme: "clientExp", year: "2027", progress: "active",
     products: ["FSO", "App Engine", "Agentic AI", "AI Control Tower", "Kyriba Autonomous Treasury"],
     sponsor: "Geoff Kot / Roberto Hoornweg / Guillermo Veiga",
     executiveIds: ["gk", "cc", "jk", "ak", "mw", "gv", "rh", "sba", "je", "rn"],
@@ -444,7 +448,7 @@ const GROWTH_OPPORTUNITIES = [
       { name: "Track 3: Kyriba Autonomous Treasury", est: "$1M", status: "Exploratory", detail: "Intra-day liquidity swaps, tokenised deposits, wallet infrastructure. Ankur Kanwar + Mark Willis. Quantum initiative." },
       { name: "VISA Disputes Management", est: "$500K", status: "Early", detail: "Co-exist with ServiceBench in CIB context." },
     ]},
-  { id: 7, pursuit: "Revenue Growth & Client Experience", nnacv: "$2.5M", probability: "Medium", stage: "Visionary", theme: "clientExp", year: "2027",
+  { id: 7, pursuit: "Revenue Growth & Client Experience", nnacv: "$2.5M", probability: "Medium", stage: "Visionary", theme: "clientExp", year: "2027", progress: "stalled",
     products: ["CRM", "Agentic AI", "CSM", "Client Portal"],
     sponsor: "Judy Hsu (WRB) / Roberto Hoornweg (CIB)",
     executiveIds: ["jh", "rh"],
@@ -456,7 +460,7 @@ const GROWTH_OPPORTUNITIES = [
       { name: "SC Ventures Innovation Partnership", est: "$500K", status: "Exploratory", detail: "Joint innovation programme" },
       { name: "Client Portal & Self-Service", est: "$500K", status: "Concept", detail: "Digital client experience" },
     ]},
-  { id: 8, pursuit: "Strategic Customer Success", nnacv: "$1M", probability: "High", stage: "Active", theme: "ffg", year: "2026",
+  { id: 8, pursuit: "Strategic Customer Success", nnacv: "$1M", probability: "High", stage: "Active", theme: "ffg", year: "2026", progress: "active",
     products: ["Customer Success", "Adoption Services", "Value Realisation", "Executive Health Review"],
     sponsor: "Tanuj Kapilashrami / Melinda McKinley",
     executiveIds: ["tk", "mk", "wy", "bon"],
@@ -473,17 +477,17 @@ const GROWTH_OPPORTUNITIES = [
 // ─── Theme & Styles ──────────────────────────────────────────────────────────
 const colors = {
   // Standard Chartered Brand Palette — Light Theme (Projector-Optimised)
-  // Primary: SC Blue #0072AA, SC Teal #00A896, SC Navy #2C3A87
+  // SC Blue #0072AA, SC Teal #00A896, SC Navy #2C3A87
   bg: "#F7F8FC",
   bgCard: "#FFFFFF",
   bgHover: "#EEF1F8",
   bgPanel: "#F0F2F8",
   border: "#DDE1EC",
   borderLight: "rgba(0,168,150,0.15)",
-  green: "#008A7B",          // SC Teal deepened for white bg contrast
+  green: "#008A7B",          // SC Teal deepened for white bg
   greenDark: "#006B5E",
   greenGlow: "rgba(0,138,123,0.08)",
-  blue: "#0066B3",           // SC Blue deepened for white bg contrast
+  blue: "#0066B3",           // SC Blue deepened for white bg
   blueGlow: "rgba(0,102,179,0.08)",
   amber: "#D97B00",
   amberGlow: "rgba(217,123,0,0.07)",
@@ -703,7 +707,7 @@ function DashboardView() {
           <h3 style={{ fontSize: 14, fontWeight: 600, color: colors.textPrimary, margin: "0 0 14px" }}>Account Health</h3>
           {[
             { label: "Executive Sponsorship", status: "green", detail: "Chris Bedi ↔ Tanuj Kapilashrami" },
-            { label: "myHR / OneSC Adoption", status: "green", detail: "86% satisfaction · 85% deflection" },
+            { label: "myHR / OneSC Adoption", status: "green", detail: "86% satisfaction · 77% VA resolution preference" },
             { label: "IRM/SecOps Utilisation", status: "red", detail: "Risk function not engaged; 6,000 potential users — critical gap" },
             { label: "Leadership Window", status: "amber", detail: "Noelle Eder — new, not yet engaged" },
             { label: "Engineering Risk", status: "red", detail: "Ben Issa — active resistance" },
@@ -729,8 +733,9 @@ function DashboardView() {
             { label: "Neutralise Ben Issa via platform mandate", priority: "HIGH", color: colors.amber },
             { label: "IRM + SecOps adoption campaign", priority: "HIGH", color: colors.amber },
             { label: "CIB Workshop — first entry into $12.4B division", priority: "CRITICAL", color: colors.red },
+            { label: "K26: Facilitate 45-min session on last day with SC team at Marquee Experience — hear from them, plan high-impact actions", priority: "HELP NEEDED", color: colors.blue },
           ].map((p, i) => (
-            <div key={i} style={{ display: "flex", alignItems: "center", gap: 10, padding: "7px 0", borderBottom: i < 7 ? `1px solid ${colors.border}` : "none" }}>
+            <div key={i} style={{ display: "flex", alignItems: "center", gap: 10, padding: "7px 0", borderBottom: i < 8 ? `1px solid ${colors.border}` : "none" }}>
               <span style={{ fontSize: 9, fontWeight: 700, color: p.color, background: `${p.color}18`, padding: "2px 6px", borderRadius: 4, whiteSpace: "nowrap" }}>{p.priority}</span>
               <span style={{ fontSize: 12, color: colors.textPrimary }}>{p.label}</span>
             </div>
@@ -752,7 +757,7 @@ function DashboardView() {
           </div>
           <div style={{ flex: 1, background: colors.amberGlow, borderRadius: 8, padding: "10px 14px", display: "flex", alignItems: "center", gap: 8 }}>
             <span style={{ fontSize: 16 }}>🚀</span>
-            <div><div style={{ fontSize: 12, fontWeight: 700, color: colors.amber }}>Agentic AI Onboarding</div><div style={{ fontSize: 10, color: colors.textSecondary }}>15 April 2026</div></div>
+            <div><div style={{ fontSize: 12, fontWeight: 700, color: colors.amber }}>Agentic AI Onboarding</div><div style={{ fontSize: 10, color: colors.textSecondary }}>24 April 2026</div></div>
           </div>
           <div style={{ flex: 1, background: `${colors.blue}15`, borderRadius: 8, padding: "10px 14px", display: "flex", alignItems: "center", gap: 8 }}>
             <span style={{ fontSize: 16 }}>🎯</span>
@@ -1824,11 +1829,91 @@ function AccountTeamView() {
 // ─── Adoption ────────────────────────────────────────────────────────────────
 function AdoptionView() {
   const [expandedFamily, setExpandedFamily] = useState(null);
+  const highCount = ADOPTION_DATA.products.filter(p => p.adoption === "High").length;
+  const medCount = ADOPTION_DATA.products.filter(p => p.adoption === "Medium" || p.adoption === "Emerging" || p.adoption === "Implementing").length;
+  const lowCount = ADOPTION_DATA.products.filter(p => p.adoption === "Low" || p.adoption === "None").length;
   return (
     <div>
       <h1 style={{ fontSize: 24, fontWeight: 700, color: colors.textPrimary, margin: "0 0 4px" }}>Adoption & Renewal Status</h1>
-      <p style={{ fontSize: 13, color: colors.textSecondary, margin: "0 0 20px" }}>Product portfolio health · 18 families · Next renewal: 28 Dec 2028</p>
+      <p style={{ fontSize: 13, color: colors.textSecondary, margin: "0 0 20px" }}>Telemetry-grounded assessment · April 2026 scan · Next renewal: 28 Dec 2028</p>
       
+      {/* Platform Health Summary */}
+      <div style={{ display: "grid", gridTemplateColumns: "repeat(5, 1fr)", gap: 10, marginBottom: 20 }}>
+        <div style={{ background: colors.bgCard, border: `1px solid ${colors.green}40`, borderRadius: 8, padding: "12px 14px" }}>
+          <div style={{ fontSize: 9, color: colors.textMuted, textTransform: "uppercase", letterSpacing: "0.08em" }}>Active Users</div>
+          <div style={{ fontSize: 20, fontWeight: 700, color: colors.green }}>632K</div>
+          <div style={{ fontSize: 10, color: colors.green }}>+28% YoY</div>
+        </div>
+        <div style={{ background: colors.bgCard, border: `1px solid ${colors.blue}40`, borderRadius: 8, padding: "12px 14px" }}>
+          <div style={{ fontSize: 9, color: colors.textMuted, textTransform: "uppercase", letterSpacing: "0.08em" }}>Workflows/Month</div>
+          <div style={{ fontSize: 20, fontWeight: 700, color: colors.blue }}>5.9M</div>
+          <div style={{ fontSize: 10, color: colors.blue }}>+44% YoY</div>
+        </div>
+        <div style={{ background: colors.bgCard, border: `1px solid ${colors.green}40`, borderRadius: 8, padding: "12px 14px" }}>
+          <div style={{ fontSize: 9, color: colors.textMuted, textTransform: "uppercase", letterSpacing: "0.08em" }}>VA Conversations</div>
+          <div style={{ fontSize: 20, fontWeight: 700, color: colors.green }}>3.9M/mo</div>
+          <div style={{ fontSize: 10, color: colors.green }}>100x peer median</div>
+        </div>
+        <div style={{ background: colors.bgCard, border: `1px solid ${colors.green}40`, borderRadius: 8, padding: "12px 14px" }}>
+          <div style={{ fontSize: 9, color: colors.textMuted, textTransform: "uppercase", letterSpacing: "0.08em" }}>KB Views</div>
+          <div style={{ fontSize: 20, fontWeight: 700, color: colors.green }}>912K</div>
+          <div style={{ fontSize: 10, color: colors.green }}>+65% YoY</div>
+        </div>
+        <div style={{ background: colors.bgCard, border: `1px solid ${colors.red}40`, borderRadius: 8, padding: "12px 14px" }}>
+          <div style={{ fontSize: 9, color: colors.textMuted, textTransform: "uppercase", letterSpacing: "0.08em" }}>Now Assist Consumed</div>
+          <div style={{ fontSize: 20, fontWeight: 700, color: colors.red }}>1.9%</div>
+          <div style={{ fontSize: 10, color: colors.red }}>575K of 30M assists</div>
+        </div>
+      </div>
+
+      {/* Value Delivered — Telemetry-Based */}
+      <div style={{ background: colors.bgCard, border: `2px solid ${colors.green}`, borderRadius: 10, padding: 20, marginBottom: 20 }}>
+        <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 16 }}>
+          <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
+            <div style={{ fontSize: 22 }}>💰</div>
+            <h3 style={{ fontSize: 15, fontWeight: 700, color: colors.green, margin: 0 }}>Annual Value Delivered (Telemetry-Based)</h3>
+          </div>
+          <div style={{ textAlign: "right" }}>
+            <div style={{ fontSize: 28, fontWeight: 800, color: colors.green }}>$11.2M</div>
+            <div style={{ fontSize: 10, color: colors.textMuted }}>86% of $13.1M CACV</div>
+          </div>
+        </div>
+        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 8, marginBottom: 12 }}>
+          {VALUE_DELIVERED.byDomain.filter(d => d.value > 10000).map((d, i) => (
+            <div key={i} style={{ display: "flex", alignItems: "center", gap: 10, padding: "8px 12px", background: colors.bgPanel, borderRadius: 6 }}>
+              <div style={{ minWidth: 70, textAlign: "right" }}>
+                <div style={{ fontSize: 14, fontWeight: 700, color: d.value > 1000000 ? colors.green : colors.blue, fontFamily: "monospace" }}>
+                  ${d.value >= 1000000 ? (d.value/1000000).toFixed(1) + "M" : (d.value/1000).toFixed(0) + "K"}
+                </div>
+              </div>
+              <div style={{ flex: 1, borderLeft: `2px solid ${colors.border}`, paddingLeft: 10 }}>
+                <div style={{ fontSize: 11, fontWeight: 600, color: colors.textPrimary }}>{d.domain}</div>
+                <div style={{ fontSize: 9, color: colors.textMuted }}>{d.detail}</div>
+              </div>
+            </div>
+          ))}
+        </div>
+        <div style={{ fontSize: 11, color: colors.textMuted, lineHeight: 1.5, borderTop: `1px solid ${colors.border}`, paddingTop: 10 }}>
+          Modelled from April 2026 telemetry scan. Methodology: ServiceNow Value Melody framework — time savings × cost assumptions × attribution %. VA deflection at 50% attribution, ITSM efficiency gains at 50%, AI search deflection at 100%. Conservative assumptions applied throughout.
+        </div>
+      </div>
+
+      {/* Adoption Summary Bar */}
+      <div style={{ display: "flex", gap: 10, marginBottom: 20 }}>
+        <div style={{ flex: highCount, background: colors.greenGlow, borderRadius: 8, padding: "10px 14px", textAlign: "center" }}>
+          <div style={{ fontSize: 22, fontWeight: 800, color: colors.green }}>{highCount}</div>
+          <div style={{ fontSize: 10, fontWeight: 600, color: colors.green }}>High Use</div>
+        </div>
+        <div style={{ flex: medCount, background: colors.amberGlow, borderRadius: 8, padding: "10px 14px", textAlign: "center" }}>
+          <div style={{ fontSize: 22, fontWeight: 800, color: colors.amber }}>{medCount}</div>
+          <div style={{ fontSize: 10, fontWeight: 600, color: colors.amber }}>Emerging / Implementing</div>
+        </div>
+        <div style={{ flex: lowCount, background: colors.redGlow, borderRadius: 8, padding: "10px 14px", textAlign: "center" }}>
+          <div style={{ fontSize: 22, fontWeight: 800, color: colors.red }}>{lowCount}</div>
+          <div style={{ fontSize: 10, fontWeight: 600, color: colors.red }}>Low / At Risk</div>
+        </div>
+      </div>
+
       {/* Downsell Risk Warning */}
       <div style={{ background: `linear-gradient(135deg, ${colors.redGlow}, ${colors.amberGlow})`, border: `2px solid ${colors.red}`, borderRadius: 10, padding: 20, marginBottom: 20 }}>
         <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 12 }}>
@@ -1849,7 +1934,7 @@ function AdoptionView() {
         </div>
       </div>
       
-      <h2 style={{ fontSize: 16, fontWeight: 600, color: colors.textPrimary, margin: "0 0 12px" }}>Product Portfolio — 18 Families</h2>
+      <h2 style={{ fontSize: 16, fontWeight: 600, color: colors.textPrimary, margin: "0 0 12px" }}>Product Family Adoption — Telemetry View</h2>
       <div style={{ display: "flex", flexDirection: "column", gap: 8, marginBottom: 20 }}>
         {ADOPTION_DATA.products.map((p, i) => (
           <div key={i} onClick={() => setExpandedFamily(expandedFamily === i ? null : i)}
@@ -1857,18 +1942,20 @@ function AdoptionView() {
             <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
               <StatusDot status={p.status} size={10} />
               <div style={{ flex: 1 }}>
-                <div style={{ fontSize: 13, fontWeight: 600, color: colors.textPrimary }}>{p.family}</div>
+                <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+                  <span style={{ fontSize: 13, fontWeight: 600, color: colors.textPrimary }}>{p.family}</span>
+                  <span style={{ fontSize: 10, color: colors.textMuted, fontFamily: "monospace" }}>{p.users}</span>
+                </div>
                 {expandedFamily === i && (
                   <div style={{ marginTop: 8 }}>
                     <div style={{ fontSize: 11, color: colors.textSecondary, marginBottom: 4 }}>Products: {p.products.join(", ")}</div>
-                    <div style={{ fontSize: 11, color: colors.textSecondary, marginBottom: 4 }}>Users: <span style={{ fontWeight: 600, color: colors.textPrimary }}>{p.users}</span></div>
                     <div style={{ fontSize: 11, color: colors.textSecondary }}>{p.notes}</div>
                   </div>
                 )}
               </div>
               <span style={{ fontSize: 11, padding: "2px 8px", borderRadius: 4, fontWeight: 600,
-                background: p.adoption === "High" ? colors.greenGlow : p.adoption === "Medium" || p.adoption === "Emerging" ? colors.amberGlow : colors.redGlow,
-                color: p.adoption === "High" ? colors.green : p.adoption === "Medium" || p.adoption === "Emerging" ? colors.amber : colors.red }}>
+                background: p.adoption === "High" ? colors.greenGlow : (p.adoption === "Low" || p.adoption === "None") ? colors.redGlow : colors.amberGlow,
+                color: p.adoption === "High" ? colors.green : (p.adoption === "Low" || p.adoption === "None") ? colors.red : colors.amber }}>
                 {p.adoption}
               </span>
             </div>
@@ -1919,51 +2006,73 @@ function AdoptionView() {
               <div style={{ width: 24, height: 24, borderRadius: "50%", background: colors.blue, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 12, fontWeight: 700, color: colors.white, flexShrink: 0 }}>2</div>
               <div>
                 <div style={{ fontSize: 12, fontWeight: 700, color: colors.textPrimary, marginBottom: 4 }}>Platform Architect Investment</div>
-                <div style={{ fontSize: 11, color: colors.textSecondary, lineHeight: 1.5 }}><strong style={{ color: colors.blue }}>3-month engagement</strong> to enable stalled or at-risk areas: ITOM, HAM, SAM, SecOps VR, IRM (DORA), and AI Control Tower.</div>
+                <div style={{ fontSize: 11, color: colors.textSecondary, lineHeight: 1.5 }}><strong style={{ color: colors.blue }}>3-month engagement</strong> to enable stalled or at-risk areas: SecOps VR, SPM, BCM, and Now Assist activation across HR, ITOM, Security.</div>
               </div>
             </div>
           </div>
           
-          {/* Investment 3: Paid Services via CEG */}
+          {/* Investment 3: Active AI Adoption Guidance */}
+          <div style={{ background: `linear-gradient(135deg, ${colors.greenGlow}, ${colors.blueGlow})`, border: `2px solid ${colors.green}`, borderRadius: 8, padding: 14 }}>
+            <div style={{ display: "flex", alignItems: "flex-start", gap: 10 }}>
+              <div style={{ width: 24, height: 24, borderRadius: "50%", background: colors.green, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 12, fontWeight: 700, color: "#FFFFFF", flexShrink: 0 }}>A</div>
+              <div>
+                <div style={{ fontSize: 12, fontWeight: 700, color: colors.green, marginBottom: 4 }}>ASK: Active AI Adoption Guidance & Support</div>
+                <div style={{ fontSize: 11, color: colors.textSecondary, lineHeight: 1.5 }}>SCB has <strong style={{ color: colors.red }}>$897K in Now Assist at 1.9% consumption</strong>. 9 of 13 Now Assist products are Not In Use. We need dedicated AI adoption support — use case identification, activation playbooks, and hands-on enablement — to turn contracted AI spend into demonstrated value before the 2028 renewal.</div>
+              </div>
+            </div>
+          </div>
+          
+          {/* Investment 4: Operating Model Guidance */}
+          <div style={{ background: `linear-gradient(135deg, ${colors.blueGlow}, ${colors.greenGlow})`, border: `2px solid ${colors.blue}`, borderRadius: 8, padding: 14 }}>
+            <div style={{ display: "flex", alignItems: "flex-start", gap: 10 }}>
+              <div style={{ width: 24, height: 24, borderRadius: "50%", background: colors.blue, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 12, fontWeight: 700, color: "#FFFFFF", flexShrink: 0 }}>B</div>
+              <div>
+                <div style={{ fontSize: 12, fontWeight: 700, color: colors.blue, marginBottom: 4 }}>ASK: Guidance to Prepare a Working Operating Model</div>
+                <div style={{ fontSize: 11, color: colors.textSecondary, lineHeight: 1.5 }}>SCB's platform spans <strong style={{ color: colors.blue }}>632K users, 5.9M workflows/month, and 142M configuration items</strong> but lacks a formalised operating model. We need guidance on governance, demand management, release cadence, and centre-of-excellence structure to sustain the +44% YoY growth trajectory and scale into new domains (CIB, Legal, CRES).</div>
+              </div>
+            </div>
+          </div>
+          
+          {/* Investment 5: Paid Services via CEG */}
           <div style={{ background: colors.bgPanel, border: `1px solid ${colors.green}40`, borderRadius: 8, padding: 14 }}>
             <div style={{ display: "flex", alignItems: "flex-start", gap: 10 }}>
               <div style={{ width: 24, height: 24, borderRadius: "50%", background: colors.green, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 12, fontWeight: 700, color: "#FFFFFF", flexShrink: 0 }}>3</div>
               <div>
                 <div style={{ fontSize: 12, fontWeight: 700, color: colors.textPrimary, marginBottom: 4 }}>Paid Services via CEG</div>
-                <div style={{ fontSize: 11, color: colors.textSecondary, lineHeight: 1.5 }}>Pitching for paid services in parallel with investment asks. <strong style={{ color: colors.green }}>2 Expert Services SoWs already in play</strong> to support implementation and adoption.</div>
+                <div style={{ fontSize: 11, color: colors.textSecondary, lineHeight: 1.5 }}>Pitching for paid services in parallel. <strong style={{ color: colors.green }}>2 Expert Services SoWs already in play</strong> to support implementation and adoption.</div>
               </div>
             </div>
           </div>
           
-          {/* Investment 4: Training Credits */}
+          {/* Investment 6: Training Credits */}
           <div style={{ background: colors.bgPanel, border: `1px solid ${colors.amber}40`, borderRadius: 8, padding: 14 }}>
             <div style={{ display: "flex", alignItems: "flex-start", gap: 10 }}>
               <div style={{ width: 24, height: 24, borderRadius: "50%", background: colors.amber, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 12, fontWeight: 700, color: "#FFFFFF", flexShrink: 0 }}>4</div>
               <div>
                 <div style={{ fontSize: 12, fontWeight: 700, color: colors.textPrimary, marginBottom: 4 }}>Pro-active Training Credits Guidance</div>
-                <div style={{ fontSize: 11, color: colors.textSecondary, lineHeight: 1.5 }}>The bank has <strong style={{ color: colors.amber }}>$30K/year in training credits</strong> that have not been used effectively. We need pro-active guidance to maximise utilisation.</div>
+                <div style={{ fontSize: 11, color: colors.textSecondary, lineHeight: 1.5 }}>The bank has <strong style={{ color: colors.amber }}>$30K/year in training credits</strong> not used effectively. Maximise utilisation to support platform operating model build-out.</div>
               </div>
             </div>
           </div>
           
-          {/* Investment 5: Executive Review Forum */}
+          {/* Investment 7: Executive Review Forum */}
           <div style={{ background: colors.bgPanel, border: `1px solid ${colors.blue}40`, borderRadius: 8, padding: 14 }}>
             <div style={{ display: "flex", alignItems: "flex-start", gap: 10 }}>
               <div style={{ width: 24, height: 24, borderRadius: "50%", background: colors.blue, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 12, fontWeight: 700, color: colors.white, flexShrink: 0 }}>5</div>
               <div>
                 <div style={{ fontSize: 12, fontWeight: 700, color: colors.textPrimary, marginBottom: 4 }}>Bi-Monthly Executive Review Forum</div>
-                <div style={{ fontSize: 11, color: colors.textSecondary, lineHeight: 1.5 }}>Proposing an <strong style={{ color: colors.blue }}>operational cadence</strong> with the bank covering innovations, progress, and value realised. CEG leaders and Product BU representatives to attend.</div>
+                <div style={{ fontSize: 11, color: colors.textSecondary, lineHeight: 1.5 }}>Proposing an <strong style={{ color: colors.blue }}>operational cadence</strong> covering innovations, progress, and value realised. CEG leaders and Product BU representatives to attend.</div>
               </div>
             </div>
           </div>
           
-          {/* Investment 6: Telemetry & Value Assessment */}
+          {/* Investment 8: Telemetry & Value Assessment */}
           <div style={{ background: `linear-gradient(135deg, ${colors.redGlow}, ${colors.amberGlow})`, border: `2px solid ${colors.red}`, borderRadius: 8, padding: 14 }}>
             <div style={{ display: "flex", alignItems: "flex-start", gap: 10 }}>
               <div style={{ width: 24, height: 24, borderRadius: "50%", background: colors.red, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 12, fontWeight: 700, color: colors.white, flexShrink: 0 }}>⚡</div>
               <div>
                 <div style={{ fontSize: 12, fontWeight: 700, color: colors.red, marginBottom: 4 }}>CRITICAL: Telemetry & Value Assessment</div>
-                <div style={{ fontSize: 11, color: colors.textSecondary, lineHeight: 1.5 }}>We need help to use <strong style={{ color: colors.red }}>telemetry to assess $value delivered</strong> as a starting point. This will be fine-tuned over time but is essential for demonstrating ROI and protecting the renewal.</div>
+                <div style={{ fontSize: 11, color: colors.textSecondary, lineHeight: 1.5 }}>We need help to use <strong style={{ color: colors.red }}>telemetry to assess $value delivered</strong> as a starting point. Monthly refresh cycle established. Essential for demonstrating ROI and protecting the renewal.</div>
               </div>
             </div>
           </div>
@@ -2045,7 +2154,10 @@ function GrowthView() {
               <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: 3, background: theme.primary }} />
               <div style={{ fontSize: 18, fontWeight: 700, color: theme.primary, marginTop: 4 }}>{o.nnacv}</div>
               <div style={{ fontSize: 10, color: colors.textSecondary, lineHeight: 1.3 }}>{o.pursuit.split("(")[0].trim()}</div>
-              <span style={{ fontSize: 9, color: theme.primary, fontWeight: 600 }}>{o.stage}</span>
+              <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 4, marginTop: 2 }}>
+                <span style={{ fontSize: 10 }}>{o.progress === "active" ? "🟢" : "🔴"}</span>
+                <span style={{ fontSize: 9, color: theme.primary, fontWeight: 600 }}>{o.stage}</span>
+              </div>
             </div>
           );
         })}
@@ -2062,6 +2174,7 @@ function GrowthView() {
                 <div style={{ flex: 1 }}>
                   <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 4 }}>
                     <span style={{ fontSize: 11, fontWeight: 700, color: "#FFFFFF", background: theme.primary, padding: "2px 8px", borderRadius: 4 }}>{o.stage}</span>
+                    <span style={{ fontSize: 14 }}>{o.progress === "active" ? "🟢" : "🔴"}</span>
                     <span style={{ fontSize: 10, fontWeight: 700, color: theme.primary, background: theme.bg, padding: "2px 8px", borderRadius: 4, border: `1px solid ${theme.primary}40` }}>{o.year}</span>
                     <span style={{ fontSize: 15, fontWeight: 600, color: colors.textPrimary }}>{o.pursuit}</span>
                     <span style={{ fontSize: 9, fontWeight: 600, color: theme.primary, background: theme.bg, padding: "2px 8px", borderRadius: 4, border: `1px solid ${theme.primary}40` }}>{themeColors[o.theme]?.label || "Strategic"}</span>
@@ -2134,11 +2247,11 @@ const ACTIONS_DATA = [
   { id: 1, category: "Growth", action: "Secure meeting with Noelle Eder", criticality: "Critical", bankContact: "Noelle Eder (Group Head T&O)", snContact: "Stuart Pearce / Arun Ragothaman", dueDate: "Q2 2026", status: "In Progress", notes: "Stuart Pearce is reaching out directly to Noelle Eder. Response not yet confirmed. Single most critical engagement gap — controls all technology strategy. Fallback: peer-brokered introduction via Chris Bedi and Tanuj. Target: before or at Knowledge 2026 (May).", marqueeOffer: "Access: Global Advisory Council" },
   { id: 27, category: "Growth", action: "Bill McDermott office outreach to Bill Winters", criticality: "Critical", bankContact: "Bill Winters (Group CEO)", snContact: "Bill McDermott's Office / Stuart Pearce", dueDate: "Q2 2026", status: "In Progress", notes: "Bill McDermott's office now engaged to reach out to Bill Winters. Exploring mutual partnership angle. AI governance sits on Winters' personal 2026 scorecard — natural alignment for a CEO-to-CEO dialogue on enterprise AI strategy.", marqueeOffer: "Access: Dedicated Executive Sponsor" },
   { id: 2, category: "Growth", action: "Meet Guillermo Veiga for FSO positioning", criticality: "High", bankContact: "Guillermo Veiga (Group CIO)", snContact: "Arun Ragothaman / FSO Specialist", dueDate: "Q2 2026", status: "Not Started", notes: "CIB engagement via Geoff Kot has opened an alternative path into FSO. Veiga still important for broader T&O platform strategy and Balachandher Balakrishnan alignment.", marqueeOffer: "Advantage: AI Advantage Team" },
-  { id: 3, category: "Growth", action: "Revive Cezary Piekarski relationship for Veza/Armis", criticality: "High", bankContact: "Cezary Piekarski (CISO)", snContact: "Lou Fiorello / Security Team", dueDate: "Q2 2026", status: "In Progress", notes: "Last engagement Dec 2024 — need to revive for security platform expansion. DORA compliance creates urgency.", marqueeOffer: "Advantage: Industry Customer Advisory Board" },
-  { id: 4, category: "Growth", action: "Engage Lavy Stokhamer for SecOps and Financial Crime", criticality: "Medium", bankContact: "Lavy Stokhamer (Global Head Cyber & Anti-Crime)", snContact: "Arun Ragothaman / Security Team", dueDate: "Q2 2026", status: "In Progress", notes: "Executive dinner held. Reports to Cezary. Key for security and FSO financial crime use cases." },
+  { id: 3, category: "Growth", action: "Revive Cezary Piekarski relationship for Veza/Armis", criticality: "High", bankContact: "Cezary Piekarski (CISO)", snContact: "Lou Fiorello / Security Team", dueDate: "Early May 2026", status: "In Progress", notes: "Meeting with Cezary scheduled for early May 2026. Lavy dinner (6 April) led to introduction to Felicia Ong (Head of Identity under Cezary) — direct path into Veza identity security. DORA compliance creates urgency.", marqueeOffer: "Advantage: Industry Customer Advisory Board" },
+  { id: 4, category: "Growth", action: "Engage Lavy Stokhamer for SecOps and Financial Crime", criticality: "Medium", bankContact: "Lavy Stokhamer (Global Head Cyber & Anti-Crime)", snContact: "Arun Ragothaman / Security Team", dueDate: "Q2 2026", status: "Complete", notes: "Executive dinner held 6 April 2026. Connected to Felicia Ong (Head of Identity) who reports to Cezary — key entry point for Veza identity security pursuit. Reports to Cezary. Key for security and FSO financial crime use cases." },
   { id: 5, category: "Growth", action: "Progress CRES Digital Vision requirements with Shelley", criticality: "High", bankContact: "Shelley Boland (Head CRES)", snContact: "Melissa Ries / Arun Ragothaman", dueDate: "Ongoing", status: "In Progress", notes: "WSD signed and in delivery. CRES executive visit 30 April London (Salisbury Sq + PIC). Shelley attending Knowledge 2026. Potential Platinum programme candidate.", marqueeOffer: "Access: Complimentary Knowledge Passes" },
-  { id: 6, category: "Growth", action: "Agentic AI for Onboarding go-live", criticality: "High", bankContact: "Melinda McKinley", snContact: "AI Team / Arun Ragothaman", dueDate: "15 Apr 2026", status: "In Progress", notes: "Go-live 15 April 2026. MVP presented. Directly supports GenAI governance mandate and revenue-per-FTE KPI.", marqueeOffer: "Advantage: AI Advantage Team" },
-  { id: 7, category: "Growth", action: "Legal Service Delivery requirements gathering", criticality: "Medium", bankContact: "Legal Function / Tanuj Kapilashrami", snContact: "Arun Ragothaman", dueDate: "Q2 2026", status: "In Progress", notes: "New domain — strong executive sponsorship from Tanuj. Extends platform consolidation into FFG final-year savings." },
+  { id: 6, category: "Growth", action: "Agentic AI for Onboarding go-live", criticality: "High", bankContact: "Melinda McKinley", snContact: "AI Team / Arun Ragothaman", dueDate: "24 Apr 2026", status: "In Progress", notes: "Go-live revised to 24 April 2026. MVP presented. Directly supports GenAI governance mandate and revenue-per-FTE KPI.", marqueeOffer: "Advantage: AI Advantage Team" },
+  { id: 7, category: "Growth", action: "Legal Service Delivery requirements gathering", criticality: "Medium", bankContact: "Legal Function / Tanuj Kapilashrami", snContact: "Arun Ragothaman", dueDate: "Q2 2026", status: "Stalled", notes: "Stalled — no active engagement from the Legal function. Executive sponsorship from Tanuj remains but operational traction has not materialised." },
   { id: 8, category: "Growth", action: "Engage Pete Burrill (Interim GCFO) for value/TCO narrative", criticality: "Critical", bankContact: "Pete Burrill (Interim GCFO)", snContact: "Chris Bedi / Arun Ragothaman", dueDate: "Q2 2026", status: "Not Started", notes: "Must engage before May 2026 medium-term framework. Build value narrative on reported basis for 2028 renewal.", marqueeOffer: "Access: Dedicated Executive Sponsor" },
   // Post-FFG & Intelligence Actions
   { id: 20, category: "Growth", action: "Identify Platinum programmes via Tanuj/Warren Young", criticality: "Critical", bankContact: "Tanuj Kapilashrami / Warren Young", snContact: "Arun Ragothaman", dueDate: "Q2 2026", status: "Not Started", notes: "2026 board scorecard (15% weighting) includes Platinum programmes. If ServiceNow is not in one, risk of budget marginalisation.", marqueeOffer: "Access: Marquee Leaders Advantage" },
@@ -2153,10 +2266,10 @@ const ACTIONS_DATA = [
   { id: 10, category: "Adoption", action: "Platform Architect engagement for stalled areas", criticality: "Critical", bankContact: "Technology Teams", snContact: "Platform Architect (TBD)", dueDate: "Q2 2026", status: "Requested", notes: "3-month engagement for ITOM, HAM, SAM, SecOps VR, IRM (DORA), AICT.", marqueeOffer: "Acceleration: Deployment & Adoption Roundtables" },
   { id: 11, category: "Adoption", action: "Progress Expert Services SoWs", criticality: "High", bankContact: "SCB Procurement", snContact: "CEG Team", dueDate: "Q2 2026", status: "In Progress", notes: "2 Expert Services SoWs already in play.", marqueeOffer: "Acceleration: Commercial Strategy & Advisory" },
   { id: 12, category: "Adoption", action: "Maximise $30K training credits utilisation", criticality: "Medium", bankContact: "HR / Training Teams", snContact: "Training Team", dueDate: "Q2 2026", status: "Not Started", notes: "Bank has unused training credits — need proactive guidance." },
-  { id: 13, category: "Adoption", action: "Establish bi-monthly Executive Review Forum", criticality: "High", bankContact: "Tanuj / Melinda", snContact: "CEG Leaders / Product BU", dueDate: "Q2 2026", status: "Not Started", notes: "Operational cadence covering innovations, progress, value realised.", marqueeOffer: "Access: Marquee Leaders Advantage" },
+  { id: 13, category: "Adoption", action: "Strategic Review 1 — Executive Review Forum", criticality: "High", bankContact: "Tanuj / Melinda", snContact: "CEG Leaders / Product BU", dueDate: "Q3 2026", status: "Not Started", notes: "First formal strategic review moved to Q3 2026. Operational cadence covering innovations, progress, and value realised. Bi-weekly account cadence already active via dedicated Teams channel.", marqueeOffer: "Access: Marquee Leaders Advantage" },
   { id: 14, category: "Adoption", action: "Implement telemetry-based value assessment", criticality: "Critical", bankContact: "Warren Young / Brian O'Neill", snContact: "Value Engineering / Arun Ragothaman", dueDate: "Q2 2026", status: "Not Started", notes: "Use telemetry to assess $value delivered — critical for renewal positioning.", marqueeOffer: "Advantage: AI Benchmarking & Insights Report" },
   { id: 15, category: "Adoption", action: "ITOM/HAM/SAM adoption acceleration", criticality: "High", bankContact: "Balachandher Balakrishnan / Technology Teams", snContact: "Platform Team", dueDate: "Q2 2026", status: "Not Started", notes: "$4M at-risk CACV. Est. 20-30% utilisation outside HR — critical gap." },
-  { id: 16, category: "Adoption", action: "SecOps VR Databricks integration completion", criticality: "High", bankContact: "Alvaro Garrido / Lavy Stokhamer", snContact: "Security Team", dueDate: "Q2 2026", status: "Developing", notes: "Reduce downsell risk — security stack integration with Databricks." },
+  { id: 16, category: "Adoption", action: "SecOps VR Databricks integration completion", criticality: "High", bankContact: "Alvaro Garrido / Lavy Stokhamer", snContact: "Security Team", dueDate: "Q2 2026", status: "Stalled", notes: "Stalled — the bank has confirmed they will not use SecOps VR. Downsell candidate for AI Native migration. Redirect investment to Veza identity security." },
 ];
 
 function ActionsView() {
@@ -2166,7 +2279,7 @@ function ActionsView() {
   
   const categories = ["All", "Growth", "Adoption"];
   const criticalities = ["All", "Critical", "High", "Medium", "Low"];
-  const statuses = ["All", "Not Started", "In Progress", "Requested", "Developing", "Complete"];
+  const statuses = ["All", "Not Started", "In Progress", "Requested", "Developing", "Stalled", "Complete"];
   
   const filteredActions = ACTIONS_DATA.filter(a => {
     if (filterCategory !== "All" && a.category !== filterCategory) return false;
@@ -2188,6 +2301,7 @@ function ActionsView() {
     "Requested": { bg: `${colors.blue}15`, color: colors.blue },
     "Developing": { bg: colors.amberGlow, color: colors.amber },
     "Complete": { bg: colors.greenGlow, color: colors.green },
+    "Stalled": { bg: colors.redGlow, color: colors.red },
   };
   
   const criticalCount = ACTIONS_DATA.filter(a => a.criticality === "Critical").length;
@@ -2200,6 +2314,10 @@ function ActionsView() {
         <div>
           <h1 style={{ fontSize: 24, fontWeight: 700, color: colors.textPrimary, margin: "0 0 4px" }}>Actions</h1>
           <p style={{ fontSize: 13, color: colors.textSecondary, margin: 0 }}>Key actions across Growth & Upsell and Adoption & Renewal</p>
+          <div style={{ marginTop: 8, padding: "8px 14px", background: colors.blueGlow, border: `1px solid ${colors.blue}30`, borderRadius: 6, display: "flex", alignItems: "center", gap: 8 }}>
+            <span style={{ fontSize: 12 }}>📋</span>
+            <span style={{ fontSize: 11, color: colors.blue, fontWeight: 600 }}>Bi-weekly account cadence active via dedicated Teams channel: Marquee-Standard Chartered</span>
+          </div>
         </div>
         <div style={{ display: "flex", gap: 12 }}>
           <div style={{ background: colors.redGlow, border: `1px solid ${colors.red}40`, borderRadius: 8, padding: "8px 16px", textAlign: "center" }}>
@@ -2217,6 +2335,52 @@ function ActionsView() {
         </div>
       </div>
       
+      {/* Next 30 Days — Key Happenings */}
+      <div style={{ background: colors.bgCard, border: `2px solid ${colors.blue}`, borderRadius: 10, padding: 20, marginBottom: 20 }}>
+        <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 16 }}>
+          <div style={{ fontSize: 18 }}>⚡</div>
+          <h3 style={{ fontSize: 14, fontWeight: 700, color: colors.blue, margin: 0 }}>Next 30 Days — Key Happenings</h3>
+        </div>
+        <div style={{ display: "flex", flexDirection: "column", gap: 0 }}>
+          {[
+            { date: "22 Apr", event: "Dinner with Shelley Boland", detail: "Holly and Chelsea (ServiceNow leaders) attending. CRES relationship deepening.", type: "meeting" },
+            { date: "24 Apr", event: "Agentic AI Onboarding Go-Live", detail: "Melinda McKinley internal communication to 82,000 employees. Flagship AI launch.", type: "golive" },
+            { date: "30 Apr", event: "London: Host Shelley and MT", detail: "Client visit in London — Salisbury Square + PIC site visit at 22 Ropemaker Street.", type: "meeting" },
+            { date: "Early May", event: "Cezary Piekarski CISO Meeting", detail: "Security platform discussion. Felicia Ong (Identity) connection made via Lavy.", type: "meeting" },
+            { date: "May (K26)", event: "K26: Paul Fipps ↔ Melinda", detail: "Executive Circle face time. Chris Bedi ↔ Melinda also confirmed.", type: "k26" },
+            { date: "May (K26)", event: "K26: Debrief meeting", detail: "Post-K26 debrief session with SCB team. Help needed to facilitate.", type: "k26" },
+            { date: "May (K26)", event: "K26: Bhavin + Peer Meetings", detail: "JPMC, Morgan Stanley, Dai-ichi Life meetings scheduled for Bhavin Shah.", type: "k26" },
+            { date: "11 May", event: "CIB Client Onboarding Call", detail: "Workshop planning session with Geoff Kot / Craig Corte.", type: "meeting" },
+            { date: "15–19 Jun", event: "CIB Workshop", detail: "Full week on-site. Three workstreams: client lifecycle, AI Control Tower, Kyriba.", type: "workshop" },
+          ].map((item, i) => {
+            const typeStyle = {
+              meeting: { color: colors.green, icon: "🤝" },
+              golive: { color: colors.amber, icon: "🚀" },
+              k26: { color: colors.blue, icon: "🎯" },
+              workshop: { color: colors.green, icon: "🔬" },
+            }[item.type];
+            return (
+              <div key={i} style={{ display: "flex", gap: 14, padding: "10px 0", borderBottom: i < 8 ? `1px solid ${colors.border}` : "none" }}>
+                <div style={{ width: 70, flexShrink: 0, textAlign: "right" }}>
+                  <div style={{ fontSize: 11, fontWeight: 700, color: typeStyle.color }}>{item.date}</div>
+                </div>
+                <div style={{ width: 10, display: "flex", flexDirection: "column", alignItems: "center", flexShrink: 0, paddingTop: 4 }}>
+                  <div style={{ width: 8, height: 8, borderRadius: "50%", background: typeStyle.color, flexShrink: 0 }} />
+                  {i < 8 && <div style={{ width: 1, flex: 1, background: `${colors.border}`, marginTop: 4 }} />}
+                </div>
+                <div style={{ flex: 1, paddingBottom: 2 }}>
+                  <div style={{ display: "flex", alignItems: "center", gap: 6 }}>
+                    <span style={{ fontSize: 12 }}>{typeStyle.icon}</span>
+                    <span style={{ fontSize: 12, fontWeight: 600, color: colors.textPrimary }}>{item.event}</span>
+                  </div>
+                  <div style={{ fontSize: 11, color: colors.textSecondary, marginTop: 2 }}>{item.detail}</div>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+
       {/* 12-Month Timeline */}
       <div style={{ background: colors.bgCard, border: `1px solid ${colors.border}`, borderRadius: 10, padding: 20, marginBottom: 20 }}>
         <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 16 }}>
@@ -2230,7 +2394,7 @@ function ActionsView() {
             <div style={{ fontSize: 10, color: colors.textPrimary, lineHeight: 1.6 }}>
               <div style={{ marginBottom: 6 }}><strong style={{ color: colors.green }}>Deals:</strong> Close WSD deal</div>
               <div style={{ marginBottom: 6 }}><strong style={{ color: colors.green }}>Projects:</strong> Kick off CRES project</div>
-              <div style={{ marginBottom: 6 }}><strong style={{ color: colors.green }}>Go-Lives:</strong> OneSC ✅ LIVE (6 Apr), Agentic AI (15 Apr), AICT MVP (30 Apr)</div>
+              <div style={{ marginBottom: 6 }}><strong style={{ color: colors.green }}>Go-Lives:</strong> OneSC ✅ LIVE (6 Apr), Agentic AI (24 Apr), AICT MVP (30 Apr)</div>
               <div><strong style={{ color: colors.amber }}>Cadence:</strong> Strategic Review #1 (Infosys-Bank-ServiceNow)</div>
             </div>
           </div>
