@@ -847,9 +847,9 @@ function APACReviewView() {
   };
   
   const customerPriorities = [
-    { priority: "Sustain Productivity Gains", value: "$5.5M (2026)", description: "Lock in run-rate savings delivered via OneSC and platform consolidation. Expand unified service management into Legal, Finance, CRES, and Supply Chain. Directly drives revenue-per-FTE (CEO 2026 KPI). Address eNPS decline through improved employee experience.", theme: "ffg" },
-    { priority: "Govern AI & Risk at Scale", value: "$1.5-2M (2027)", description: "Enterprise GenAI governance (Bill Winters personal objective). AI Control Tower for 200+ use cases. DORA compliance and technology resilience. Integrated risk management for the bank's 6,000+ risk function employees.", theme: "techRes" },
-    { priority: "Grow Revenue per FTE", value: "$3.5-5.5M (2027)", description: "Enable the $447B affluent growth machine: RM productivity, client onboarding, CSM. FSO for CIB cross-border workflows. Add value for the bank's planned $1.5B investment in wealth management (50% people, 25% digital platforms).", theme: "clientExp" },
+    { priority: "Sustain Productivity Gains", value: "$4.5M (2026)", description: "Lock in run-rate savings delivered via OneSC and platform consolidation. Expand unified service management into Legal, Finance, CRES, and Supply Chain. Directly drives revenue-per-FTE (CEO 2026 KPI). Address eNPS decline through improved employee experience.", theme: "ffg" },
+    { priority: "Govern AI & Risk at Scale", value: "$1.5M (2027)", description: "Enterprise GenAI governance (Bill Winters personal objective). AI Control Tower for 200+ use cases. DORA compliance and technology resilience. Integrated risk management for the bank's 6,000+ risk function employees.", theme: "techRes" },
+    { priority: "Grow Revenue per FTE", value: "$19-21M (2027)", description: "CEO-to-CEO 360 engagement unlock. FSO & CIB ($10M): client lifecycle, AI governance, Kyriba treasury. Revenue Growth & Client Experience ($15M): RM productivity, client onboarding, wealth digital platform. Positioned against the bank's $1.5B investment in wealth management.", theme: "clientExp" },
   ];
   
   const strategicPursuits = [
@@ -861,7 +861,7 @@ function APACReviewView() {
       whyItMatters: "FFG concludes in 2026 but cost discipline remains a 20% weighted 2026 scorecard measure. Without platform consolidation, run-rate savings will erode. Revenue-per-FTE (NEW CEO KPI) requires the same productivity engine. eNPS decline (-3.9pts) demands better employee experience.",
       howWeHelp: "EmployeeWorks (HRSD + WSD + NowAssist) extends HR Hub’s 104K hours saved. Legal Service Delivery, CRES Digital Vision, and Supply Chain digitalisation multiply productivity gains. Directly contributes to revenue-per-FTE KPI.",
       whoBuys: "Tanuj Kapilashrami (Chief Strategy & Talent), Shelley Boland (CRES), Pete Burrill (Interim GCFO), Warren Young (FFG)",
-      nnacv: "$5.5M",
+      nnacv: "$4.5M",
       nnacvYear: "2026",
     },
     {
@@ -872,24 +872,24 @@ function APACReviewView() {
       whyItMatters: "Bill Winters’ 2026 personal objective: ‘Lead creation of a bank-specific approach to GenAI.’ Board hosted AI governance stewardship event Nov 2025. DORA compliance is non-negotiable. Software write-offs ($588M to $42M) suggest custom-build depreciation cycle complete.",
       howWeHelp: "AI Control Tower governs 200+ use cases with the bank’s AI governance framework. IRM/GRC for policy and compliance. SecOps VR with Databricks integration. Software impairment cycle complete ($588M→$42M) — strengthens consolidation case.",
       whoBuys: "Noelle Eder (Group Head T&O), Jason Forrester (Group CRO), Alvaro Garrido (CIO InfoSec), Shebani Baweja (Interim CDO)",
-      nnacv: "$1.5-2M",
+      nnacv: "$1.5M",
       nnacvYear: "2027",
     },
     {
       title: "Grow: Revenue-per-FTE Enablement",
       subtitle: "Wealth, CIB, and client experience at scale",
       theme: "clientExp",
-      whatItIs: "Transform client onboarding, RM productivity, and cross-border servicing through FSO and CSM — directly enabling the bank’s record affluent and CIB growth engines.",
+      whatItIs: "Transform client onboarding, RM productivity, and cross-border servicing through FSO ($10M) and CIB entry ($15M pipeline). Unlocked via the CEO-to-CEO 360 engagement (Bill McDermott to Bill Winters), positioning ServiceNow as a strategic partner across sell-to, buy-from, and co-creation.",
       whyItMatters: "$447B AUM, 275K new affluent clients, $52B NNM. The growth machine is working — but client onboarding speed, RM productivity, and servicing quality are the bottlenecks to scaling further. CIB cross-border income at 61.5%. The bank's planned $1.5B investment in wealth management (50% people, 25% digital) creates a direct opening for ServiceNow to add value.",
       howWeHelp: "FSO for Trade Finance KYC/AML and disputes management. CSM for client service excellence. App Engine for RM tools. CRM for wealth RM productivity — the digital banker, financial planner vision. All governed by AI Control Tower.",
       whoBuys: "Judy Hsu (CEO WRB), Guillermo Veiga (Group CIO), Roberto Hoornweg (CEO CIB), Shebani Baweja (Interim CDO)",
-      nnacv: "$3.5-5.5M",
+      nnacv: "$19-21M",
       nnacvYear: "2027",
     },
   ];
   
   const measuresOfSuccess = [
-    "NNACV: $12-14M over 2 years — Sustain $5.5M in 2026; Govern $1.5-2M + Grow $3.5-5.5M in 2027",
+    "NNACV: ~$25-27M over 2 years — Sustain $4.5M (2026); Govern $1.5M + Grow $19-21M (2027, CEO-to-CEO 360). CACV target: $40M by Dec 2027",
     "Adoption: Critical apps (ITOM, HAM, SAM, SecOps) reach >70% utilisation",
     "Protect $4M at-risk CACV through adoption acceleration",
     "Platinum programme inclusion: At least one ServiceNow initiative classified as Platinum-tier",
@@ -2324,7 +2324,6 @@ const ACTIONS_DATA = [
   { id: 1103, category: "CEO Track", action: "Surface corporate development need at Singapore Marquee event", criticality: "Medium", bankContact: "SCB Leadership", snContact: "Arun", dueDate: "22 Apr 2026", status: "Not Started", notes: "Flag need for additional corporate dev support. Raise with Holly and Tim at the event." },
   { id: 1104, category: "CEO Track", action: "Engage K26 champions to prepare CEO connection", criticality: "High", bankContact: "Melinda McKinley", snContact: "Arun", dueDate: "May 2026", status: "Not Started", notes: "Melinda has direct access to Bill Winters. K26 is the organic moment. All SCB attendees to be briefed." },
   { id: 1105, category: "CEO Track", action: "Shape and draft CEO-to-CEO outreach note", criticality: "High", bankContact: "Bill Winters", snContact: "Arun / Stuart / SJC", dueDate: "Post-K26", status: "Not Started", notes: "Post-Knowledge timing. SCB strategic framework mid-May. Commercial anchor: $40M+. Messaging: platform + buy-from + co-creation." },
-  { id: 1106, category: "CEO Track", action: "K26 signing room — nominations process", criticality: "Medium", bankContact: "SCB Leadership", snContact: "SJC / Presidio", dueDate: "Apr 2026", status: "Not Started", notes: "SJC Presidio to look into extraction process and follow up with Meryl Zucco." },
 ];
 
 function ActionsView() {
@@ -2369,7 +2368,7 @@ function ActionsView() {
       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: 20 }}>
         <div>
           <h1 style={{ fontSize: 24, fontWeight: 700, color: colors.textPrimary, margin: "0 0 4px" }}>Actions</h1>
-          <p style={{ fontSize: 13, color: colors.textSecondary, margin: 0 }}>59 actions across 11 workstreams · Updated from Action Tracker v4 · 15 April 2026</p>
+          <p style={{ fontSize: 13, color: colors.textSecondary, margin: 0 }}>58 actions across 11 workstreams · Updated from Action Tracker v4 · 15 April 2026</p>
           <div style={{ marginTop: 8, padding: "8px 14px", background: colors.blueGlow, border: `1px solid ${colors.blue}30`, borderRadius: 6, display: "flex", alignItems: "center", gap: 8 }}>
             <span style={{ fontSize: 12 }}>📋</span>
             <span style={{ fontSize: 11, color: colors.blue, fontWeight: 600 }}>Bi-weekly account cadence active via dedicated Teams channel: Marquee-Standard Chartered</span>
