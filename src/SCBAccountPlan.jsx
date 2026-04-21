@@ -410,12 +410,12 @@ const GROWTH_OPPORTUNITIES = [
       { name: "Legal Service Delivery", est: "$250K", status: "Requirements gathering", detail: "Legal ops transformation — matter management, request intake" },
       { name: "Contract Lifecycle Management", est: "$250K", status: "Opportunity", detail: "Contract authoring, approval workflows, obligation tracking" },
     ]},
-  { id: 3, pursuit: "Security Platform Expansion (Veza & Armis)", nnacv: "$1.6M", probability: "Medium", stage: "Developing", theme: "techRes", year: "2027", progress: "active",
-    products: ["Veza", "Armis", "SecOps VR", "IRM", "AI Governance"],
+  { id: 3, pursuit: "Security Platform Expansion (Veza)", nnacv: "$1.5M", probability: "Medium", stage: "Developing", theme: "techRes", year: "2027", progress: "active",
+    products: ["Veza", "SecOps VR", "IRM", "AI Governance"],
     sponsor: "Alvaro Garrido / Cezary Piekarski",
     executiveIds: ["ag", "cp", "ne", "ls"],
     competes: "MetricStream (incumbent)", partner: "Infosys (MSP)",
-    description: "Veza (identity security) and Armis (asset visibility) for DORA compliance. SecOps integration with Databricks. Software write-offs ($588M to $42M) signal custom-build depreciation complete — strengthens consolidation case.",
+    description: "Veza identity security for DORA compliance. SecOps integration with Databricks. Software write-offs ($588M to $42M) signal custom-build depreciation complete — strengthens consolidation case.",
     items: [
       { name: "Veza Identity Security", est: "$600K", status: "Active", detail: "Executive dinner with Lavy held. CISO call (Cezary) being scheduled. Primary entry point for broader security platform." },
       { name: "Armis Asset Intelligence", est: "$500K", status: "Evaluation", detail: "Asset visibility, vulnerability management — security engineering priority" },
@@ -436,7 +436,7 @@ const GROWTH_OPPORTUNITIES = [
       { name: "Service Call Button", est: "$75K", status: "Requirements gathered", detail: "One-touch hospitality request, real-time routing" },
       { name: "Space Finding & Wayfinding", est: "$75K", status: "Opportunity", detail: "Indoor navigation, desk booking, occupancy analytics" },
     ]},
-  { id: 6, pursuit: "Financial Services Operations (FSO) & CIB", nnacv: "$4M", probability: "Medium", stage: "Developing", theme: "clientExp", year: "2027", progress: "active",
+  { id: 6, pursuit: "Financial Services Operations (FSO) & CIB", nnacv: "$10M", probability: "Medium", stage: "Developing", theme: "clientExp", year: "2027", progress: "active",
     products: ["FSO", "App Engine", "Agentic AI", "AI Control Tower", "Kyriba Autonomous Treasury"],
     sponsor: "Geoff Kot / Roberto Hoornweg / Guillermo Veiga",
     executiveIds: ["gk", "cc", "jk", "ak", "mw", "gv", "rh", "sba", "je", "rn"],
@@ -448,7 +448,7 @@ const GROWTH_OPPORTUNITIES = [
       { name: "Track 3: Kyriba Autonomous Treasury", est: "$1M", status: "Exploratory", detail: "Intra-day liquidity swaps, tokenised deposits, wallet infrastructure. Ankur Kanwar + Mark Willis. Quantum initiative." },
       { name: "VISA Disputes Management", est: "$500K", status: "Early", detail: "Co-exist with ServiceBench in CIB context." },
     ]},
-  { id: 7, pursuit: "Revenue Growth & Client Experience", nnacv: "$2.5M", probability: "Medium", stage: "Visionary", theme: "clientExp", year: "2027", progress: "stalled",
+  { id: 7, pursuit: "Revenue Growth & Client Experience", nnacv: "$15M", probability: "Medium", stage: "Visionary", theme: "clientExp", year: "2027", progress: "stalled",
     products: ["CRM", "Agentic AI", "CSM", "Client Portal"],
     sponsor: "Judy Hsu (WRB) / Roberto Hoornweg (CIB)",
     executiveIds: ["jh", "rh"],
@@ -609,7 +609,7 @@ function DashboardView() {
               { date: "Dec 2023", label: "Renewal with\nMSP + Impact", value: "$10M", delta: "+$1.2M (+14%)", color: colors.amber },
               { date: "June 2025", label: "AI Tailwind\nRe-contracted", value: "$12.6M", delta: "+$2.6M (+26%)", color: colors.green },
               { date: "Jan 2026", label: "Upsell: New Buying\nCenter (WSD)", value: "$13.1M", delta: "+$0.5M (+4%)", color: colors.green },
-              { date: "Nov 2027", label: "Vision: Adopt First,\nExpand Bold", value: "$18-20M", delta: "+$5-7M (+38-53%)", color: colors.green, glow: true },
+              { date: "Dec 2027", label: "Vision: Adopt First,\nExpand Bold", value: "$40M", delta: "+$27M", color: colors.green, glow: true },
             ].map((m, i) => (
               <div key={i} style={{ flex: "0 0 16%", display: "flex", flexDirection: "column", alignItems: "center", position: "relative" }}>
                 <div style={{ width: m.glow ? 14 : 12, height: m.glow ? 14 : 12, borderRadius: "50%", background: m.color, border: `2px solid ${colors.bg}`, marginBottom: 8, zIndex: 1, boxShadow: m.glow ? `0 0 12px ${m.color}60` : "none" }} />
@@ -626,8 +626,8 @@ function DashboardView() {
       {/* METRICS - THIRD */}
       <div style={{ display: "flex", gap: 12, marginBottom: 20, flexWrap: "wrap" }}>
         <MetricCard label="Current CACV" value="$13.1M" sub="+31.7% YoY" />
-        <MetricCard label="CACV Target (Nov 2027)" value="$21-23M" sub="Conservative growth target" accent={colors.blue} />
-        <MetricCard label="Total NNACV Potential" value="$12-14M" sub="Conservative estimate" accent={colors.green} />
+        <MetricCard label="CACV Target (Dec 2027)" value="$40M" sub="Post CEO-to-CEO 360 aspiration" accent={colors.blue} />
+        <MetricCard label="Total NNACV Potential" value="~$25-27M" sub="Expansion 1 + Expansion 2" accent={colors.green} />
       </div>
       
       {/* WATERFALL CHART - FOURTH */}
@@ -665,24 +665,35 @@ function DashboardView() {
             <div style={{ fontSize: 10, color: colors.textMuted, marginTop: 8, textAlign: "center" }}>If at-risk<br/>lost</div>
           </div>
           
-          {/* Expansion (positive) */}
+          {/* Expansion 1 */}
           <div style={{ flex: 1, display: "flex", flexDirection: "column", alignItems: "center" }}>
-            <div style={{ fontSize: 14, fontWeight: 700, color: colors.blue, marginBottom: 8 }}>+$12-14M</div>
+            <div style={{ fontSize: 14, fontWeight: 700, color: colors.blue, marginBottom: 8 }}>$6M</div>
             <div style={{ width: "100%", height: 130, display: "flex", flexDirection: "column", justifyContent: "flex-end" }}>
-              <div style={{ width: "100%", height: 100, background: `linear-gradient(180deg, ${colors.blue}, #3577cc)`, borderRadius: "6px 6px 0 0", position: "relative", border: `2px solid ${colors.blue}` }}>
-                <div style={{ position: "absolute", top: "50%", left: "50%", transform: "translate(-50%, -50%)", fontSize: 11, fontWeight: 600, color: colors.white, textAlign: "center" }}>Expansion<br/>(Conservative)</div>
+              <div style={{ width: "100%", height: 90, background: `linear-gradient(180deg, ${colors.blue}, #3577cc)`, borderRadius: "6px 6px 0 0", position: "relative", border: `2px solid ${colors.blue}` }}>
+                <div style={{ position: "absolute", top: "50%", left: "50%", transform: "translate(-50%, -50%)", fontSize: 10, fontWeight: 600, color: colors.white, textAlign: "center" }}>Expansion 1</div>
               </div>
             </div>
-            <div style={{ fontSize: 10, color: colors.textMuted, marginTop: 8, textAlign: "center" }}>New pipeline<br/>opportunities</div>
+            <div style={{ fontSize: 10, color: colors.textMuted, marginTop: 8, textAlign: "center" }}>Existing pipeline<br/>opportunities</div>
+          </div>
+          
+          {/* Expansion 2 — CEO-to-CEO */}
+          <div style={{ flex: 1, display: "flex", flexDirection: "column", alignItems: "center" }}>
+            <div style={{ fontSize: 14, fontWeight: 700, color: colors.green, marginBottom: 8 }}>~$19-21M</div>
+            <div style={{ width: "100%", height: 130, display: "flex", flexDirection: "column", justifyContent: "flex-end" }}>
+              <div style={{ width: "100%", height: 100, background: `linear-gradient(180deg, ${colors.green}, ${colors.greenDark})`, borderRadius: "6px 6px 0 0", position: "relative", border: `2px solid ${colors.green}` }}>
+                <div style={{ position: "absolute", top: "50%", left: "50%", transform: "translate(-50%, -50%)", fontSize: 10, fontWeight: 600, color: "#FFFFFF", textAlign: "center" }}>Expansion 2<br/>(CEO-to-CEO)</div>
+              </div>
+            </div>
+            <div style={{ fontSize: 10, color: colors.textMuted, marginTop: 8, textAlign: "center" }}>FSO, CIB, Revenue<br/>360 engagement</div>
           </div>
           
           {/* Target CACV */}
           <div style={{ flex: 1, display: "flex", flexDirection: "column", alignItems: "center" }}>
-            <div style={{ fontSize: 14, fontWeight: 700, color: colors.green, marginBottom: 8 }}>$21-23M</div>
+            <div style={{ fontSize: 14, fontWeight: 700, color: colors.green, marginBottom: 8 }}>$40M</div>
             <div style={{ width: "100%", height: 180, background: `linear-gradient(180deg, ${colors.green}, ${colors.greenDark})`, borderRadius: "6px 6px 0 0", position: "relative", border: `3px solid ${colors.white}`, boxShadow: `0 0 20px ${colors.green}40` }}>
               <div style={{ position: "absolute", top: "50%", left: "50%", transform: "translate(-50%, -50%)", fontSize: 11, fontWeight: 600, color: "#FFFFFF", textAlign: "center" }}>Target<br/>CACV</div>
             </div>
-            <div style={{ fontSize: 10, color: colors.textMuted, marginTop: 8, textAlign: "center" }}>Nov 2027</div>
+            <div style={{ fontSize: 10, color: colors.textMuted, marginTop: 8, textAlign: "center" }}>Dec 2027</div>
           </div>
         </div>
         
@@ -690,7 +701,7 @@ function DashboardView() {
         <div style={{ marginTop: 20, padding: 16, background: colors.bgPanel, borderRadius: 8, borderLeft: `4px solid ${colors.amber}` }}>
           <div style={{ fontSize: 12, fontWeight: 600, color: colors.textPrimary, marginBottom: 8 }}>The Mathematics of Growth</div>
           <p style={{ fontSize: 12, color: colors.textSecondary, lineHeight: 1.7, margin: 0 }}>
-            Protecting the <strong style={{ color: colors.green }}>$13.1M base</strong> is essential. Losing <strong style={{ color: colors.red }}>$4M at-risk</strong> drops us to <strong style={{ color: colors.amber }}>$9.1M</strong> — requiring <strong style={{ color: colors.blue }}>$12-14M in new sales</strong> just to hit target. Conservative expansion from a protected base yields $21-23M; expansion from an eroded base yields only $17-19M, falling short.
+            Protecting the <strong style={{ color: colors.green }}>$13.1M base</strong> is essential. <strong style={{ color: colors.blue }}>Expansion 1 (~$6M)</strong> covers the existing pipeline — EmployeeWorks, Veza, CRES, Customer Success, and CIB entry. <strong style={{ color: colors.green }}>Expansion 2 (~$19-21M)</strong> unlocks via the CEO-to-CEO 360 engagement — FSO at scale, CIB growth, Revenue and Client Experience. Together they take us from $13.1M to $40M by Dec 2027.
           </p>
           <div style={{ marginTop: 12, padding: "10px 14px", background: colors.greenGlow, borderRadius: 6, display: "inline-block" }}>
             <span style={{ fontSize: 13, fontWeight: 700, color: colors.green }}>Strategic imperative: "Adopt first, expand bold."</span>
@@ -1994,8 +2005,8 @@ function AdoptionView() {
             <div style={{ display: "flex", alignItems: "flex-start", gap: 10 }}>
               <div style={{ width: 24, height: 24, borderRadius: "50%", background: colors.blue, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 12, fontWeight: 700, color: colors.white, flexShrink: 0 }}>1</div>
               <div>
-                <div style={{ fontSize: 12, fontWeight: 700, color: colors.green, marginBottom: 4 }}>✅ Dean Lee — Customer Success Executive (Assigned)</div>
-                <div style={{ fontSize: 11, color: colors.textSecondary, lineHeight: 1.5 }}>Dedicated resource as part of the account team, spending <strong style={{ color: colors.green }}>2 days per week onsite</strong>. Driving adoption and protecting $4M at-risk CACV.</div>
+                <div style={{ fontSize: 12, fontWeight: 700, color: colors.green, marginBottom: 4 }}>✅ Customer Success Executive (Assigned)</div>
+                <div style={{ fontSize: 11, color: colors.textSecondary, lineHeight: 1.5 }}>Dedicated resource as part of the account team, spending <strong style={{ color: colors.green }}>2 days per week onsite</strong>. Driving adoption and protecting at-risk CACV.</div>
               </div>
             </div>
           </div>
@@ -2108,7 +2119,7 @@ function GrowthView() {
         </div>
         <div style={{ background: colors.greenGlow, border: `1px solid ${colors.green}40`, borderRadius: 10, padding: "12px 20px", textAlign: "center" }}>
           <div style={{ fontSize: 10, color: colors.green, textTransform: "uppercase", letterSpacing: "0.1em" }}>Total NNACV Potential</div>
-          <div style={{ fontSize: 28, fontWeight: 800, color: colors.green }}>$12-14M</div>
+          <div style={{ fontSize: 28, fontWeight: 800, color: colors.green }}>$40M</div>
         </div>
       </div>
       
@@ -2243,33 +2254,77 @@ function GrowthView() {
 
 // ─── Actions View ─────────────────────────────────────────────────────────────
 const ACTIONS_DATA = [
-  // Growth & Upsell Actions
-  { id: 1, category: "Growth", action: "Secure meeting with Noelle Eder", criticality: "Critical", bankContact: "Noelle Eder (Group Head T&O)", snContact: "Stuart Pearce / Arun Ragothaman", dueDate: "Q2 2026", status: "In Progress", notes: "Stuart Pearce is reaching out directly to Noelle Eder. Response not yet confirmed. Single most critical engagement gap — controls all technology strategy. Fallback: peer-brokered introduction via Chris Bedi and Tanuj. Target: before or at Knowledge 2026 (May).", marqueeOffer: "Access: Global Advisory Council" },
-  { id: 27, category: "Growth", action: "Bill McDermott office outreach to Bill Winters", criticality: "Critical", bankContact: "Bill Winters (Group CEO)", snContact: "Bill McDermott's Office / Stuart Pearce", dueDate: "Q2 2026", status: "In Progress", notes: "Bill McDermott's office now engaged to reach out to Bill Winters. Exploring mutual partnership angle. AI governance sits on Winters' personal 2026 scorecard — natural alignment for a CEO-to-CEO dialogue on enterprise AI strategy.", marqueeOffer: "Access: Dedicated Executive Sponsor" },
-  { id: 2, category: "Growth", action: "Meet Guillermo Veiga for FSO positioning", criticality: "High", bankContact: "Guillermo Veiga (Group CIO)", snContact: "Arun Ragothaman / FSO Specialist", dueDate: "Q2 2026", status: "Not Started", notes: "CIB engagement via Geoff Kot has opened an alternative path into FSO. Veiga still important for broader T&O platform strategy and Balachandher Balakrishnan alignment.", marqueeOffer: "Advantage: AI Advantage Team" },
-  { id: 3, category: "Growth", action: "Revive Cezary Piekarski relationship for Veza/Armis", criticality: "High", bankContact: "Cezary Piekarski (CISO)", snContact: "Lou Fiorello / Security Team", dueDate: "Early May 2026", status: "In Progress", notes: "Meeting with Cezary scheduled for early May 2026. Lavy dinner (6 April) led to introduction to Felicia Ong (Head of Identity under Cezary) — direct path into Veza identity security. DORA compliance creates urgency.", marqueeOffer: "Advantage: Industry Customer Advisory Board" },
-  { id: 4, category: "Growth", action: "Engage Lavy Stokhamer for SecOps and Financial Crime", criticality: "Medium", bankContact: "Lavy Stokhamer (Global Head Cyber & Anti-Crime)", snContact: "Arun Ragothaman / Security Team", dueDate: "Q2 2026", status: "Complete", notes: "Executive dinner held 6 April 2026. Connected to Felicia Ong (Head of Identity) who reports to Cezary — key entry point for Veza identity security pursuit. Reports to Cezary. Key for security and FSO financial crime use cases." },
-  { id: 5, category: "Growth", action: "Progress CRES Digital Vision requirements with Shelley", criticality: "High", bankContact: "Shelley Boland (Head CRES)", snContact: "Melissa Ries / Arun Ragothaman", dueDate: "Ongoing", status: "In Progress", notes: "WSD signed and in delivery. CRES executive visit 30 April London (Salisbury Sq + PIC). Shelley attending Knowledge 2026. Potential Platinum programme candidate.", marqueeOffer: "Access: Complimentary Knowledge Passes" },
-  { id: 6, category: "Growth", action: "Agentic AI for Onboarding go-live", criticality: "High", bankContact: "Melinda McKinley", snContact: "AI Team / Arun Ragothaman", dueDate: "24 Apr 2026", status: "In Progress", notes: "Go-live revised to 24 April 2026. MVP presented. Directly supports GenAI governance mandate and revenue-per-FTE KPI.", marqueeOffer: "Advantage: AI Advantage Team" },
-  { id: 7, category: "Growth", action: "Legal Service Delivery requirements gathering", criticality: "Medium", bankContact: "Legal Function / Tanuj Kapilashrami", snContact: "Arun Ragothaman", dueDate: "Q2 2026", status: "Stalled", notes: "Stalled — no active engagement from the Legal function. Executive sponsorship from Tanuj remains but operational traction has not materialised." },
-  { id: 8, category: "Growth", action: "Engage Pete Burrill (Interim GCFO) for value/TCO narrative", criticality: "Critical", bankContact: "Pete Burrill (Interim GCFO)", snContact: "Chris Bedi / Arun Ragothaman", dueDate: "Q2 2026", status: "Not Started", notes: "Must engage before May 2026 medium-term framework. Build value narrative on reported basis for 2028 renewal.", marqueeOffer: "Access: Dedicated Executive Sponsor" },
-  // Post-FFG & Intelligence Actions
-  { id: 20, category: "Growth", action: "Identify Platinum programmes via Tanuj/Warren Young", criticality: "Critical", bankContact: "Tanuj Kapilashrami / Warren Young", snContact: "Arun Ragothaman", dueDate: "Q2 2026", status: "Not Started", notes: "2026 board scorecard (15% weighting) includes Platinum programmes. If ServiceNow is not in one, risk of budget marginalisation.", marqueeOffer: "Access: Marquee Leaders Advantage" },
-  { id: 21, category: "Growth", action: "Prepare for May 2026 medium-term financial framework", criticality: "Critical", bankContact: "Pete Burrill / Tanuj Kapilashrami", snContact: "Arun Ragothaman / Account Team", dueDate: "Apr 2026", status: "Not Started", notes: "SCB publishes new multi-year framework in May 2026. ServiceNow must be embedded in the post-FFG narrative before budgets are set.", marqueeOffer: "Acceleration: Commercial Strategy & Advisory" },
-  { id: 22, category: "Growth", action: "Build revenue-per-FTE value narrative", criticality: "High", bankContact: "Pete Burrill / Warren Young", snContact: "Arun Ragothaman", dueDate: "Q2 2026", status: "Not Started", notes: "NEW 2026 CEO scorecard KPI. Quantify HR Hub 104K hours + CRES + Legal productivity gains into board-ready narrative.", marqueeOffer: "Acceleration: Annual Executive Health Review" },
-  { id: 23, category: "Growth", action: "Position eNPS recovery story with Melinda/Tanuj", criticality: "High", bankContact: "Melinda McKinley / Tanuj Kapilashrami", snContact: "Arun Ragothaman", dueDate: "Q2 2026", status: "Not Started", notes: "eNPS declined 3.9pts to 17.56 (board KPI). HR Hub shows 86% satisfaction. Position WSD, EmployeeWorks, Agentic AI as recovery vehicle.", marqueeOffer: "Advantage: AI Benchmarking & Insights Report" },
-  { id: 24, category: "Growth", action: "Map AI Control Tower to GenAI governance mandate", criticality: "High", bankContact: "Shebani Baweja / Noelle Eder", snContact: "AI Team / Arun Ragothaman", dueDate: "Q2 2026", status: "Not Started", notes: "Bill Winters' 2026 personal objective: GenAI strategy. Board held AI governance stewardship event Nov 2025. Reframe AI Control Tower as enterprise foundation for GenAI at scale.", marqueeOffer: "Advantage: AI Solutions Product Advisory Council" },
-  { id: 25, category: "Growth", action: "CIB Workshop — confirm 16-17 April with Geoff Kot / Craig Corte", criticality: "Critical", bankContact: "Geoff Kot / Craig Corte / Jennifer Ketelaar", snContact: "Arun Ragothaman / Stuart Pearce / Ryan Clare", dueDate: "16 Apr 2026", status: "In Progress", notes: "BREAKTHROUGH: First entry into CIB. Three workstreams agreed. Bank account management as first use case. Stuart Pearce for executive air cover. Connect AICT go-live (30 Apr) to Geoff's CIB needs. Position for Knowledge 2026 storytelling.", marqueeOffer: "Advantage: AI Advantage Team" },
-  { id: 26, category: "Growth", action: "Connect GCFO (Tom Pfaff) to CIB engagement post-workshop", criticality: "Medium", bankContact: "Tom Pfaff / Geoff Kot", snContact: "Arun Ragothaman", dueDate: "May 2026", status: "Not Started", notes: "Post-CIB workshop: connect the GCFO/COO buying centre to the CIB engagement for broader account coverage." },
-    // Adoption & Renewal Actions
-  { id: 9, category: "Adoption", action: "Customer Success Executive onboarded (Dean Lee)", criticality: "High", bankContact: "Melinda McKinley / Tanuj Kapilashrami", snContact: "Dean Lee (CSE)", dueDate: "Q1 2026", status: "Complete", notes: "Investment ask to drive adoption and protect $4M at-risk CACV.", marqueeOffer: "Acceleration: Now on Now Concierge" },
-  { id: 10, category: "Adoption", action: "Platform Architect engagement for stalled areas", criticality: "Critical", bankContact: "Technology Teams", snContact: "Platform Architect (TBD)", dueDate: "Q2 2026", status: "Requested", notes: "3-month engagement for ITOM, HAM, SAM, SecOps VR, IRM (DORA), AICT.", marqueeOffer: "Acceleration: Deployment & Adoption Roundtables" },
-  { id: 11, category: "Adoption", action: "Progress Expert Services SoWs", criticality: "High", bankContact: "SCB Procurement", snContact: "CEG Team", dueDate: "Q2 2026", status: "In Progress", notes: "2 Expert Services SoWs already in play.", marqueeOffer: "Acceleration: Commercial Strategy & Advisory" },
-  { id: 12, category: "Adoption", action: "Maximise $30K training credits utilisation", criticality: "Medium", bankContact: "HR / Training Teams", snContact: "Training Team", dueDate: "Q2 2026", status: "Not Started", notes: "Bank has unused training credits — need proactive guidance." },
-  { id: 13, category: "Adoption", action: "Strategic Review 1 — Executive Review Forum", criticality: "High", bankContact: "Tanuj / Melinda", snContact: "CEG Leaders / Product BU", dueDate: "Q3 2026", status: "Not Started", notes: "First formal strategic review moved to Q3 2026. Operational cadence covering innovations, progress, and value realised. Bi-weekly account cadence already active via dedicated Teams channel.", marqueeOffer: "Access: Marquee Leaders Advantage" },
-  { id: 14, category: "Adoption", action: "Implement telemetry-based value assessment", criticality: "Critical", bankContact: "Warren Young / Brian O'Neill", snContact: "Value Engineering / Arun Ragothaman", dueDate: "Q2 2026", status: "Not Started", notes: "Use telemetry to assess $value delivered — critical for renewal positioning.", marqueeOffer: "Advantage: AI Benchmarking & Insights Report" },
-  { id: 15, category: "Adoption", action: "ITOM/HAM/SAM adoption acceleration", criticality: "High", bankContact: "Balachandher Balakrishnan / Technology Teams", snContact: "Platform Team", dueDate: "Q2 2026", status: "Not Started", notes: "$4M at-risk CACV. Est. 20-30% utilisation outside HR — critical gap." },
-  { id: 16, category: "Adoption", action: "SecOps VR Databricks integration completion", criticality: "High", bankContact: "Alvaro Garrido / Lavy Stokhamer", snContact: "Security Team", dueDate: "Q2 2026", status: "Stalled", notes: "Stalled — the bank has confirmed they will not use SecOps VR. Downsell candidate for AI Native migration. Redirect investment to Veza identity security." },
+  // ── MOVEWORKS ──
+  { id: 101, category: "Moveworks", action: "Bhavin Shah Executive Briefing (CEO, Moveworks)", criticality: "High", bankContact: "Melinda McKinley", snContact: "Arun / Dan", dueDate: "26 Mar 2026", status: "In Progress", notes: "Build vs buy framing. Alice (EA) coordinating. Calendar sent." },
+  { id: 102, category: "Moveworks", action: "Commercial Proposal — EmployeeWorks licensing", criticality: "High", bankContact: "Melinda McKinley", snContact: "Arun / Pannie / Faizan", dueDate: "31 Mar 2026", status: "In Progress", notes: "Covers licensing questions raised at 11 Mar demo. Revert within a few weeks." },
+  { id: 103, category: "Moveworks", action: "JPMC Reference Call — peer bank introduction", criticality: "High", bankContact: "Melinda McKinley", snContact: "Pannie", dueDate: "20 Apr 2026", status: "In Progress", notes: "Bank-to-bank. ServiceNow to initiate via Russell. SCB stakeholders to be briefed." },
+  { id: 104, category: "Moveworks", action: "Technical Architecture Workshop (onsite)", criticality: "Medium", bankContact: "CISO / Infra Teams", snContact: "Brij / Dan", dueDate: "23 Apr 2026", status: "Not Started", notes: "Data hosting, PII, RBAC, custom fields, non-Teams markets. Invite CISO + Infra." },
+  { id: 105, category: "Moveworks", action: "Hands-On Experience Session — live product demo", criticality: "Medium", bankContact: "Melinda / Isaiah", snContact: "Brij / Dan", dueDate: "Apr 2026", status: "In Progress", notes: "Live product only — no prototypes. Target: Melinda's team + Isaiah." },
+  { id: 106, category: "Moveworks", action: "Employee Experience Design Workshop", criticality: "Medium", bankContact: "Isaiah / Giuseppe / Natalie", snContact: "Arun", dueDate: "Apr 2026", status: "Not Started", notes: "Define SC front door, pilot cohort, success metrics." },
+  { id: 107, category: "Moveworks", action: "Roadmap Briefing: Moveworks + NowAssist", criticality: "Medium", bankContact: "Melinda's team", snContact: "Pannie", dueDate: "25 Apr 2026", status: "Not Started", notes: "Executive session. Part of SCB innovation forums." },
+  // ── SECOPS / VEZA / IRM ──
+  { id: 201, category: "SecOps / Veza", action: "Save SecOps VR Churn", criticality: "High", bankContact: "Cezary Piekarski (CISO)", snContact: "Jovern", dueDate: "20 Apr 2026", status: "Stalled", notes: "Bank confirmed they will not use SecOps VR. Downsell candidate. Redirect to Veza." },
+  { id: 202, category: "SecOps / Veza", action: "Save IRM Churn", criticality: "High", bankContact: "Risk Function", snContact: "Ashish", dueDate: "20 Apr 2026", status: "In Progress", notes: "Check status weekly, seek investments if needed." },
+  { id: 203, category: "SecOps / Veza", action: "Dinner with Lavy Stokhamer", criticality: "High", bankContact: "Lavy Stokhamer", snContact: "James", dueDate: "6 Apr 2026", status: "Complete", notes: "Dinner held 6 April. Connected to Felicia Ong (Head of Identity). Key Veza entry point." },
+  { id: 204, category: "SecOps / Veza", action: "Call with Cezary Piekarski (CISO)", criticality: "High", bankContact: "Cezary Piekarski", snContact: "Arun", dueDate: "Early May 2026", status: "Scheduled", notes: "Strategic alignment call. SecOps Pro-to-Enterprise and Veza entry point." },
+  { id: 205, category: "SecOps / Veza", action: "Veza introduction — pending new CDO appointment", criticality: "Medium", bankContact: "CDO (TBC)", snContact: "Arun", dueDate: "Apr 2026", status: "Blocked", notes: "Introduction on hold until CDO is confirmed. Monitor appointment and move fast." },
+  // ── VEZA WORKSHOP (post-demo 6 Apr) ──
+  { id: 206, category: "SecOps / Veza", action: "Send meeting summary to Felicia and Ing", criticality: "High", bankContact: "Felicia Ong / Ing", snContact: "Arun / Karthik", dueDate: "7 Apr 2026", status: "In Progress", notes: "Draft reviewed by Tarun. Covers workshop next step + 3 scoping questions on platforms, identity types, and use cases." },
+  { id: 207, category: "SecOps / Veza", action: "Coordinate 2-hour Veza workshop — date and attendees", criticality: "High", bankContact: "Felicia Ong", snContact: "Karthik / Arun / Adam", dueDate: "Apr 2026", status: "Not Started", notes: "Felicia to include engineers and architects. Jason Taylor (SSE) to lead." },
+  { id: 208, category: "SecOps / Veza", action: "Build attack path scenarios in Staging Live", criticality: "High", bankContact: "Felicia Ong", snContact: "Maohua / Prasanna", dueDate: "Apr 2026", status: "Not Started", notes: "Scenarios tailored to SCB environment. Priority: static access mapping. Human + NHI focus." },
+  { id: 209, category: "SecOps / Veza", action: "Lead 2-hour attack path workshop", criticality: "High", bankContact: "SCB Architects / Engineers", snContact: "Jason Taylor / SSE", dueDate: "Apr 2026", status: "Not Started", notes: "Demonstrate Veza attack path scenarios. AI agent security (Bedrock, Copilot bots) as key wedge." },
+  // ── GCFO / TOM PFAFF ──
+  { id: 301, category: "GCFO", action: "Follow-up brief post Tom Pfaff", criticality: "High", bankContact: "Tom Pfaff", snContact: "Faizan / Stepan", dueDate: "Apr 2026", status: "Not Started", notes: "Define next steps and internal account plan." },
+  { id: 302, category: "GCFO", action: "CM Pro pricing — share with bank", criticality: "Medium", bankContact: "Tom Pfaff", snContact: "Arun", dueDate: "31 Mar 2026", status: "Complete", notes: "Pricing shared. Awaiting bank response." },
+  { id: 303, category: "GCFO", action: "Draft graceful exit note to Tom Pfaff", criticality: "High", bankContact: "Tom Pfaff", snContact: "Arun", dueDate: "Apr 2026", status: "Not Started", notes: "SN does not have ready solution for specific GCFO requirements. Peer-level note: acknowledge discovery, be honest on fit, keep door open. Relationship-first tone." },
+  // ── GO-LIVES ──
+  { id: 401, category: "Go-Lives", action: "WSD + Health & Safety go-live", criticality: "High", bankContact: "Shelley Boland / Melinda", snContact: "Valerie", dueDate: "Q2 2026", status: "In Progress", notes: "~$600K NNACV. Pace constrained by bank reorg. Direct services proposed." },
+  { id: 402, category: "Go-Lives", action: "OneSC — instance consolidation go-live", criticality: "High", bankContact: "Melinda McKinley", snContact: "Valerie", dueDate: "Q1 2026", status: "Complete", notes: "Storage risk addressed. Instance consolidation completed." },
+  { id: 403, category: "Go-Lives", action: "AI Control Tower — production deployment", criticality: "High", bankContact: "Technology Teams", snContact: "Valerie", dueDate: "30 Apr 2026", status: "In Progress", notes: "Contracted June 2025. Bank keen to go live. Adoption is precondition for AI expansion." },
+  { id: 404, category: "Go-Lives", action: "Agentic AI — Onboarding go-live", criticality: "High", bankContact: "Melinda McKinley", snContact: "Valerie", dueDate: "24 Apr 2026", status: "In Progress", notes: "Go-live revised to 24 April 2026. Melinda internal communication to 82,000 employees." },
+  { id: 405, category: "Go-Lives", action: "Infosys QBR — organise and run", criticality: "Medium", bankContact: "Infosys", snContact: "Arun / Sandeep / Brij", dueDate: "Apr 2026", status: "Not Started", notes: "Key: delivery pace conversation." },
+  // ── K26 / EVENTS ──
+  { id: 501, category: "K26 / Events", action: "Singapore Executive Dinner — 22 April", criticality: "High", bankContact: "Shelley Boland", snContact: "Arun", dueDate: "22 Apr 2026", status: "Confirmed", notes: "Shelley + Chelsea Butrym + Hollie Briedis. Venue TBC." },
+  { id: 502, category: "K26 / Events", action: "London Executive Meeting — 30 April", criticality: "High", bankContact: "Shelley Boland + MT", snContact: "Arun", dueDate: "30 Apr 2026", status: "In Progress", notes: "8:30-11:30. SCB London. US product leadership travelling. Agenda finalised." },
+  { id: 503, category: "K26 / Events", action: "K26 — Rama Gatiganti experience", criticality: "High", bankContact: "Rama Gatiganti", snContact: "Arun / Brij", dueDate: "May 2026", status: "In Progress", notes: "Platform owner should not be charged while peers attend free. Commercial risk." },
+  { id: 504, category: "K26 / Events", action: "K26 — Isaiah Das experience", criticality: "Medium", bankContact: "Isaiah Das", snContact: "Arun", dueDate: "May 2026", status: "In Progress", notes: "Invited. Confirm registration and logistics." },
+  { id: 505, category: "K26 / Events", action: "K26 — Melinda McKinley speaker prep", criticality: "Medium", bankContact: "Melinda McKinley", snContact: "Arun / Valerie", dueDate: "May 2026", status: "Confirmed", notes: "Executive Circle. Coordinate speaking slot." },
+  { id: 506, category: "K26 / Events", action: "K26 — Shelley Boland speaker prep", criticality: "Medium", bankContact: "Shelley Boland", snContact: "Arun / Valerie", dueDate: "May 2026", status: "Confirmed", notes: "Registered. Speaker slot. Coordinate content." },
+  { id: 507, category: "K26 / Events", action: "Melinda McKinley — Podcast Invite", criticality: "Low", bankContact: "Melinda McKinley", snContact: "Arun", dueDate: "28 Mar 2026", status: "Complete", notes: "Sent 13 March. Awaiting confirmation." },
+  { id: 508, category: "K26 / Events", action: "K26 — 45-min SCB working session at Marquee Experience", criticality: "High", bankContact: "SCB K26 attendees", snContact: "Arun / Chelsea", dueDate: "May 2026 (last day)", status: "Not Started", notes: "HELP NEEDED: Facilitate session to hear from SCB team and plan high-impact actions for Q3." },
+  // ── ISP / ARCHITECT ──
+  { id: 601, category: "ISP / Architect", action: "Platform Architect — Rama to commit to co-invest", criticality: "High", bankContact: "Rama Gatiganti", snContact: "Arun / Brij", dueDate: "Apr 2026", status: "Not Started", notes: "Architect investment completed. Now need Rama to formally commit and build roadmap." },
+  { id: 602, category: "ISP / Architect", action: "Integrated Success Plan — roadmap build", criticality: "High", bankContact: "Rama / Melinda", snContact: "Dean / Abhishek", dueDate: "May 2026", status: "Not Started", notes: "Target $1M+ add-on. Pathway: Architect to ISP. Build jointly." },
+  // ── STRATEGIC ──
+  { id: 701, category: "Strategic", action: "Engage Noelle Eder (Group CIO & COO)", criticality: "Critical", bankContact: "Noelle Eder", snContact: "Stuart / Chelsea", dueDate: "Apr 2026", status: "In Progress", notes: "Stuart Pearce reaching out directly. Single biggest unengaged exec. Pathway via Chris Bedi and Tanuj." },
+  { id: 702, category: "Strategic", action: "Balachandher Balakrishnan — Must Meet", criticality: "Medium", bankContact: "Balachandher Balakrishnan", snContact: "Arun", dueDate: "Apr 2026", status: "Not Started", notes: "New CIO Functions. Low ServiceNow familiarity. First meeting to be organised." },
+  // ── OPERATIONAL ──
+  { id: 801, category: "Operational", action: "RPA Downsell Exception — resolution", criticality: "Medium", bankContact: "Ben Issa", snContact: "Arun / Constance", dueDate: "Apr 2026", status: "In Progress", notes: "Self-hosted RPA downsell being contested. Raise new request." },
+  // ── CIB / CLIENT LIFECYCLE & AI GOVERNANCE ──
+  { id: 901, category: "CIB", action: "Planning call — Tracks 1 & 2 (Jennifer / Craig)", criticality: "High", bankContact: "Craig Corte / Jennifer Ketelaar", snContact: "Arun", dueDate: "10 Apr 2026", status: "Complete", notes: "Completed 10 April. Craig Corte confirmed as lead on tracks 1 & 2." },
+  { id: 902, category: "CIB", action: "Share pre-reading material — Track 1 (client lifecycle)", criticality: "High", bankContact: "Craig Corte", snContact: "Arun / Angie", dueDate: "Apr 2026", status: "Complete", notes: "Pre-read shared ahead of planning call on 10 April." },
+  { id: 903, category: "CIB", action: "Discovery Call — Track 1: Client Journey Lifecycle", criticality: "High", bankContact: "Craig Corte / Jennifer Ketelaar", snContact: "Arun / Angie", dueDate: "11-12 May 2026", status: "Not Started", notes: "CLM process, KYC/CDD, institutional onboarding. Arun to send invite." },
+  { id: 904, category: "CIB", action: "Track 2: Enterprise AI Governance", criticality: "High", bankContact: "Tien Long (Head AI Safety & Standards)", snContact: "Arun / Angie", dueDate: "May 2026", status: "In Progress", notes: "Tien Long confirmed as SCB Track 2 owner. AICT target: all AI systems assessed May/June. Keep Craig aligned." },
+  { id: 905, category: "CIB", action: "Stuart Pearce — executive presence at CIB workshop", criticality: "High", bankContact: "Geoff Kot", snContact: "Stuart Pearce / Arun", dueDate: "Jun 2026", status: "In Progress", notes: "Stuart confirmed. Adolfo Tunon, Brian Macallister, Vidya Balakrishnan, Sam Abdullah also engaged." },
+  { id: 906, category: "CIB", action: "Geoff Kot / ServiceNow CIB product leadership intro", criticality: "Medium", bankContact: "Geoff Kot", snContact: "Stuart Pearce", dueDate: "Apr 2026", status: "Not Started", notes: "Stuart to facilitate. Tien Long now key contact for AI governance bridge." },
+  { id: 907, category: "CIB", action: "Track 3 — Innovation (intra-day liquidity, tokenised deposits)", criticality: "Medium", bankContact: "Ankur Kanwar / Mark Willis", snContact: "Arun / Angie", dueDate: "Jun 2026", status: "Not Started", notes: "Separate to June workshop. Timing Jun+." },
+  { id: 908, category: "CIB", action: "Send calendar invite — June workshop (15-19 Jun)", criticality: "High", bankContact: "Jennifer / Craig", snContact: "Arun", dueDate: "15 Apr 2026", status: "Not Started", notes: "Venue TBC. Ask for SCB attendee list and preferred venue." },
+  { id: 909, category: "CIB", action: "Tien Long — build relationship (Head AI Safety & Standards)", criticality: "High", bankContact: "Tien Long", snContact: "Arun / Brij", dueDate: "May 2026", status: "Not Started", notes: "New key SCB contact for Track 2. ED level. Bridge between AICT and CIB. Cultivate ahead of May discovery call." },
+  // ── MARQUEE / MELINDA McKINLEY TRACK ──
+  { id: 1001, category: "Marquee / Melinda", action: "Jacqui Canney introduction — AI enablement & HR", criticality: "High", bankContact: "Melinda McKinley", snContact: "Chelsea Butrym", dueDate: "Apr 2026", status: "Not Started", notes: "Melinda specifically requested this. Jacqui is SN Chief People Officer. High-signal moment." },
+  { id: 1002, category: "Marquee / Melinda", action: "Work Deconstruction POV call — Phil Carter + Jeff Margolese", criticality: "High", bankContact: "Melinda McKinley", snContact: "Tricia Malvone / Chelsea", dueDate: "Apr 2026", status: "Not Started", notes: "Neither to lead with product. Core thesis: process to task to skill as AI prerequisite." },
+  { id: 1003, category: "Marquee / Melinda", action: "SCB Holistic Vision narrative — employee experience + AI", criticality: "High", bankContact: "Melinda McKinley", snContact: "Arun / Stuart / Chelsea", dueDate: "Apr 2026", status: "In Progress", notes: "Chelsea partnering with Greg (FSI Leader). OneSC + Moveworks + Agentic AI as one connected platform." },
+  { id: 1004, category: "Marquee / Melinda", action: "Virtuous Cycle narrative — deflection to AI to human evolution", criticality: "High", bankContact: "Melinda McKinley", snContact: "Arun", dueDate: "Apr 2026", status: "Not Started", notes: "Visualise the loop: ticket deflection + AI Agents completing tasks + human roles evolving. North star for Melinda." },
+  { id: 1005, category: "Marquee / Melinda", action: "Marquee questions owed to Melinda", criticality: "Medium", bankContact: "Melinda McKinley", snContact: "Arun", dueDate: "Apr 2026", status: "In Progress", notes: "Three questions from 1 Apr call. Weave into holistic narrative rather than answering in isolation." },
+  { id: 1006, category: "Marquee / Melinda", action: "K26 — Executive Circle invite (Chris Bedi session)", criticality: "Medium", bankContact: "Melinda McKinley", snContact: "Chelsea Butrym", dueDate: "May 2026", status: "Not Started", notes: "Dedicated time with Chris Bedi as part of Executive Circle programme." },
+  { id: 1007, category: "Marquee / Melinda", action: "K26 — Amy Lokey session (persona-driven design)", criticality: "Medium", bankContact: "Melinda McKinley", snContact: "Chelsea / Mathilde", dueDate: "May 2026", status: "Not Started", notes: "Session with Chief Experience Officer. Experience-first thinking and persona design." },
+  // ── CEO TO CEO — BILL McDERMOTT → BILL WINTERS ──
+  { id: 1101, category: "CEO Track", action: "Reach out to Ryan Berti — corporate development coordination", criticality: "High", bankContact: "Bill Winters", snContact: "Arun", dueDate: "Apr 2026", status: "Not Started", notes: "Gina's team. Coordinate sell-to and buy-from opportunities, SC Ventures angle, co-creation." },
+  { id: 1102, category: "CEO Track", action: "Develop sell-to / buy-from point of view", criticality: "High", bankContact: "Bill Winters / Alex Manson", snContact: "Arun / Ryan Berti", dueDate: "Apr 2026", status: "Not Started", notes: "SC Ventures, stablecoins, Zodia, Partior, network banking, Kyriba treasury. 360-degree strategy." },
+  { id: 1103, category: "CEO Track", action: "Surface corporate development need at Singapore Marquee event", criticality: "Medium", bankContact: "SCB Leadership", snContact: "Arun", dueDate: "22 Apr 2026", status: "Not Started", notes: "Flag need for additional corporate dev support. Raise with Holly and Tim at the event." },
+  { id: 1104, category: "CEO Track", action: "Engage K26 champions to prepare CEO connection", criticality: "High", bankContact: "Melinda McKinley", snContact: "Arun", dueDate: "May 2026", status: "Not Started", notes: "Melinda has direct access to Bill Winters. K26 is the organic moment. All SCB attendees to be briefed." },
+  { id: 1105, category: "CEO Track", action: "Shape and draft CEO-to-CEO outreach note", criticality: "High", bankContact: "Bill Winters", snContact: "Arun / Stuart / SJC", dueDate: "Post-K26", status: "Not Started", notes: "Post-Knowledge timing. SCB strategic framework mid-May. Commercial anchor: $40M+. Messaging: platform + buy-from + co-creation." },
+  { id: 1106, category: "CEO Track", action: "K26 signing room — nominations process", criticality: "Medium", bankContact: "SCB Leadership", snContact: "SJC / Presidio", dueDate: "Apr 2026", status: "Not Started", notes: "SJC Presidio to look into extraction process and follow up with Meryl Zucco." },
 ];
 
 function ActionsView() {
@@ -2277,9 +2332,9 @@ function ActionsView() {
   const [filterCriticality, setFilterCriticality] = useState("All");
   const [filterStatus, setFilterStatus] = useState("All");
   
-  const categories = ["All", "Growth", "Adoption"];
+  const categories = ["All", "Moveworks", "SecOps / Veza", "GCFO", "Go-Lives", "K26 / Events", "ISP / Architect", "Strategic", "Operational", "CIB", "Marquee / Melinda", "CEO Track"];
   const criticalities = ["All", "Critical", "High", "Medium", "Low"];
-  const statuses = ["All", "Not Started", "In Progress", "Requested", "Developing", "Stalled", "Complete"];
+  const statuses = ["All", "Not Started", "In Progress", "Scheduled", "Confirmed", "Blocked", "Stalled", "Complete"];
   
   const filteredActions = ACTIONS_DATA.filter(a => {
     if (filterCategory !== "All" && a.category !== filterCategory) return false;
@@ -2298,22 +2353,23 @@ function ActionsView() {
   const statusColors = {
     "Not Started": { bg: colors.bgCard, color: colors.textMuted },
     "In Progress": { bg: colors.amberGlow, color: colors.amber },
-    "Requested": { bg: `${colors.blue}15`, color: colors.blue },
-    "Developing": { bg: colors.amberGlow, color: colors.amber },
-    "Complete": { bg: colors.greenGlow, color: colors.green },
+    "Scheduled": { bg: `${colors.blue}15`, color: colors.blue },
+    "Confirmed": { bg: colors.greenGlow, color: colors.green },
+    "Blocked": { bg: colors.redGlow, color: colors.red },
     "Stalled": { bg: colors.redGlow, color: colors.red },
+    "Complete": { bg: colors.greenGlow, color: colors.green },
   };
   
   const criticalCount = ACTIONS_DATA.filter(a => a.criticality === "Critical").length;
   const highCount = ACTIONS_DATA.filter(a => a.criticality === "High").length;
-  const inProgressCount = ACTIONS_DATA.filter(a => a.status === "In Progress" || a.status === "Developing").length;
+  const inProgressCount = ACTIONS_DATA.filter(a => a.status === "In Progress" || a.status === "Scheduled" || a.status === "Confirmed").length;
   
   return (
     <div>
       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: 20 }}>
         <div>
           <h1 style={{ fontSize: 24, fontWeight: 700, color: colors.textPrimary, margin: "0 0 4px" }}>Actions</h1>
-          <p style={{ fontSize: 13, color: colors.textSecondary, margin: 0 }}>Key actions across Growth & Upsell and Adoption & Renewal</p>
+          <p style={{ fontSize: 13, color: colors.textSecondary, margin: 0 }}>59 actions across 11 workstreams · Updated from Action Tracker v4 · 15 April 2026</p>
           <div style={{ marginTop: 8, padding: "8px 14px", background: colors.blueGlow, border: `1px solid ${colors.blue}30`, borderRadius: 6, display: "flex", alignItems: "center", gap: 8 }}>
             <span style={{ fontSize: 12 }}>📋</span>
             <span style={{ fontSize: 11, color: colors.blue, fontWeight: 600 }}>Bi-weekly account cadence active via dedicated Teams channel: Marquee-Standard Chartered</span>
